@@ -1,0 +1,40 @@
+\documentclass{../../exam2e}
+
+\begin{document}
+\begin{questions}
+	\question A question (numbered \thequestion)
+\begin{parts}
+	\part Part \thepartno\ with counter at \arabic{partno}.\\
+	lorem ipsum
+	\begin{subparts}
+		\subpart Subpart (labelled \thesubpart)
+	\end{subparts}
+	\addtocounter{partno}{9}
+	\part lorem ipsum
+\end{parts}
+
+\question A second question
+\begin{subparts}
+	\subpart Subpart (labelled \thesubpart)
+	\begin{subsubparts}
+		\subsubpart lorem ipsum
+	\end{subsubparts}
+\end{subparts}
+
+\question A third question
+\begin{subsubparts}
+	\subsubpart Subsubpart (labelled \thesubsubpart)
+\end{subsubparts}
+
+\question A forth question
+\begin{subparts}
+	\subpart Subpart (labelled \thesubpart)
+	\begin{itemize}
+		\item lorem ipsum
+		\item lorem ipsum
+	\end{itemize}
+\end{subparts}
+
+
+\end{questions}
+\end{document}
