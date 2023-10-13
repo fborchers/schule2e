@@ -1,8 +1,10 @@
 \documentclass{../../exam2e}
 
 \begin{document}
+\gradetable[h][questions]
+
 \begin{questions}
-	\question A question (numbered \thequestion)
+	\question[4] A question (numbered \thequestion)
 \begin{parts}
 	\part Part \thepartno\ with counter at \arabic{partno}.\\
 	lorem ipsum
@@ -21,6 +23,8 @@
 	\end{subsubparts}
 \end{subparts}
 
+\clearpage
+
 \question A third question
 \begin{subsubparts}
 	\subsubpart Subsubpart (labelled \thesubsubpart)
@@ -28,7 +32,7 @@
 
 \question A forth question
 \begin{subparts}
-	\subpart Subpart (labelled \thesubpart)
+	\subpart[4] Subpart (labelled \thesubpart)
 	\begin{itemize}
 		\item lorem ipsum
 		\item lorem ipsum
@@ -37,4 +41,26 @@
 
 
 \end{questions}
+
+\clearpage
+\addtocounter{page}{-1}
+\thispagestyle{empty} 
+\fillwithgrid{\stretch{1}}  % Karos
+
+%% Leere Seite mit Zeilen ---
+%\clearpage
+%\addtocounter{page}{-1}
+%\thispagestyle{empty} 
+%\fillwithgrid{\stretch{1}}  % Karos
+%\fillwithlines{\stretch{1}} % Zeilen
+
+%% Add N cm of empty lines to page ---
+% N cm Zeilen, e.g. 5cm:
+% \fillwithgrid{Ncm}  % Karos
+% \fillwithlines{Ncm} % Zeilen
+
+%% Fill empty lines till end of page ---
+% \fillwithgrid{\stretch{1}}  % Karos
+% \fillwithlines{\stretch{1}} % Zeilen
+
 \end{document}
