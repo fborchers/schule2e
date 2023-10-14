@@ -2,6 +2,7 @@
 
 \ProvidesClass{../../exam2e}[v0.0 erster (nullter) Versuch]
 
+\RequirePackage{booktabs}
 
 %%
 % Die zugrunde liegende Klasse wird geladen:
@@ -77,12 +78,6 @@
 
 
 
-%% Layout
-%
-\pointsinrightmargin% Punkte werden rechts gedruckt
-\marginpointname{}% ?
-
-
 
 
 
@@ -99,12 +94,14 @@
 %%   %% %%       %%   %%  %%    %% %%   %% %%    %% %%     
  %%%%%  %%       %%    %% %%    %%  %%%%%  %%    %% %%%%%%%
 
+
 %% EXAMDOC-Spracheinstellungen ------------
 
+% Punkte alias Bewertungseinheiten:
 \pointpoints{Punkt}{Punkte}
+\pointsinrightmargin% Punkte werden rechts gedruckt
+\marginpointname{}% ?
 
-
-%% 
 % Wörter für die horizontale Angabe der Bewertungseinheiten:
 \hqword{Aufgabe}
 \hpword{Punkte}
@@ -121,9 +118,102 @@
 (\totalpoints\ \points)\hfill\\}
 
 
+
+
+
+
+
+
+
+
+
+
+%%    %%  %%%%%%%  %%%%%%%%  %%%%%%%% 
+%%   %%  %%     %% %%     %% %%       
+%%  %%   %%     %% %%     %% %%       
+%%%%%    %%     %% %%%%%%%%  %%%%%%   
+%%  %%   %%     %% %%        %%       
+%%   %%  %%     %% %%        %%       
+%%    %%  %%%%%%%  %%        %%       
+
+%% Dokumentenkopf ------------
+
+
 %%
-% Fußzeile
-\pagestyle{foot}
-\runningfootrule
-\cfoot{}
-\rfoot{Seite \thepage\ von \numpages}
+% OPTION 1 -- Die Klassenarbeitszeile
+% Klassenarbeitszeile nimmt nur drei Zeilen in Anspruch und druckt dort
+% Platz für den Vor- und Nachnamen, dann die Argumente:
+% 1 Prüfungsname 
+% 2 Fach 
+% 3 Klasse 
+% 4 Datum
+% und zuletzt die Tabelle mit den Punkten, das sog. gradetable. Verwendung wie folgt:
+% \klassenarbeitszeile{Klassenarbeit 1}{Mathematik}{10c}{10.10.2023}
+\newcommand{\klassenarbeitszeile}[4]{
+	\begin{large}
+	\noindent\textbf{Vor- und Zuname: \rule[-.8ex]{6cm}{.4pt}} \\[1.5ex]
+	\noindent\textbf{\large #1, #2\ #3, am #4} 
+	\end{large} \\[1ex]
+	{\small \gradetable[h][questions]}
+	% Fußzeile:
+	\footrule
+	\lfoot{#1 am #4}
+	\cfoot{}
+	\rfoot{Seite \thepage\ von \numpages}
+}% end newcommand klassenarbeitszeile.
+
+
+
+
+
+
+%%
+% Option 2 -- Die große Tabelle (requires graphicx)
+% Ausführlicher Dokumentenkopf mit allen Informationen zur Prüfung
+\newenvironment{klassenarbeitskopf}{
+\noindent\rule{\textwidth}{0.08em}\\% toprule
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}@{}c@{}*{6}{l}@{}}
+% Zeile 1 -----------------------------------------------
+	\hspace*{2cm}
+&	{\scriptsize Fach}
+& 	\multicolumn{2}{l}{\scriptsize Punkte}
+& 	{\scriptsize Note}
+& 	{\scriptsize Klassendurchschnitt}
+& 	\scriptsize Sonstiger
+\\[-.667ex]
+% Zeile 2 ---
+	&&&&&& {\scriptsize Leistungsstand}
+\\[-1.7ex]
+% Zeile 3 ---
+% Logo einfügen:
+	\raisebox{-1.8\normalbaselineskip}[0pt][0pt]{%
+		\includegraphics[height=9.5ex]{logo}
+		}%end raisebox.
+	& {\small Mathematik} \\[.667ex]
+% Zeile 4 ---
+	& {\small 1. Klassenarbeit}
+	& \multicolumn{2}{r}{\small von \numpoints\enspace}
+\\\specialrule{0.05em}{4pt}{1pt}% midrule 
+% Zeile 5 -----------------------------------------------
+\multicolumn{2}{@{}l@{}}{\scriptsize Vor- und Nachname}
+&	{\scriptsize Klasse}
+&&	{\scriptsize Datum}
+& 	\multicolumn{2}{l}{\scriptsize Kenntnisnahme der Eltern:}
+\\[1.5ex]
+% Zeile 6 ---
+	&& {\small G-07ABC}
+	&& {\small 10.10.2023}
+\\\specialrule{0.05em}{4pt}{5pt}% midrule -------------- 
+\end{tabular*}
+}
+{% Nach den Details und Hinweisen:
+	\par\noindent\rule{\textwidth}{0.05em}%	------------
+	\par\noindent{\small \gradetable[h][questions]}% Tabelle mit Punkten
+	\par\noindent\rule{\textwidth}{0.08em}% ------------
+}% end klassenarbeitskopf.
+
+
+
+
+
+
