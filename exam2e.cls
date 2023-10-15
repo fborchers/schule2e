@@ -35,6 +35,9 @@
 
 
 
+
+
+
 %%%%%%%% %%     %%    %%%    %%     %% 
 %%        %%   %%    %% %%   %%%   %%% 
 %%         %% %%    %%   %%  %%%% %%%% 
@@ -86,6 +89,11 @@
 
 
 
+
+
+
+
+
  %%%%%  %%%%%%%  %%%%%%%     %%     %%%%%  %%    %% %%%%%%%
 %%   %% %%    %% %%    %%   %%%%   %%   %% %%    %% %%     
 %%      %%    %% %%    %%  %%  %%  %%      %%    %% %%     
@@ -116,6 +124,11 @@
 % Layout einer Aufgabe, das sog. question format :
 \qformat{{\bfseries Aufgabe \thequestion\  von \numquestions \hfill} 
 (\totalpoints\ \points)\hfill\\}
+
+
+
+
+
 
 
 
@@ -205,12 +218,19 @@
 	&& {\small 10.10.2023}
 \\\specialrule{0.05em}{4pt}{5pt}% midrule -------------- 
 \end{tabular*}
+% Es folgen die Details und Hinweise, die man im Dokument eintippt.
 }
-{% Nach den Details und Hinweisen:
+{% Abschließend die Tabelle mit Punkten:
 	\par\noindent\rule{\textwidth}{0.05em}%	------------
-	\par\noindent{\small \gradetable[h][questions]}% Tabelle mit Punkten
+	\par\noindent{\small \gradetable[h][questions]}% Tabelle
 	\par\noindent\rule{\textwidth}{0.08em}% ------------
 }% end klassenarbeitskopf.
+
+% Hinweis zur Summe der Punkte im Klassenarbeitskopf:
+% Man könnte die Summe entfernen, indem man diesen Patch einfügt, siehe:
+% https://tex.stackexchange.com/questions/698466/how-do-you-remove-exams-total-points-column-or-row-from-the-gradetable/698503#698503
+
+
 
 
 
