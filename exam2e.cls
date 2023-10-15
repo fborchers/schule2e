@@ -217,3 +217,37 @@
 
 
 
+
+
+
+
+
+
+%%    %%  %%%%%%%  %%     %% %%%%%%%%     %%%    %%%%%%%% %%%% 
+%%   %%  %%     %% %%%   %%% %%     %%   %% %%      %%     %%  
+%%  %%   %%     %% %%%% %%%% %%     %%  %%   %%     %%     %%  
+%%%%%    %%     %% %% %%% %% %%%%%%%%  %%     %%    %%     %%  
+%%  %%   %%     %% %%     %% %%        %%%%%%%%%    %%     %%  
+%%   %%  %%     %% %%     %% %%        %%     %%    %%     %%  
+%%    %%  %%%%%%%  %%     %% %%        %%     %%    %%    %%%% 
+
+                                       %%   %% 
+%%%%%%%%  %%%% %%       %%%% %%%%%%%%    %%%    %%%%%%%%       
+%%     %%  %%  %%        %%     %%      %% %%      %%          
+%%     %%  %%  %%        %%     %%     %%   %%     %%          
+%%%%%%%%   %%  %%        %%     %%    %%     %%    %%          
+%%     %%  %%  %%        %%     %%    %%%%%%%%%    %%          
+%%     %%  %%  %%        %%     %%    %%     %%    %%          
+%%%%%%%%  %%%% %%%%%%%% %%%%    %%    %%     %%    %%          
+
+%% Kompatibilität mit den Definitionen in den Skripten ------------
+
+
+
+
+%% 
+% Die 'question' wird als Umgebung verwendet, also:
+% \begin{question} Text der Frage \end{question}
+\newenvironment{question}{\question}{}%
+\newcommand{\omitsolution}{}% tut nichts, \omitsolution dient der Kontrolle der Counter in den Skripten.
+

@@ -1,0 +1,91 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage{graphicx}
+\usepackage{../../exam2e}
+
+\usepackage{hyperref}
+
+\begin{document}
+
+\section{Prüfungsaufgaben}
+
+asdf
+
+\begin{question}
+	Dies ist eine Frage
+\end{question}
+
+
+\section{Weiterführende Aufgaben}
+
+\begin{question}
+	Dies ist eine Frage
+\end{question}
+
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{questions}
+	\question[4] A question (numbered \thequestion)
+\begin{parts}
+	\part Part \thepartno\ with counter at \arabic{partno}.\\
+	lorem ipsum
+	\begin{subparts}
+		\subpart Subpart (labelled \thesubpart)
+	\end{subparts}
+	\addtocounter{partno}{9}
+	\part lorem ipsum
+\end{parts}
+
+\question A second question
+\begin{subparts}
+	\subpart Subpart (labelled \thesubpart)
+	\begin{subsubparts}
+		\subsubpart lorem ipsum
+	\end{subsubparts}
+\end{subparts}
+
+\clearpage
+
+\question A third question
+\begin{subsubparts}
+	\subsubpart Subsubpart (labelled \thesubsubpart)
+\end{subsubparts}
+
+\question A forth question
+\begin{subparts}
+	\subpart[4] Subpart (labelled \thesubpart)
+	\begin{itemize}
+		\item lorem ipsum
+		\item lorem ipsum
+	\end{itemize}
+\end{subparts}
+
+
+\end{questions}
