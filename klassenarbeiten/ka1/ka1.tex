@@ -6,49 +6,39 @@
 
 %\klassenarbeitszeile{Klassenarbeit 1}{Mathematik}{10c}{10.10.2023}
 
-\begin{klassenarbeitskopf}
+\begin{klassenarbeitskopf}{Klassenarbeit 1}{Mathematik}{10c}{10.10.2023}
 	Thema:\\
 	Zeit:	
 \end{klassenarbeitskopf}
 
 
 \begin{questions}
+
 \begin{question}
-	A question (numbered \thequestion)
+	Eine Frage mit der Nummer \thequestion
 \begin{parts}
-	\part Part \thepartno\ with counter at \arabic{partno}.\\
-	lorem ipsum
+	\part Teilaufgabe~\thepartno\ mit dem \TeX{}-Counter bei~\arabic{partno}.\\ Lorem ipsum\ldots
 	\begin{subparts}
-		\subpart Subpart (labelled \thesubpart)
+		\subpart Unteraufgabe mit Nummer~\arabic{subpart}
 	\end{subparts}
-	\addtocounter{partno}{9}
-	\part lorem ipsum
+	\part Nächste Teilaufgabe
 \end{parts}
 \end{question}% end question 1.
 
-\question A second question
+\question Eine zweite Frage. Hier folgt als nächste Struktur nicht die Teilaufgabe, sondern gleich die Unteraufgabe. Die Abstände werden automatisch angepasst.
 \begin{subparts}
-	\subpart Subpart (labelled \thesubpart)
+		\subpart Unteraufgabe mit Nummer~\arabic{subpart}. Untersuchen Sie  dazu:
 	\begin{subsubparts}
+		\subsubpart lorem ipsum
 		\subsubpart lorem ipsum
 	\end{subsubparts}
 \end{subparts}
 
-\clearpage
 
-\question A third question
-\begin{subsubparts}
-	\subsubpart Subsubpart (labelled \thesubsubpart)
-\end{subsubparts}
 
-\question A forth question
-\begin{subparts}
-	\subpart[4] Subpart (labelled \thesubpart)
-	\begin{itemize}
-		\item lorem ipsum
-		\item lorem ipsum
-	\end{itemize}
-\end{subparts}
+
+
+
 
 
 \end{questions}
@@ -56,22 +46,21 @@
 \clearpage
 \addtocounter{page}{-1}
 \thispagestyle{empty} 
-\fillwithgrid{\stretch{1}}  % Karos
+\fillwithgrid{\stretch{1}}  % Kästchen
 
-%% Leere Seite mit Zeilen ---
+%% Leere Seite mit Zeilen/Kästchen zum Schreiben ---
 %\clearpage
 %\addtocounter{page}{-1}
 %\thispagestyle{empty} 
-%\fillwithgrid{\stretch{1}}  % Karos
+%\fillwithgrid{\stretch{1}}  % Kästchen
 %\fillwithlines{\stretch{1}} % Zeilen
 
-%% Add N cm of empty lines to page ---
-% N cm Zeilen, e.g. 5cm:
-% \fillwithgrid{Ncm}  % Karos
-% \fillwithlines{Ncm} % Zeilen
+%% Füge N cm leerer Zeilen/Kästchen zum Schreiben ein ---
+% \fillwithgrid{Ncm}  % Kästchen, z.B. 5cm
+% \fillwithlines{Ncm} % Zeilen, z.B. 5cm
 
-%% Fill empty lines till end of page ---
-% \fillwithgrid{\stretch{1}}  % Karos
+%% Füge Zeilen/Kästchen bis zum Seitenende ein ---
+% \fillwithgrid{\stretch{1}}  % Kästchen
 % \fillwithlines{\stretch{1}} % Zeilen
 
 \end{document}

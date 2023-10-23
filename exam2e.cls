@@ -1,6 +1,6 @@
 \NeedsTeXFormat{LaTeX2e}[1994/06/01]
 
-\ProvidesClass{../../exam2e}[v0.0 erster (nullter) Versuch]
+\ProvidesClass{../../exam2e}[v0.0 erster Versuch]
 
 \RequirePackage{booktabs}
 
@@ -160,7 +160,7 @@
 % 2 Fach 
 % 3 Klasse 
 % 4 Datum
-% und zuletzt die Tabelle mit den Punkten, das sog. gradetable. Verwendung wie folgt:
+% und zuletzt die Tabelle mit den Punkten, das sog. gradetable. Verwendung wie folgt: #1 Prüfungsname #2 Fach #3 Klasse #4 Datum, also z.B.
 % \klassenarbeitszeile{Klassenarbeit 1}{Mathematik}{10c}{10.10.2023}
 \newcommand{\klassenarbeitszeile}[4]{
 	\begin{large}
@@ -183,48 +183,50 @@
 %%
 % Option 2 -- Die große Tabelle (requires graphicx)
 % Ausführlicher Dokumentenkopf mit allen Informationen zur Prüfung
-\newenvironment{klassenarbeitskopf}{
+% Verwendung wie \klassenarbeitszeile oben mit vier Argumenten, z.B.
+% \begin{klassenarbeitskopf}{Klassenarbeit 1}{Mathematik}{10c}{10.10.2023}
+\newenvironment{klassenarbeitskopf}[4]{%
 \noindent\rule{\textwidth}{0.08em}\\% toprule
 \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}@{}c@{}*{6}{l}@{}}
 % Zeile 1 -----------------------------------------------
 	\hspace*{2cm}
 &	{\scriptsize Fach}
-& 	\multicolumn{2}{l}{\scriptsize Punkte}
+& 	\multicolumn{2}{l}{{\scriptsize Punkte}}
 & 	{\scriptsize Note}
 & 	{\scriptsize Klassendurchschnitt}
-& 	\scriptsize Sonstiger
-\\[-.667ex]
+& 	{\scriptsize Sonstiger}\\[-.667ex]
 % Zeile 2 ---
-	&&&&&& {\scriptsize Leistungsstand}
-\\[-1.7ex]
+	&&&&&& {\scriptsize Leistungsstand}\\[-1.7ex]
 % Zeile 3 ---
 % Logo einfügen:
 	\raisebox{-1.8\normalbaselineskip}[0pt][0pt]{%
 		\includegraphics[height=9.5ex]{logo}
 		}%end raisebox.
-	& {\small Mathematik} \\[.667ex]
+	& {\small #2}% Fach                              <- #2
+\\[.667ex]
 % Zeile 4 ---
-	& {\small 1. Klassenarbeit}
-	& \multicolumn{2}{r}{\small von \numpoints\enspace}
+	& {\small #1}% Name der Prüfung                  <- #1
+	& \multicolumn{2}{r}{{\small von \numpoints\enspace}}
 \\\specialrule{0.05em}{4pt}{1pt}% midrule 
-% Zeile 5 -----------------------------------------------
+% Zeile 5 ----------------------------------------------
 \multicolumn{2}{@{}l@{}}{\scriptsize Vor- und Nachname}
 &	{\scriptsize Klasse}
-&&	{\scriptsize Datum}
-& 	\multicolumn{2}{l}{\scriptsize Kenntnisnahme der Eltern:}
+&&{\scriptsize Datum}
+& \multicolumn{2}{l}{{\scriptsize Kenntnisnahme der Eltern:}}
 \\[1.5ex]
 % Zeile 6 ---
-	&& {\small G-07ABC}
-	&& {\small 10.10.2023}
+	&& {\small #3}% Klasse                           <- #3
+	&& {\small #4}% Datum                            <- #4
 \\\specialrule{0.05em}{4pt}{5pt}% midrule -------------- 
 \end{tabular*}
 % Es folgen die Details und Hinweise, die man im Dokument eintippt.
 }
 {% Abschließend die Tabelle mit Punkten:
-	\par\noindent\rule{\textwidth}{0.05em}%	------------
+	\par\noindent\raisebox{1ex}{\rule{\textwidth}{0.05em}}%	------------
 	\par\noindent{\small \gradetable[h][questions]}% Tabelle
-	\par\noindent\rule{\textwidth}{0.08em}% ------------
+	\par\noindent\raisebox{-.8ex}{\rule{\textwidth}{0.08em}}% ------------
 }% end klassenarbeitskopf.
+
 
 % Hinweis zur Summe der Punkte im Klassenarbeitskopf:
 % Man könnte die Summe entfernen, indem man diesen Patch einfügt, siehe:
@@ -263,11 +265,12 @@
 %% Kompatibilität mit den Definitionen in den Skripten ------------
 
 
-
-
 %% 
 % Die 'question' wird als Umgebung verwendet, also:
 % \begin{question} Text der Frage \end{question}
 \newenvironment{question}{\question}{}%
 \newcommand{\omitsolution}{}% tut nichts, \omitsolution dient der Kontrolle der Counter in den Skripten.
+
+
+
 
