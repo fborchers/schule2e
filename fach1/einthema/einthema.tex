@@ -11,46 +11,29 @@
 
 \section{Prüfungsaufgaben}
 
-asdf
 
 \begin{question}
-	Dies ist eine Frage\\
-	und die nächste Zeile?
-\begin{subsubparts}
-	\subsubpart sadf
-	\subsubpart sadf
-\end{subsubparts}
-	und die nächste Zeile?
-\end{question}
+	Eine Frage mit der Nummer \thequestion
+\begin{parts}
+	\part Teilaufgabe \\ Lorem ipsum\ldots
+	\begin{subparts}
+		\subpart Unteraufgabe mit Nummer
+	\end{subparts}
+	\part Nächste Teilaufgabe
+\end{parts}
+\end{question}% Ende von Aufgabe 1
 
 \begin{question}
-	Dies ist eine Frage\\
-	und die nächste Zeile?
+ 	
+Eine zweite Frage. Hier folgt als nächste Struktur nicht die Teilaufgabe, sondern gleich die Unteraufgabe. Die Abstände werden automatisch angepasst.
 \begin{subparts}
-	\subpart sadf
+		\subpart Unteraufgabe. Untersuchen Sie  dazu:
 	\begin{subsubparts}
-	\subsubpart sadf
-	\subsubpart sadf
+		\subsubpart lorem ipsum
+		\subsubpart lorem ipsum
 	\end{subsubparts}
-	\subpart sadf
 \end{subparts}
-	und die nächste Zeile?
 \end{question}
-
-\begin{question}
-	Dies ist eine Frage
-\begin{parts}
-	\part 	Dies ist eine Frage\\
-	und die nächste Zeile?
-	\part asdf
-	\part asdf
-\end{parts}
-\end{question}
-
-\noindent asdf 
-\begin{parts}
-	\part adsf
-\end{parts}
 
 \end{document}
 
@@ -66,54 +49,3 @@ asdf
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-\begin{questions}
-	\question[4] A question (numbered \thequestion)
-\begin{parts}
-	\part Part \thepartno\ with counter at \arabic{partno}.\\
-	lorem ipsum
-	\begin{subparts}
-		\subpart Subpart (labelled \thesubpart)
-	\end{subparts}
-	\addtocounter{partno}{9}
-	\part lorem ipsum
-\end{parts}
-
-\question A second question
-\begin{subparts}
-	\subpart Subpart (labelled \thesubpart)
-	\begin{subsubparts}
-		\subsubpart lorem ipsum
-	\end{subsubparts}
-\end{subparts}
-
-\clearpage
-
-\question A third question
-\begin{subsubparts}
-	\subsubpart Subsubpart (labelled \thesubsubpart)
-\end{subsubparts}
-
-\question A forth question
-\begin{subparts}
-	\subpart[4] Subpart (labelled \thesubpart)
-	\begin{itemize}
-		\item lorem ipsum
-		\item lorem ipsum
-	\end{itemize}
-\end{subparts}
-
-
-\end{questions}

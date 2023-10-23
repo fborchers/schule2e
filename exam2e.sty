@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}[1994/06/01]
-\ProvidesPackage{../../qahooks2e}[2023/10/10 v0.0.0 für die Kompatibilität mit der exam documentclass]
+\ProvidesPackage{../../exam2e}[2023/10/10 v0.0.1 Ein Paket für die Kompatibilität mit der exam documentclass]
 
 
 \RequirePackage{amsmath}
@@ -13,7 +13,7 @@
 
 
 
-%% --- QUESTIONS, die Umgebung für Aufgaben --------------------
+%% --- QUESTION, die Umgebung für Aufgaben --------------------
 
 \newcounter{questionID}
 \newcounter{solutionID}
@@ -22,8 +22,8 @@
 
 \newcounter{question}[section]
 \makeatletter
-\@addtoreset{question}{section}% reset with section
-\@addtoreset{question}{subsection}% reset with subsection
+\@addtoreset{question}{section}% zurückgesetzt mit section
+\@addtoreset{question}{subsection}% zurückgesetzt mit subsection
 \@addtoreset{question}{subsubsection} 
 \makeatother
 \setcounter{question}{0} 
@@ -41,9 +41,9 @@
 % Wir halten uns fern vom part counter:
 \newcounter{subquestion}[question]% Neu zählen bei question.
 \makeatletter
-\@addtoreset{subquestion}{solutionID}% reset with solution
-\@addtoreset{subquestion}{section}% reset with section
-\@addtoreset{subquestion}{subsection}% reset with subsection
+\@addtoreset{subquestion}{solutionID}% zurückgesetzt mit solution
+\@addtoreset{subquestion}{section}% zurückgesetzt mit section
+\@addtoreset{subquestion}{subsection}% zurückgesetzt mit subsection
 \@addtoreset{subquestion}{subsubsection}% 
 \makeatother
 \setcounter{subquestion}{0}%
@@ -71,9 +71,9 @@
 % Wir halten uns fern vom part counter:
 \newcounter{subpart}[question]% Neu zählen bei question.
 \makeatletter
-\@addtoreset{subpart}{solutionID}% reset with solution
-\@addtoreset{subpart}{section}% reset with section
-\@addtoreset{subpart}{subsection}% reset with subsection
+\@addtoreset{subpart}{solutionID}% zurückgesetzt mit solution
+\@addtoreset{subpart}{section}% zurückgesetzt mit section
+\@addtoreset{subpart}{subsection}% zurückgesetzt mit subsection
 \@addtoreset{subpart}{subsubsection}% 
 \makeatother
 \setcounter{subpart}{0}%
@@ -102,10 +102,10 @@
 % Wir halten uns fern vom part counter:
 \newcounter{subsubpart}[subpart]% Neu zählen bei subpart.
 \makeatletter
-\@addtoreset{subsubpart}{solutionID}% reset with solution
-\@addtoreset{subsubpart}{section}% reset with section
-\@addtoreset{subsubpart}{subsection}% reset with subsection
-\@addtoreset{subsubpart}{subsubsection}% 
+\@addtoreset{subsubpart}{solutionID}% zurückgesetzt mit solution
+\@addtoreset{subsubpart}{section}% zurückgesetzt mit section
+\@addtoreset{subsubpart}{subsection}% zurückgesetzt mit subsection
+\@addtoreset{subsubpart}{subsubsection}% zurückgesetzt mit subsubsection
 \makeatother
 \setcounter{subsubpart}{0}%
 

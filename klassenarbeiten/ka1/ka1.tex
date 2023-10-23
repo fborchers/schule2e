@@ -2,6 +2,20 @@
 
 \usepackage{graphicx}
 
+
+%% Seitenlayout (mit 'exam') --------
+\extrawidth{.9in}
+\extraheadheight[-0.8in]{-.7in}% optionales Arg. trifft auf erste Seite zu.
+\extrafootheight{-.7in}
+
+% oder alternativ stattdessen Seitenlayout mit 'geometry'
+% \usepackage{geometry}
+% \geometry{%
+% 	margin=1.5cm
+% }
+
+
+
 \begin{document}
 
 %\klassenarbeitszeile{Klassenarbeit 1}{Mathematik}{10c}{10.10.2023}
@@ -11,23 +25,25 @@
 	Zeit:	
 \end{klassenarbeitskopf}
 
-
 \begin{questions}
 
-\begin{question}
+%% Fragen --------
+
+
+\begin{question}[1]
 	Eine Frage mit der Nummer \thequestion
 \begin{parts}
-	\part Teilaufgabe~\thepartno\ mit dem \TeX{}-Counter bei~\arabic{partno}.\\ Lorem ipsum\ldots
+	\part Teilaufgabe \\ Lorem ipsum\ldots
 	\begin{subparts}
-		\subpart Unteraufgabe mit Nummer~\arabic{subpart}
+		\subpart Unteraufgabe mit Nummer
 	\end{subparts}
 	\part Nächste Teilaufgabe
 \end{parts}
-\end{question}% end question 1.
+\end{question}% Ende von Aufgabe 1
 
-\question Eine zweite Frage. Hier folgt als nächste Struktur nicht die Teilaufgabe, sondern gleich die Unteraufgabe. Die Abstände werden automatisch angepasst.
+\question[2] Eine zweite Frage. Hier folgt als nächste Struktur nicht die Teilaufgabe, sondern gleich die Unteraufgabe. Die Abstände werden automatisch angepasst.
 \begin{subparts}
-		\subpart Unteraufgabe mit Nummer~\arabic{subpart}. Untersuchen Sie  dazu:
+		\subpart Unteraufgabe. Untersuchen Sie  dazu:
 	\begin{subsubparts}
 		\subsubpart lorem ipsum
 		\subsubpart lorem ipsum
@@ -35,20 +51,31 @@
 \end{subparts}
 
 
+\renewcommand{\thesubpart}{\arabic{subpart}}% Unteraufgaben nummeriert
+\renewcommand{\subpartlabel}{\thequestion.\thepartno.\thesubpart}% als: 1.1.1
+
+\question[3]
+Für die Abituraufgaben kann der Zähler auch angepasst werden wie in dieser Aufgabe: 
+\begin{parts}
+	\part Teilaufgabe
+\begin{subparts}
+	\subpart Unteraufgabe
+\end{subparts}
+\end{parts}
 
 
 
-
-
+%% Ende der Fragen --------
 
 \end{questions}
+
 
 \clearpage
 \addtocounter{page}{-1}
 \thispagestyle{empty} 
 \fillwithgrid{\stretch{1}}  % Kästchen
 
-%% Leere Seite mit Zeilen/Kästchen zum Schreiben ---
+%% Eine leere Seite mit Zeilen/Kästchen zum Schreiben ---
 %\clearpage
 %\addtocounter{page}{-1}
 %\thispagestyle{empty} 
