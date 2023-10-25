@@ -1,8 +1,5 @@
 \documentclass{../../exam2e}
 
-\usepackage{graphicx}
-
-
 %% Seitenlayout (mit 'exam') --------
 \extrawidth{.9in}
 \extraheadheight[-0.8in]{-.7in}% optionales Arg. trifft auf erste Seite zu.
@@ -15,19 +12,15 @@
 % }
 
 
-
 \begin{document}
 
-%\klassenarbeitszeile{Klassenarbeit 1}{Mathematik}{10c}{10.10.2023}
+\textbf{Klassenarbeit Nr. 1}
 
-\begin{klassenarbeitskopf}{Klassenarbeit 1}{Mathematik}{10c}{10.10.2023}
-	Thema:\\
-	Zeit:	
-\end{klassenarbeitskopf}
+\gradetable[h][questions]
 
-\begin{questions}
 
-%% Fragen --------
+\begin{questions}% Fragen --------
+
 
 
 \begin{question}[1]
@@ -38,17 +31,24 @@
 		\subpart Unteraufgabe mit Nummer
 	\end{subparts}
 	\part Nächste Teilaufgabe
+\begin{subparts}
+	\subpart Berechnen Sie.
+	\subpart Berechnen Sie dazu außerdem:
+\begin{subsubparts}
+		\subsubpart lorem ipsum
+		\subsubpart lorem ipsum
+\end{subsubparts}
+\end{subparts}
 \end{parts}
 \end{question}% Ende von Aufgabe 1
 
-\question[2] Eine zweite Frage. Hier folgt als nächste Struktur nicht die Teilaufgabe, sondern gleich die Unteraufgabe. Die Abstände werden automatisch angepasst.
-\begin{subparts}
-		\subpart Unteraufgabe. Untersuchen Sie  dazu:
-	\begin{subsubparts}
-		\subsubpart lorem ipsum
-		\subsubpart lorem ipsum
-	\end{subsubparts}
-\end{subparts}
+\question[2] Eine zweite Frage. Die Unteraufgaben können auch in einer mathematischen Zeile untergebracht werden:
+\begin{equation}
+	\aaa\quad \frac{1}{2}	\qquad\qquad\qquad
+	\aaa\quad \frac{1}{2}	\qquad\qquad\qquad
+	\aaa\quad \frac{1}{3}
+\end{equation}
+
 
 
 \renewcommand{\thesubpart}{\arabic{subpart}}% Unteraufgaben nummeriert
@@ -65,9 +65,7 @@ Für die Abituraufgaben kann der Zähler auch angepasst werden wie in dieser Auf
 
 
 
-%% Ende der Fragen --------
-
-\end{questions}
+\end{questions}% Ende der Fragen --------
 
 
 \clearpage

@@ -1,0 +1,173 @@
+\NeedsTeXFormat{LaTeX2e}[1994/06/01]
+
+\ProvidesClass{../gess}[v0.0.1 erster Versuch]
+
+% Dieses Paket enthält Feineinstellungen, wie wir sie an unserer
+% Schule verwenden wie z.B. die große Tabelle als Klassenarbeits-
+% kopf. 
+
+
+%% 
+% Pakete einladen:
+\RequirePackage{graphicx}
+\RequirePackage{siunitx}
+\RequirePackage{booktabs}% wird für klassenarbeitskopf verwendet.
+
+
+
+
+
+
+
+
+
+ %%%%%  %%%%%%% %%%%%%% %%%%%% %%%% %%    %%  %%%%%%   %%%%% 
+%%   %% %%         %%     %%    %%  %%%   %% %%    %% %%   %%
+%%      %%         %%     %%    %%  %%%%  %% %%       %%     
+ %%%%%  %%%%%%     %%     %%    %%  %% %% %% %%   %%%% %%%%% 
+     %% %%         %%     %%    %%  %%  %%%% %%    %%      %%
+%%   %% %%         %%     %%    %%  %%   %%% %%    %% %%   %%
+ %%%%%  %%%%%%%    %%     %%   %%%% %%    %%  %%%%%%   %%%%% 
+
+% Einrückungen links einstellen
+\setlength{\parindent}{0pt}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ %%%%%%   %%%%%%  %%     %% %%%%%%%%  %%%% %%%%%%% %%%%%%%%      
+%%    %% %%    %% %%     %% %%     %%  %%  %%         %%         
+%%       %%       %%     %% %%     %%  %%  %%         %%         
+ %%%%%%  %%       %%%%%%%%% %%%%%%%%   %%  %%%%%%     %%   %%%%%%
+      %% %%       %%     %% %%   %%    %%  %%         %%         
+%%    %% %%    %% %%     %% %%    %%   %%  %%         %%         
+ %%%%%%   %%%%%%  %%     %% %%     %% %%%% %%         %%         
+   %%%    %%%%%%%%  %%%%%%%%                                         
+  %% %%   %%     %%    %%                                            
+ %%   %%  %%     %%    %%                                            
+%%     %% %%%%%%%%     %%                                            
+%%%%%%%%% %%   %%      %%                                            
+%%     %% %%    %%     %%                                            
+%%     %% %%     %%    %%                                            
+
+% Wir wählen eine serifenlose Schriftart (optional):
+\RequirePackage{cmbright}
+% Die folgenden beiden Zeilen beheben einen Fehler, vgl. hier:
+% https://tex.stackexchange.com/questions/629019/siunitx-in-apperent-conflict-with-cmbright/629022#629022
+\DeclareMathAlphabet{\mathsf}{OT1}{\familydefault}{m}{n}
+\AtBeginDocument{\sisetup{unit-font-command = \mathrm}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+%%    %%  %%%%%%%  %%%%%%%%  %%%%%%%% 
+%%   %%  %%     %% %%     %% %%       
+%%  %%   %%     %% %%     %% %%       
+%%%%%    %%     %% %%%%%%%%  %%%%%%   
+%%  %%   %%     %% %%        %%       
+%%   %%  %%     %% %%        %%       
+%%    %%  %%%%%%%  %%        %%       
+
+%% Dokumentenkopf ------------
+
+
+%%
+% OPTION 1 -- Die Klassenarbeitszeile
+% Klassenarbeitszeile nimmt nur drei Zeilen in Anspruch und druckt dort
+% Platz für den Vor- und Nachnamen, dann die Argumente:
+% #1 Prüfungsname 
+% #2 Fach 
+% #3 Klasse 
+% #4 Datum. Verwendung wie folgt: 
+% \klassenarbeitszeile{Klassenarbeit 1}{Mathematik}{10c}{10.10.2023}
+\newcommand{\klassenarbeitszeile}[4]{
+	\begin{large}
+	\noindent\textbf{Vor- und Zuname: \rule[-.8ex]{6cm}{.4pt}} \\[1.5ex]
+	\noindent\textbf{\large #1, #2\ #3, am #4} 
+	\end{large} \\[1ex]
+	{\small \gradetable[h][questions]}
+	% Einstellen der Fußzeile:
+	\footrule
+	\lfoot{#1 am #4}
+	\cfoot{}
+	\rfoot{Seite \thepage\ von \numpages}
+}% end newcommand klassenarbeitszeile.
+
+
+
+%%
+% OPTION 2 -- Die große Tabelle (requires graphicx and booktabs)
+% Ausführlicher Dokumentenkopf mit allen Informationen zur Prüfung
+% Verwendung wie \klassenarbeitszeile oben mit vier Argumenten, z.B.
+% \begin{klassenarbeitskopf}{Klassenarbeit 1}{Mathematik}{10c}{10.10.2023}
+\newenvironment{klassenarbeitskopf}[4]{%
+\noindent\rule{\textwidth}{0.08em}\\% toprule
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}@{}c@{}*{6}{l}@{}}
+% Zeile 1 ------------------------------------------
+	\hspace*{2cm}% Platzhalter des Logos, siehe Zeile 3 unten.
+&	  {\scriptsize Fach}
+& 	\multicolumn{2}{l}{{\scriptsize Punkte}}
+& 	{\scriptsize Note}
+& 	{\scriptsize Klassendurchschnitt}
+& 	{\scriptsize Sonstiger}\\[-.667ex]
+% Zeile 2 ---
+&&&&&& {\scriptsize Leistungsstand}\\[-1.7ex]
+% Zeile 3 ---
+% Logo einfügen:
+	\raisebox{-1.8\normalbaselineskip}[0pt][0pt]{%
+		\includegraphics[height=9.5ex]{../logo}}%end raisebox.
+& {\small #2}% Fach                                <- #2
+\\[.667ex]
+% Zeile 4 ---
+	& {\small #1}% Name der Prüfung                  <- #1
+	& \multicolumn{2}{r}{{\small von \numpoints\enspace}}
+\\\specialrule{0.05em}{4pt}{1pt}% midrule 
+% Zeile 5 -----------------------------------------
+\multicolumn{2}{@{}l@{}}{{\scriptsize Vor- und Nachname}}
+&	{\scriptsize Klasse}
+&&{\scriptsize Datum}
+& \multicolumn{2}{l}{{\scriptsize Kenntnisnahme der Eltern:}}
+\\[1.5ex]
+% Zeile 6 ---
+	&& {\small #3}% Klasse                           <- #3
+	&& {\small #4}% Datum                            <- #4
+\\\specialrule{0.05em}{4pt}{5pt}% midrule ---------
+\end{tabular*}
+% Es folgen die Details und Hinweise, die man im Dokument eintippt.
+}{% Abschließend die Tabelle mit Punkten:
+	\par\noindent\raisebox{1ex}{\rule{\textwidth}{0.05em}}%	------------
+	\par\noindent{\small \gradetable[h][questions]}% Tabelle
+	\par\noindent\raisebox{-.8ex}{\rule{\textwidth}{0.08em}}% ------------
+}% end klassenarbeitskopf.
+
+
+% Hinweis zur Summe der Punkte im Klassenarbeitskopf:
+% Man könnte die Summe entfernen, indem man diesen Patch einfügt, siehe:
+% https://tex.stackexchange.com/questions/698466/how-do-you-remove-exams-total-points-column-or-row-from-the-gradetable/698503#698503
+
+
+
+
+
