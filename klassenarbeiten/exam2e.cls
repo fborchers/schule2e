@@ -36,7 +36,7 @@
 % Punkte alias Bewertungseinheiten:
 \pointpoints{Punkt}{Punkte}
 \pointsinrightmargin% Punkte werden rechts gedruckt
-\marginpointname{}% ?
+\marginpointname{}%
 
 % Wörter für die horizontale Angabe der Punkte in der Tabelle:
 \hqword{Aufgabe}
@@ -127,18 +127,18 @@
 %\renewcommand{\thechoice}{\Alph{choice}}% letzte Unterebene unverändert
 
 
-%%
-% Erscheinung der Label (verwendet die Counter von oben)
+% Erscheinung der Label (verwendet die Counter von oben) part, 
+% subpart, subsubpart wird geändert:
 
 % \part :
-%\renewcommand{\partlabel}{\thequestion.\thepartno}% partlabel rechtsbündig, das ist LaTeX-Standard, oder:
+%\renewcommand{\partlabel}{\thequestion.\thepartno}% partlabel rechtsbündig, das ist LaTeX-Standard, oder linksbündig mit:
 \renewcommand\partlabel{\hbox to \labelwidth{\thequestion.\thepartno\hfil}}% macht das partlabel linksbündig und druckt 1.1 
 
 % \subpart :
 %\renewcommand\subpartlabel{(\thesubpart)}% (a)
 \makeatletter
-\renewcommand\subpartlabel{\aaa@ii{subpart}}% (a), zur Def. von \aaa@ii s.u.
-\makeatother
+\renewcommand\subpartlabel{\aaa@ii{subpart}}% (a)
+\makeatother% zur Definition von \aaa@ii s.u.
 
 % \subsubpart :
 \renewcommand\subsubpartlabel{\thesubsubpart.}% i. ii.  
@@ -146,22 +146,25 @@
 
 
 
-% ?
-%\renewcommand{\partshook}{\setlength{\leftmargin}{1.5cm}}
+% Die Befehle \questionshook und \partshook usw. sind in der Dokumentenklasse 'exam' als leer definiert. Sie können umdefiniert werden, um Abstände anzupassen, siehe Dolumentation von 'exam'.
+
 \renewcommand{\questionshook}{%
-  \setlength{\leftmargin}{0pt}%
-  \setlength{\labelwidth}{-\labelsep}%
+\setlength{\labelwidth}{-\labelsep}%Keine Einrückung nach Aufgabe.
 }%end questionshook
+
+%\renewcommand{\partshook}{\setlength{\leftmargin}{1.5cm}}
+%\renewcommand{\subpartshook}{}
+%\renewcommand{\subsubpartshook}{}
+
 
 
 %%
-% Einstellungen für Karos und Linien zum Schreiben von Antworten
-% Größe und Linienstärke der Kästchen:
-\setlength{\gridsize}{5mm}%
-\setlength{\gridlinewidth}{.05pt}%
+% Einstellungen für Kästchen und Linien zum Schreiben der Antworten. Die Größe und Linienstärke der Kästchen kann angepasst werden:
+\setlength{\gridsize}{5mm}% Größe
+\setlength{\gridlinewidth}{.05pt}% Linienstärke
 %
 % Zeilenhöhe von Linien:
-\setlength\linefillheight{0.9cm}
+\setlength\linefillheight{0.9cm}% Abstand
 
 
 

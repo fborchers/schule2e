@@ -87,9 +87,9 @@
 
 %% --- SUBPARTS --------------------
 
-\newcounter{subpart}[question]% Neu zählen bei question.
+\newcounter{subpart}[partno]% Neu zählen bei question.
 \makeatletter
-\@addtoreset{subpart}{partno}% zurückgesetzt mit Teilaufgaben
+\@addtoreset{subpart}{question}% zurückgesetzt mit Teilaufgaben
 \@addtoreset{subpart}{solutionID}% zurückgesetzt mit solution
 \@addtoreset{subpart}{section}% zurückgesetzt mit section
 \@addtoreset{subpart}{subsection}% zurückgesetzt mit subsection
@@ -120,11 +120,10 @@
 
 %% --- SUBSUBPARTS --------------------
 
-% Wir halten uns fern vom part counter:
 \newcounter{subsubpart}[subpart]% Neu zählen bei subpart.
 \makeatletter
 \@addtoreset{subsubpart}{partno}% zurückgesetzt mit Teilaufgaben
-\@addtoreset{subsubpart}{subpart}% zurückgesetzt mit Unteraufgaben
+\@addtoreset{subsubpart}{question}% zurückgesetzt mit Unteraufgaben
 \@addtoreset{subsubpart}{solutionID}% zurückgesetzt mit solution
 \@addtoreset{subsubpart}{section}% zurückgesetzt mit section
 \@addtoreset{subsubpart}{subsection}% zurückgesetzt mit subsection
@@ -151,6 +150,26 @@
 
 
 
+%% --- Checkboxes --------------------
+
+% Auf der Niveaustufe subsubpart endet die eins-zu-eins-Kompatibilität mit 'exam'. Wir bieten nur noch die Ankreuzmöglichkeit an mit 'checkboxes':
+
+%%
+% Environment for subparts of questions "(a)" :
+\newenvironment{checkboxes}{%
+\begin{list}%
+{\choice}% markup des subsubpart labels.
+{
+ \setlength\labelsep{.5em}% Abstand label zu Text.
+ \setlength\leftmargin{2em}% Abstand Text vom linken Rand
+ \setlength\listparindent{0.5in}% Absatz einrücken
+ \setlength\parsep{0in}%
+}%
+}{\end{list}}%end newenvironment parts.
+%
+% Die Umgebung wird genutzt mit \choice (wie in exam documentclass):
+\newcommand{\choice}{\item[\framebox(1.333ex,1.333ex){}]}%
+\newcommand{\checkbox}{\item[\framebox(1.333ex,1.333ex){}]}% legacy
 
 
 
