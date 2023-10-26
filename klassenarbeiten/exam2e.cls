@@ -7,8 +7,10 @@
 % Die zugrunde liegende Klasse wird geladen:
 \LoadClass[a4paper,12pt,addpoints,fleqn]{exam}
 
-% Die Schriftgröße kann über die Einstellung oben gewählt werden: 10pt, 11pt, 12pt alles kein Problem, wird an die Klasse 'exam' weitergegeben.
-% Die Option ''addpoints'' lässt die documentclass die Punkte zusammenrechnen. ''fleqn'' macht die Gleichungen linksbündig. 
+% Einstellungen können in der Zeile oben geändert werden:
+% Die Schriftgröße 10pt, 11pt, oder 12pt 
+% Mit 'fleqn' werden die mathematischen Gleichungen linksbündig.
+% Die Option ''addpoints'' lässt die documentclass die Punkte zusammenrechnen. 
 
 
 
@@ -44,11 +46,9 @@
 \htword{Summe}
 \hsword{erzielt}
 
-%%
 % Wörter für Lösungen:
 \renewcommand\solutiontitle{\noindent\textbf{Lösung:}\par\noindent}
 
-%%
 % Layout einer Aufgabe, das sog. 'question format', bspw.:
 \qformat{{\bfseries Aufgabe \thequestion\ von \numquestions \hfill} 
 (\totalpoints\ \points)\hfill\\}
@@ -85,7 +85,6 @@
 %% Kompatibilität mit den Definitionen in den Skripten ------------
 
 
-%% 
 % Die 'question' wird als Umgebung verwendet, also in dieser Form:
 % \begin{question} Text der Frage \end{question}. Dazu wird definiert:
 \newenvironment{question}{\question}{}%
@@ -119,7 +118,7 @@
 %% EXAMDOC-Spezifisches ------------
 
 
-% Erscheinung der Counter der 'exam' documentclass
+% Erscheinung der Counter der 'exam' documentclass:
 %\renewcommand{\thequestion}{\arabic{question}}% Nummerierung ist Standard
 \renewcommand{\thepartno}{\arabic{partno}}% Teilaufgaben auch nummeriert
 \renewcommand{\thesubpart}{\alph{subpart}}% Unteraufgaben a b c usw.
@@ -127,8 +126,7 @@
 %\renewcommand{\thechoice}{\Alph{choice}}% letzte Unterebene unverändert
 
 
-% Erscheinung der Label (verwendet die Counter von oben) part, 
-% subpart, subsubpart wird geändert:
+% Erscheinung der Label (verwendet die Counter von oben). Dazu werden part, subpart, subsubpart geändert:
 
 % \part :
 %\renewcommand{\partlabel}{\thequestion.\thepartno}% partlabel rechtsbündig, das ist LaTeX-Standard, oder linksbündig mit:
@@ -148,9 +146,11 @@
 
 % Die Befehle \questionshook und \partshook usw. sind in der Dokumentenklasse 'exam' als leer definiert. Sie können umdefiniert werden, um Abstände anzupassen, siehe Dolumentation von 'exam'.
 
+% Entferne die Einrückung der 'question', Diese vier Zeilen sind der Dokumentation der Dokumentenklasse 'exam' entnommen:
 \renewcommand{\questionshook}{%
-\setlength{\labelwidth}{-\labelsep}%Keine Einrückung nach Aufgabe.
-}%end questionshook
+    \setlength{\leftmargin}{0pt}%
+    \setlength{\labelwidth}{-\labelsep}%
+}
 
 %\renewcommand{\partshook}{\setlength{\leftmargin}{1.5cm}}
 %\renewcommand{\subpartshook}{}
@@ -158,7 +158,6 @@
 
 
 
-%%
 % Einstellungen für Kästchen und Linien zum Schreiben der Antworten. Die Größe und Linienstärke der Kästchen kann angepasst werden:
 \setlength{\gridsize}{5mm}% Größe
 \setlength{\gridlinewidth}{.05pt}% Linienstärke
@@ -184,10 +183,10 @@
 
 
 % Es gibt Fälle, wenn die Unteraufgaben dichter gepackt werden 
-% sollen als je in eine Zeile oder man die Unteraufgaben in eine 
+% sollen als je in eine eigene Zeile oder man die Unteraufgaben in eine 
 % mathematische Zeile einfügen will. Das ist mit \subpart nicht
 % möglich, weswegen wir einen Haken \aaa definieren, der an dieser
-% Stelle greift und aber den Zähler subpart verwendet. 
+% Stelle ein greift, aber den Zähler subpart verwendet. 
 
 \makeatletter
 \@addtoreset{subpart}{question}% Counter zurücksetzen bei 'question'
@@ -204,15 +203,6 @@
 % Es folgt noch der Befehl für den Markup auf Textoberfläche. Dieser wird auch für das subpartlabel verwendet, siehe oben.
 \def\aaa@ii#1{\textnormal{(\alph{#1})}}% date tag: 06 Jan 2020
 \makeatother
-
-
-
-
-
-
-
-
-
 
 
 

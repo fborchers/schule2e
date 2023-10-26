@@ -1,9 +1,9 @@
 \documentclass{../exam2e}
 
 %% Seitenlayout (mit 'exam') --------
-\extrawidth{.9in}
-\extraheadheight[-0.8in]{-.7in}% optionales Arg. trifft auf erste Seite zu.
-\extrafootheight{-.7in}
+\extrawidth{1.6cm}
+\extraheadheight[-1.5cm]{-1.2cm}% optionales Arg. trifft auf erste Seite zu.
+\extrafootheight{-1.2cm}
 
 % oder alternativ stattdessen Seitenlayout mit 'geometry'
 % \usepackage{geometry}
@@ -16,59 +16,77 @@
 \begin{document}
 
 
-\textbf{\large Klassenarbeit Nr. 1}\\[.5ex]
+\section*{Probeaufgaben, Mathematik 8b}
 
 
-\gradetable[h][questions]
+\gradetable[h][questions]\\[.5ex]
 
-asdf
+% einleitender Text:
+Übersichtlichkeit, Darstellung und Rechtschreibung werden bewertet.
+Rechnungen müssen nach\-voll\-zieh\-bar gestaltet werden. 
+Textaufgaben sollen mit einem Antwortsatz beendet werden. 
+Achte bei allen Größen auf die richtige Einheit.
+
+
+
+\subsection*{Aufgaben zum Thema Wurzeln}
 
 \begin{questions}% Fragen --------
 
-\begin{question}[1]
-	Eine Frage mit der Nummer \thequestion
-\begin{parts}
-	\part Teilaufgabe \\ Lorem ipsum\ldots
-	\begin{subparts}
-		\subpart Unteraufgabe mit Nummer
-	\end{subparts}
-	\part Nächste Teilaufgabe
-\begin{subparts}
-	\subpart Berechnen Sie.
-	\subpart Berechnen Sie dazu außerdem:
-\begin{subsubparts}
-		\subsubpart lorem ipsum
-		\subsubpart lorem ipsum
-\end{subsubparts}
-\end{subparts}
-\end{parts}
-\end{question}% Ende von Aufgabe 1
 
-\question[2]\label{ques:eineaufg-zaehler}
-Eine zweite Frage. Die Unteraufgaben können auch in einer mathematischen Zeile untergebracht werden:
+\begin{question}[2]
+	Erkläre den Begriff der Quadratwurzel anhand des Beispiels $\sqrt{25}$.
+	Nutze dazu die Fachsprache.
+\end{question}
+
+\begin{question}[4]
+	Charakterisiere die folgenden Zahlen, indem du die links aufgeführten Eigenschaften jeweils in der Tabelle abhakst:
+\begin{table}[htpb]
+\centering
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{l*{4}{p{2cm}}}
+\hline
+	{Die Zahl ist\ldots}	& $-4$	& $\frac{72}{12}$	& $\sqrt{11}$ 	& $\sqrt{169}$	\\
+\hline
+	natürlich	\\
+	negativ		\\ 
+\hline
+	ganz		\\
+	rational	\\
+\hline
+	irrational	\\
+	reell		\\
+\hline
+\end{tabular}
+\end{table}
+\end{question}% End Aufgabe Tabelle.
+
+
+
+\begin{question}[3]
+	Berechne geschickt:
 \begin{equation}
-	\aaa\quad \frac{1}{2}	\qquad\qquad\qquad
-	\aaa\quad \frac{1}{2}	\qquad\qquad\qquad
-	\aaa\quad \frac{1}{3}
+\aaa{}\quad \sqrt{2}\cdot \sqrt{18}			\qquad \qquad
+\aaa{}\quad \sqrt{10}\cdot \sqrt{{3,6}}		\qquad \qquad
+\aaa{}\quad \sqrt{125}\;\colon \sqrt{5}
 \end{equation}
+\end{question}
 
 
+\subsection*{Aufgaben zum Thema Wahrscheinlichkeitsrechnung}
 
-\renewcommand{\thesubpart}{\arabic{subpart}}% Unteraufgaben nummeriert
-\renewcommand{\subpartlabel}{\thequestion.\thepartno.\thesubpart}% als: 1.1.1
-
-\question[3] 
-Für die Abituraufgaben kann der Zähler auch angepasst werden wie in dieser Aufgabe: 
-\begin{parts}
-	\part Teilaufgabe
+\begin{question}[5]
+	Aus einer Tüte mit 
+	3 orangenen und 2 gelben Bonbons
+%	2 orangenen und 3 gelben Bonbons
+	wird zweimal je ein Bonbon gezogen und nicht zurückgelegt.
 \begin{subparts}
-	\subpart\label{subpart:einpart} 
-	Unteraufgabe
+	\subpart Zeichne ein vollständiges Baumdiagramm.
+\uplevel{Nutze das Baumdiagramm zur Beantwortung der folgenden Frage:}% end uplevel.
+	\subpart Berechne die Wahrscheinlichkeit zwei verschiedenfarbige Bonbons zu ziehen.
 \end{subparts}
-\end{parts}
+\end{question}
 
-Durch Label wie hier in Aufgabe~\ref{ques:eineaufg-zaehler} 
-können die Aufgaben auch referenziert werden. 
 
 \end{questions}% Ende der Fragen --------
 
