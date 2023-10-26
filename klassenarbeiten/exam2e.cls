@@ -1,6 +1,6 @@
 \NeedsTeXFormat{LaTeX2e}[1994/06/01]
 
-\ProvidesClass{../../exam2e}[v0.0.2 exam2e mit subpart hook aaa@ii]
+\ProvidesClass{../exam2e}[v0.0.2 exam2e mit subpart hook aaa@ii]
 
 
 %%
@@ -171,13 +171,14 @@
 
 
 
- %%%%%%  %%    %% %%%%%%%  %%%%%%%    %%    %%%%%%% %%%%%%%  %%%%% 
-%%    %% %%    %% %%    %% %%    %%  %%%%   %%    %%   %%   %%   %%
-%%       %%    %% %%    %% %%    %% %%  %%  %%    %%   %%   %%     
- %%%%%%  %%    %% %%%%%%%  %%%%%%% %%    %% %%%%%%%    %%    %%%%% 
-      %% %%    %% %%    %% %%      %%%%%%%% %%  %%     %%        %%
-%%    %% %%    %% %%    %% %%      %%    %% %%   %%    %%   %%   %%
- %%%%%%   %%%%%%  %%%%%%%  %%      %%    %% %%    %%   %%    %%%%% 
+   %%%       %%%       %%%    
+  %% %%     %% %%     %% %%   
+ %%   %%   %%   %%   %%   %%  
+%%     %% %%     %% %%     %% 
+%%%%%%%%% %%%%%%%%% %%%%%%%%% 
+%%     %% %%     %% %%     %% 
+%%     %% %%     %% %%     %% 
+
 
 % Es gibt Fälle, wenn die Unteraufgaben dichter gepackt werden 
 % sollen als je in eine Zeile oder man die Unteraufgaben in eine 
@@ -189,14 +190,15 @@
 \@addtoreset{subpart}{question}% Counter zurücksetzen bei 'question'
 \@addtoreset{subpart}{partno}% und zurücksetzen bei Teilaufgaben.
 
-% \aaa zur Verwendung im Dokument:
+% Identische Definition in exam2e.sty ---
+% \aaa zur Verwendung im Dokument als \aaa:
 \newcommand{\aaa}{\@ifnextchar\bgroup{\aaa@i}{\aaa@i{}}}
 \def\aaa@i{%
     \stepcounter{subpart}%
     \aaa@ii{subpart}%
 }%
 
-% Es folgt noch der Befehl für den Markup auf Textoberfläche. Dieser wird auch von \subpartlabel aufgerufen, siehe oben.
+% Es folgt noch der Befehl für den Markup auf Textoberfläche. Dieser wird auch für das subpartlabel verwendet, siehe oben.
 \def\aaa@ii#1{\textnormal{(\alph{#1})}}% date tag: 06 Jan 2020
 \makeatother
 

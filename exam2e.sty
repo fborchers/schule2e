@@ -7,58 +7,77 @@
 
 
 
-%%
-% Die Umgebung 'questions' wird nicht definiert, sie wird nur bei den Klassenarbeiten (exam documentclass) verwendet, nicht in den Skripten. 
 
 
+
+
+
+
+
+
+
+
+
+
+
+ %%%%%%%  %%    %% %%%%%%% %%%%% %%%%%% %%%%  %%%%%%  %%    %%  %%%%% 
+%%     %% %%    %% %%     %%   %%  %%    %%  %%    %% %%%   %% %%   %%
+%%     %% %%    %% %%     %%       %%    %%  %%    %% %%%%  %% %%     
+%%     %% %%    %% %%%%%   %%%%%   %%    %%  %%    %% %% %% %%  %%%%% 
+%%  %% %% %%    %% %%          %%  %%    %%  %%    %% %%  %%%%      %%
+%%    %%  %%    %% %%     %%   %%  %%    %%  %%    %% %%   %%% %%   %%
+ %%%%% %%  %%%%%%  %%%%%%% %%%%%   %%   %%%%  %%%%%%  %%    %%  %%%%% 
+
+% Die Umgebung 'questions' wird nicht definiert, sie wird nur bei den
+% Klassenarbeiten (exam documentclass) verwendet, nicht in den Skripten. 
+% Es folgen die Definitionen von question, part, subpart und subsubpart.
 
 
 %% --- QUESTION, die Umgebung für Aufgaben --------------------
 
-\newcounter{questionID}
-\newcounter{solutionID}
+\newcounter{questionID}% fortlaufender Zähler
+\newcounter{solutionID}% fortlaufender Zähler
 \setcounter{questionID}{0} 
 \setcounter{solutionID}{0} 
 
-\newcounter{question}[section]
+\newcounter{question}[section]% zurückgesetzt mit section
 \makeatletter
-\@addtoreset{question}{section}% zurückgesetzt mit section
 \@addtoreset{question}{subsection}% zurückgesetzt mit subsection
-\@addtoreset{question}{subsubsection} 
+\@addtoreset{question}{subsubsection}% zurückgesetzt mit subsubsection 
 \makeatother
 \setcounter{question}{0} 
 
-\newenvironment{question}[1][]{
-	\refstepcounter{questionID}% globalen Zähler
-	\stepcounter{question}%		 abschnittsinterner Zähler
+\newenvironment{question}[1][]{%
+	\refstepcounter{questionID}% globalen Zähler erhöhen
+	\stepcounter{question}%		 abschnittsinternen Zähler erhöhen
 	\noindent{\bf Aufgabe~\arabic{question}}\hspace*{1em}% markup
 }{}
 
 
 
-%% --- QUESTIONPARTS (alias subquestion) --------------------
+%% --- QUESTIONPARTS (mit Zähler partno) --------------------
 
-% Wir halten uns fern vom part counter:
-\newcounter{subquestion}[question]% Neu zählen bei question.
+% Wir halten uns fern vom part counter (doc.class report und book):
+\newcounter{partno}[question]% Neu zählen bei question.
 \makeatletter
-\@addtoreset{subquestion}{solutionID}% zurückgesetzt mit solution
-\@addtoreset{subquestion}{section}% zurückgesetzt mit section
-\@addtoreset{subquestion}{subsection}% zurückgesetzt mit subsection
-\@addtoreset{subquestion}{subsubsection}% 
+\@addtoreset{partno}{solutionID}% zurückgesetzt mit solution
+\@addtoreset{partno}{section}% zurückgesetzt mit section
+\@addtoreset{partno}{subsection}% zurückgesetzt mit subsection
+\@addtoreset{partno}{subsubsection}% zurückgesetzt mit subsection
 \makeatother
-\setcounter{subquestion}{0}%
+\setcounter{partno}{0}%
 
 
 %%
 % Environment for parts of questions "1.1" :
 \newenvironment{parts}{%
 \begin{list}%
-{\bf \arabic{question}.\arabic{subquestion}}% markup
-{\usecounter{subquestion}
+{\bf \arabic{question}.\arabic{partno}}% markup des part labels
+{\usecounter{partno}%
  \setlength\labelsep{.5em}% Abstand label zu Text.
  \setlength\leftmargin{1.5em}% Abstand Text vom linken Rand
  \setlength\listparindent{0.5in}% Absatz einrücken
- \setlength\parsep{0in}
+ \setlength\parsep{0in}%
 }%
 }{\end{list}}%end newenvironment parts.
 %
@@ -68,13 +87,13 @@
 
 %% --- SUBPARTS --------------------
 
-% Wir halten uns fern vom part counter:
 \newcounter{subpart}[question]% Neu zählen bei question.
 \makeatletter
+\@addtoreset{subpart}{partno}% zurückgesetzt mit Teilaufgaben
 \@addtoreset{subpart}{solutionID}% zurückgesetzt mit solution
 \@addtoreset{subpart}{section}% zurückgesetzt mit section
 \@addtoreset{subpart}{subsection}% zurückgesetzt mit subsection
-\@addtoreset{subpart}{subsubsection}% 
+\@addtoreset{subpart}{subsubsection}% zurückgesetzt mit subsection
 \makeatother
 \setcounter{subpart}{0}%
 
@@ -82,15 +101,17 @@
 %%
 % Environment for subparts of questions "(a)" :
 \newenvironment{subparts}{%
+\makeatletter
 \begin{list}%
-{(\alph{subpart})}% markup
-{\usecounter{subpart}
+{(\alph{subpart})}% markup des subpartlabels, gleich wie \aaa@ii unten
+{\usecounter{subpart}%
  \setlength\labelsep{.5em}% Abstand label zu Text.
  \setlength\leftmargin{2em}% Abstand Text vom linken Rand
  \setlength\listparindent{0.5in}% Absatz einrücken
- \setlength\parsep{0in}
+ \setlength\parsep{0in}%
 }%
-}{\end{list}}%end newenvironment parts.
+}{\end{list}}
+\makeatother%end newenvironment parts.
 %
 % Die Umgebung wird genutzt mit \part (wie in exam documentclass):
 \newcommand{\subpart}{\item}%
@@ -102,10 +123,12 @@
 % Wir halten uns fern vom part counter:
 \newcounter{subsubpart}[subpart]% Neu zählen bei subpart.
 \makeatletter
+\@addtoreset{subsubpart}{partno}% zurückgesetzt mit Teilaufgaben
+\@addtoreset{subsubpart}{subpart}% zurückgesetzt mit Unteraufgaben
 \@addtoreset{subsubpart}{solutionID}% zurückgesetzt mit solution
 \@addtoreset{subsubpart}{section}% zurückgesetzt mit section
 \@addtoreset{subsubpart}{subsection}% zurückgesetzt mit subsection
-\@addtoreset{subsubpart}{subsubsection}% zurückgesetzt mit subsubsection
+\@addtoreset{subsubpart}{subsubsection}% zurückgesetzt mit subsubsect.
 \makeatother
 \setcounter{subsubpart}{0}%
 
@@ -114,15 +137,47 @@
 % Environment for subparts of questions "(a)" :
 \newenvironment{subsubparts}{%
 \begin{list}%
-{\roman{subsubpart}.}% markup
-{\usecounter{subsubpart}
+{\roman{subsubpart}.}% markup des subsubpart labels.
+{\usecounter{subsubpart}%
  \setlength\labelsep{.5em}% Abstand label zu Text.
  \setlength\leftmargin{2em}% Abstand Text vom linken Rand
  \setlength\listparindent{0.5in}% Absatz einrücken
- \setlength\parsep{0in}
+ \setlength\parsep{0in}%
 }%
 }{\end{list}}%end newenvironment parts.
 %
 % Die Umgebung wird genutzt mit \part (wie in exam documentclass):
 \newcommand{\subsubpart}{\item}%
+
+
+
+
+
+
+   %%%       %%%       %%%    
+  %% %%     %% %%     %% %%   
+ %%   %%   %%   %%   %%   %%  
+%%     %% %%     %% %%     %% 
+%%%%%%%%% %%%%%%%%% %%%%%%%%% 
+%%     %% %%     %% %%     %% 
+%%     %% %%     %% %%     %% 
+
+
+%% --- SUBPARTS -- Zugriff mit \aaa --------------------
+
+\makeatletter
+% Identische Definition in exam2e.cls ---
+
+% \aaa zur Verwendung im Dokument als \aaa:
+\newcommand{\aaa}{\@ifnextchar\bgroup{\aaa@i}{\aaa@i{}}}
+\def\aaa@i{%
+   \stepcounter{subpart}%
+   \aaa@ii{subpart}%
+}%
+
+% Es folgt noch der Befehl für den Markup auf Textoberfläche. Dieser wird auch für das subpartlabel verwendet, siehe oben.
+\def\aaa@ii#1{\textnormal{(\alph{#1})}}% date tag: 06 Jan 2020
+\makeatother
+
+
 
