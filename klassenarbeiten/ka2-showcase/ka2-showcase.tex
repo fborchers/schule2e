@@ -11,17 +11,19 @@
 % 	margin=1.5cm
 % }
 
+\setlength{\parindent}{0pt}
 
 \begin{document}
 
-\textbf{Klassenarbeit Nr. 1}
+
+\textbf{\large Klassenarbeit Nr. 1}\\[.5ex]
+
 
 \gradetable[h][questions]
 
+asdf
 
 \begin{questions}% Fragen --------
-
-
 
 \begin{question}[1]
 	Eine Frage mit der Nummer \thequestion
@@ -42,7 +44,8 @@
 \end{parts}
 \end{question}% Ende von Aufgabe 1
 
-\question[2] Eine zweite Frage. Die Unteraufgaben können auch in einer mathematischen Zeile untergebracht werden:
+\question[2]\label{ques:eineaufg-zaehler}
+Eine zweite Frage. Die Unteraufgaben können auch in einer mathematischen Zeile untergebracht werden:
 \begin{equation}
 	\aaa\quad \frac{1}{2}	\qquad\qquad\qquad
 	\aaa\quad \frac{1}{2}	\qquad\qquad\qquad
@@ -54,16 +57,18 @@
 \renewcommand{\thesubpart}{\arabic{subpart}}% Unteraufgaben nummeriert
 \renewcommand{\subpartlabel}{\thequestion.\thepartno.\thesubpart}% als: 1.1.1
 
-\question[3]
+\question[3] 
 Für die Abituraufgaben kann der Zähler auch angepasst werden wie in dieser Aufgabe: 
 \begin{parts}
 	\part Teilaufgabe
 \begin{subparts}
-	\subpart Unteraufgabe
+	\subpart\label{subpart:einpart} 
+	Unteraufgabe
 \end{subparts}
 \end{parts}
 
-
+Durch Label wie hier in Aufgabe~\ref{ques:eineaufg-zaehler} 
+können die Aufgaben auch referenziert werden. 
 
 \end{questions}% Ende der Fragen --------
 
