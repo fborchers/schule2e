@@ -1,11 +1,14 @@
 \documentclass[a4paper,12pt]{article}
 
 
-
 \usepackage{graphicx}
-\usepackage{../../exam2e}
+\usepackage{../../exam2e}% lädt unser exam2e.sty
+
 
 \usepackage{hyperref}
+
+\setlength{\parindent}{0pt}
+
 
 \begin{document}
 
@@ -67,6 +70,34 @@ Eine zweite Frage. Hier folgt als nächste Struktur nicht die Teilaufgabe, sonde
 	\end{checkboxes}
 \end{parts}
 \end{question}
+
+
+
+
+
+\begin{question}[5]
+	Aus einer Tüte mit 
+	3 orangenen und 2 gelben Bonbons
+%	2 orangenen und 3 gelben Bonbons
+	wird zweimal je ein Bonbon gezogen und nicht zurückgelegt.
+\begin{subparts}
+	\subpart Zeichne ein vollständiges Baumdiagramm.
+\uplevel{Nutze das Baumdiagramm zur Beantwortung der folgenden Frage:}%
+	\subpart Berechne die Wahrscheinlichkeit zwei verschiedenfarbige Bonbons zu ziehen.
+\end{subparts}
+\end{question}
+
+% Lösung zur Aufgabe oben:
+\begin{solution}
+\begin{subparts}
+	\subpart Baumdiagramm:
+
+	\includegraphics{baumdiagramm}
+
+	\subpart Zu verschiedenfarbig gehören die Fälle von orange-gelb und gelb-orange. In beiden Fällen ist die Wahrscheinlichkeit gleich $\frac{3}{10}$, insgesamt also $\frac{6}{10}$.
+\end{subparts}
+
+\end{solution}
 
 \end{document}
 

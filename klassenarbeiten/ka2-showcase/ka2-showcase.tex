@@ -1,8 +1,11 @@
 \documentclass{../exam2e}
 
+\usepackage{graphicx}
+
+
 %% Seitenlayout (mit 'exam') --------
 \extrawidth{1.6cm}
-\extraheadheight[-1.5cm]{-1.2cm}% optionales Arg. trifft auf erste Seite zu.
+\extraheadheight[-1.5cm]{-1.2cm}% optionales Argument trifft auf erste Seite zu.
 \extrafootheight{-1.2cm}
 
 % oder alternativ stattdessen Seitenlayout mit 'geometry'
@@ -15,10 +18,15 @@
 
 \begin{document}
 
+% Schalter zum Drucken von Lösungen -------
+% kommentieren, um Lösungen zu unterdrücken
+\printanswers
+% -----------------------------------------
 
+% Überschrift
 \section*{Probeaufgaben, Mathematik 8b}
 
-
+% Tabelle mit den Punkten:
 \gradetable[h][questions]\\[.5ex]
 
 % einleitender Text:
@@ -86,6 +94,18 @@ Achte bei allen Größen auf die richtige Einheit.
 	\subpart Berechne die Wahrscheinlichkeit zwei verschiedenfarbige Bonbons zu ziehen.
 \end{subparts}
 \end{question}
+
+% Lösung zur Aufgabe oben:
+\begin{solution}
+\begin{subparts}
+	\subpart Baumdiagramm:
+
+	\includegraphics{baumdiagramm}
+
+	\subpart Zu verschiedenfarbig gehören die Fälle von orange-gelb und gelb-orange. In beiden Fällen ist die Wahrscheinlichkeit gleich $\frac{3}{10}$, insgesamt also $\frac{6}{10}$.
+\end{subparts}
+
+\end{solution}
 
 
 \end{questions}% Ende der Fragen --------
