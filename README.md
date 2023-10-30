@@ -59,6 +59,14 @@ In diesem Paket sind einige Funktionen zusammengefasst, die wir an unserer Schul
 
 
 
+Das Stylesheet mathe2e.sty
+--------------------------
+Das Paket `mathe2e` ist ebenfalls optional und kann sowohl in Klassenarbeiten als auch im Skript geladen werden. Es ist als Angebot gemeint, im besten Fall verwenden Sie natürlich Ihre eigenen Makros für den Mathematiksatz.
+
+`mathe2e` lädt im Hintergrund `amsmath` und stellt damit alle Strukturen zur Verfügung. Wir ergänzen nur noch die, die für die Schulmathematik gebraucht werden: Zahlbereiche und Mengen, Relationen, lineare Gleichungssysteme (LGS) und die Vektorgeometrie. 
+Zusätzlich wird `siunitx` geladen für die korrekte Darstellung der Einheiten (ins. des unbreakable space zwischen Zahl und Einheit). Damit können Einheiten ohne Zahlwerte, Prozente, Währungen und Kommazahlen entsprechend der deutschen Notation dargestellt werden. 
+
+
 Dank 
 ----
 
