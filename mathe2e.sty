@@ -1,0 +1,60 @@
+\NeedsTeXFormat{LaTeX2e}[1994/06/01]
+
+\ProvidesPackage{../../mathe2e}
+
+
+
+%% LOAD PACKAGES ---------------------------
+\RequirePackage{amsmath}
+
+
+
+
+
+
+
+
+ %%%%%%  %%%% %%     %% %%    %% %%%% %%%%%%%% %%     %% 
+%%    %%  %%  %%     %% %%%   %%  %%     %%     %%   %%  
+%%        %%  %%     %% %%%%  %%  %%     %%      %% %%   
+ %%%%%%   %%  %%     %% %% %% %%  %%     %%       %%%    
+      %%  %%  %%     %% %%  %%%%  %%     %%      %% %%   
+%%    %%  %%  %%     %% %%   %%%  %%     %%     %%   %%  
+ %%%%%%  %%%%  %%%%%%%  %%    %% %%%%    %%    %%     %% 
+
+% Proper support for units --------
+\RequirePackage{siunitx}[2022/02/15]% für die Einheiten und Größen
+\RequirePackage{textcomp}% für \texteuro, Definition \curren s.u.
+
+% mit den folgenden neu definierten Einheiten:
+\DeclareSIUnit\LE{LE}% Längeneinheiten
+\DeclareSIUnit\ppm{ppm}% parts per million
+
+\DeclareSIUnit\litre{l}% changes both litre and liter to l
+\DeclareSIUnit\amu{u}% atomic mass unit (Dalton)
+
+\DeclareSIUnit\year{a}% Jahr
+
+\DeclareSIUnit\huygens{Hy}% für Impuls
+\DeclareSIUnit\kmh{\km\per\hour}% Kilometer pro Stunde
+
+% Währung: Für € vorne verwende mit: \qty{3.99}[\euro]{}
+\DeclareSIUnit\euro{\text{\texteuro}}
+\DeclareSIUnit\curren{\text{\texteuro}}
+
+% Promille (Prozent ist bereits vordefiniert):
+\DeclareSIUnit\permille{\text{\textperthousand}}
+
+% Informatik :
+\DeclareSIUnit\byte{B}
+% Alternativ kann das Paket 'siunitx' mit Option "binary-units" geladen werden. Dann ggf. mit Zweierpotenzen.
+
+% Compatibility with the new version of siunitx
+% add the "do nothing unit" \noop (see documentation):
+\DeclareSIUnit\noop{\relax}
+% Use to to construct an output for unit prefixes, e.g. \prefix{\kilo}:
+\newcommand{\prefix}[1]{\unit{#1\noop}}
+
+% end siunitx ---
+
+
