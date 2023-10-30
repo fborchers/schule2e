@@ -51,8 +51,8 @@
 
 %% --- QUESTION, die Umgebung für Aufgaben --------------------
 
-\newcounter{questionID}% fortlaufender Zähler
-\setcounter{questionID}{0} 
+\newcounter{exerciseID}% fortlaufender Zähler
+\setcounter{exerciseID}{0} 
 
 \newcounter{question}[section]% neu zählen bei section
 \makeatletter
@@ -61,9 +61,9 @@
 \makeatother
 \setcounter{question}{0} 
 
-% Ein Environment für 'question':
+% Eine Environment für 'question':
 \newenvironment{question}[1][]{%
-	\refstepcounter{questionID}% globalen Zähler erhöhen
+	\refstepcounter{exerciseID}% globalen Zähler erhöhen
 	\stepcounter{question}% erhöht den abschnittsinternen Zähler
 	\noindent{\bf Aufgabe~\arabic{question}}\hspace*{1em}% markup
 }{}
