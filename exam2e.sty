@@ -61,12 +61,16 @@
 \makeatother
 \setcounter{question}{0} 
 
+
 % Eine Environment für 'question':
-\newenvironment{question}[1][]{%
-	\refstepcounter{exerciseID}% globalen Zähler erhöhen
-	\stepcounter{question}% erhöht den abschnittsinternen Zähler
-	\noindent{\bf Aufgabe~\arabic{question}}\hspace*{1em}% markup
+\newenvironment{question}[1][]{
+  \refstepcounter{exerciseID}% globalen Zähler erhöhen
+  \stepcounter{question}% erhöht den abschnittsinternen Zähler
+  \noindent{\bf Aufgabe~\arabic{question}}\hspace*{1em}% markup
 }{}
+% Die Zeile oben definiert ebenfalls den Befehle \question, sodass hier
+% die Kompatibilität mit 'exam' genauso hergestellt wird. Die Punktzahl
+% wird nicht ausgegeben. 
 
 
 
