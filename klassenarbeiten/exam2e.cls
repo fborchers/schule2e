@@ -35,24 +35,33 @@
 
 %% EXAMDOC-Spracheinstellungen ------------
 
-% Punkte alias Bewertungseinheiten:
-\pointpoints{Punkt}{Punkte}
 \pointsinrightmargin% Punkte werden rechts gedruckt
 \marginpointname{}%
 
-% Wörter für die horizontale Angabe der Punkte in der Tabelle:
-\hqword{Aufgabe}
-\hpword{Punkte}
-\htword{Summe}
-\hsword{erzielt}
-
-% Wörter für Lösungen:
-\renewcommand\solutiontitle{\noindent\textbf{Lösung:}\par\noindent}
-
-% Layout einer Aufgabe, das sog. 'question format', bspw.:
-\qformat{{\bfseries Aufgabe \thequestion\ von \numquestions \hfill} 
-(\totalpoints\ \points)\hfill\\}
-
+\AtBeginDocument{%
+\@ifpackagewith{babel}{ngerman}{% falls Sprache deutsch (neue RS):
+    % Punkte alias Bewertungseinheiten:
+    \pointpoints{Punkt}{Punkte}%
+    % Wörter für die Angabe der Punkte in der Tabelle:
+    \hqword{Aufgabe}\vqword{Aufgabe}%
+    \hpword{Punkte}\vpword{Punkte}%
+    \htword{Summe}\vtword{Summe}%
+    \hsword{erzielt}\vsword{erzielt}%
+    % Wörter für Lösungen:
+    \renewcommand\solutiontitle{\noindent\textbf{Lösung:}\par}%
+}{}
+\@ifpackagewith{babel}{german}{% falls Sprache deutsch (alte RS):
+    % Punkte alias Bewertungseinheiten:
+    \pointpoints{Punkt}{Punkte}%
+    % Wörter für die Angabe der Punkte in der Tabelle:
+    \hqword{Aufgabe}\vqword{Aufgabe}%
+    \hpword{Punkte}\vpword{Punkte}%
+    \htword{Summe}\vtword{Summe}%
+    \hsword{erzielt}\vsword{erzielt}%
+    % Wörter für Lösungen:
+    \renewcommand\solutiontitle{\noindent\textbf{Lösung:}\par}%
+}{}
+}% Ende AtBeginDocument-Haken.
 
 
 
@@ -115,7 +124,14 @@
 %%        %%   %%  %%     %% %%     %% 
 %%%%%%%% %%     %% %%     %% %%     %% 
 
+
 %% EXAMDOC-Spezifisches ------------
+
+% Layout einer Aufgabe, das sog. 'question format'. \@vqword ist das Makro mit
+% dem Label einer Aufgabe, "Question" ist die Standardeinstellung, ist aber ggfs.
+% oben geändert, siehe Spracheinstellungen:
+\qformat{{\bfseries \@vqword\ \thequestion\hfill} 
+(\totalpoints\ \points)\hfill\\}%
 
 
 % Erscheinung der Counter der 'exam' documentclass:

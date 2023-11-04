@@ -155,9 +155,11 @@
 \\\specialrule{0.05em}{4pt}{5pt}% midrule ---------
 \end{tabular*}
 % Es folgen die Details und Hinweise, die man im Dokument eintippt.
-}{% Abschließend die Tabelle mit Punkten:
+}{% Abschließend die Tabelle mit Punkten, Alternativen: 
+	% \gradetable[h][questions] mit Zellen zum Ausfüllen der Punkte
+	% \pointtable[h][questions] ohne solche Zellen (nur zwei Zeilen)
 	\par\noindent\raisebox{1ex}{\rule{\textwidth}{0.05em}}%	------------
-	\par\noindent{\small \gradetable[h][questions]}% Tabelle
+	\par\noindent{\small \pointtable[h][questions]}% Tabelle
 	\par\noindent\raisebox{-.8ex}{\rule{\textwidth}{0.08em}}% ------------
 }% end klassenarbeitskopf.
 
