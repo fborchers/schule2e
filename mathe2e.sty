@@ -1,11 +1,19 @@
-\NeedsTeXFormat{LaTeX2e}[1994/06/01]
+% Dies ist das Paket mathe2e und
+% Teil der Sammlung schule2e.
 
-\ProvidesPackage{../../mathe2e}
+\NeedsTeXFormat{LaTeX2e}[1994/06/01]
+\ProvidesPackage{../../mathe2e}[2023/10/10 v0.2.5 mathe2e ein Teil von schule2e]
 
 
 
 %% LOAD PACKAGES ---------------------------
 \RequirePackage{amsmath}
+
+
+
+
+
+
 
 
 
@@ -21,6 +29,8 @@
       %%  %%  %%     %% %%  %%%%  %%     %%      %% %%   
 %%    %%  %%  %%     %% %%   %%%  %%     %%     %%   %%  
  %%%%%%  %%%%  %%%%%%%  %%    %% %%%%    %%    %%     %% 
+
+
 
 % Proper support for units --------
 \RequirePackage{siunitx}[2022/02/15]% für die Einheiten und Größen
@@ -57,4 +67,202 @@
 
 % end siunitx ---
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%%     %%    %%%    %%%%%%%% %%     %% %%%%%%%% 
+%%%   %%%   %% %%      %%    %%     %% %%       
+%%%% %%%%  %%   %%     %%    %%     %% %%       
+%% %%% %% %%     %%    %%    %%%%%%%%% %%%%%%   
+%%     %% %%%%%%%%%    %%    %%     %% %%       
+%%     %% %%     %%    %%    %%     %% %%       
+%%     %% %%     %%    %%    %%     %% %%%%%%%% 
+
+
+
+%%                          x
+% Ein beschrifteter Pfeil ----->
+% \xrightarrow aus dem AMS math Paket:
+% strange spacing problem at the end (requires graphicx):
+\newcommand{\xRightarrow}[2][]{\ext@arrow 0359\Rightarrowfill@{#1}{#2\,}}
+
+
+
+%% Mathematische Klammern ---
+\let\originalleft\left
+\let\originalright\right
+% \left - \right combinations, e.g. () []
+\renewcommand{\left}{\mathopen{}\mathclose\bgroup\originalleft}
+\renewcommand{\right}{\aftergroup\egroup\originalright}
+% Quelle: http://ctan.math.utah.edu/ctan/tex-archive/macros/latex/contrib/oberdiek/mleftright.pdf
+
+
+
+% Befehle für weitere Klammern ---
+\newcommand{\norm}[1]{\left\Vert#1\right\Vert}
+\newcommand{\abs}[1]{\left\vert#1\right\vert}
+\newcommand{\theses}[1]{\left(#1\right)}
+\newcommand{\set}[1]{\left\{{#1}\right\}}
+
+
+
+%% Gleichheitszeichen --------
+
+% Gleichheitszeichen mit Ausrufezeichen oben
+% "mbeq": must be equal (\mathrel ist hier überflüssig):
+\newcommand{\mbeq}{\overset{!}{=}}
+
+% Symbol für entspricht:
+%\newcommand{\hateq}{\mathrel{\widehat{=}}}% mathrel adjusts spacing.
+\newcommand{\hateq}{\mathrel{\hat{=}}}% Quelle:
+% https://tex.stackexchange.com/questions/186841/how-to-write-≙-in-latex
+
+
+%% Relationszeichen --------
+
+% Die kommentierten Befehle zeigen nur an, wie die entsprechende Funktion
+% in amsmath zu verwenden ist:
+
+% \cdot für Multiplizieren (englisch \times)
+%   :   für Dividieren (englisch \div mit dem Strich)
+% 
+% \sim für "proportional zu": ~
+% \cong für "kongruent zu"  : =~
+
+% \mid für "teilt": a \mid b, also a teilt b. Oder in groß mit:
+% \left. \middle| \right.
+
+% \gg sehr viel größer als, much greater than
+% \ll viel kleiner als, much less than
+
+
+
+%% Zahlen --------
+
+\newcommand{\setN}{\mathbb{N}}% natürliche Zahlen
+\newcommand{\setZ}{\mathbb{Z}}% ganze Zahlen
+\newcommand{\setQ}{\mathbb{Q}}% rationale Zahlen
+\newcommand{\setR}{\mathbb{R}}% reelle Zahlen
+% \setR\setminus\setQ%    R\Q % irrationale Zahlen
+\newcommand{\setI}{\mathbb{I}}% irrationalen Zahlen, alternative Schreibweise
+\newcommand{\setC}{\mathbb{C}}% komplexe Zahlen
+\newcommand{\setK}{\mathbb{K}}% Körper K
+\newcommand{\setL}{\mathbb{L}}% Lösungsmenge L
+
+% Bei Mengen wird für das Zeichen "ohne" verwendet:
+% \setminus, zum Beispiel:
+% \setR\setminus\set{0} oder \setR\setminus\setQ
+
+% Elemente:
+% a \in\setR
+% a\notin\setR
+
+
+%% Operatoren ---
+\DeclareMathOperator{\sgn}{sgn}% Vorzeichen.
+
+% Andere ---
+\newcommand{\const}{\text{const}}
+
+\renewcommand{\angle}{\sphericalangle}% Winkelsymbol
+\let\origepsilon\epsilon% original epsilon
+\renewcommand{\epsilon}{\varepsilon}% epsilon by Russian tradition
+\renewcommand{\phi}{\varphi}% phi
+
+
+
+
+%% LINEARE GLEICHUNGSSYSTEME (LGS) --------
+
+\makeatletter
+%% Lineare Gleichungssysteme (LGS) 
+\newenvironment{lgs}[2]{%
+\left|% Füge nun den array ein:
+\begin{array}{l@{}*{#1}{r@{\hspace{1pt}}r@{\;}}@{\;\,}>{\@ifnextchar=}c@{\;\;}*{#2}{r@{\hspace{1pt}}r@{\;}}@{\hspace{6mm}}>{\rm}l}}%
+{\end{array}\right.}% Ende der Definition der Umgebung lgs.
+\makeatother
+
+%% Matrixform für LGS nach Format (rrr|r) 
+\newenvironment{qmatrix}[2]{%
+  \left(\begin{array}{@{}*{#1}{c}|*{#2}{c}@{}}%
+}{%
+  \end{array}\right)%
+}% Ende Definition der Umgebung qmatrix.
+
+
+
+
+
+%% BEFEHLE FÜR DIE vektorgeometrie- --------
+
+\makeatletter
+%% Definition von \vector zum Drucken von Spaltenvektoren :
+\def\vector(#1){%
+\mathchoice%
+     {\pmatrix@i{\vector@i#1,,}}%
+     {\pmatrix@ii{\vector@i#1,,}}%
+     {}% scriptstyle too small,
+     {}% ss style too small.
+}% Ende Definition \vector. Hilfsfunktionen sind dabei : 
+\def\vector@i#1,{\if,#1,\else{#1}\cr\expandafter\vector@i\fi}
+\def\pmatrix@i#1{\begin{pmatrix}#1\end{pmatrix}}
+\def\pmatrix@ii#1{\left(\!\begin{smallmatrix}#1\end{smallmatrix}\!\right)}
+
+%% Definition \coords zum Drucken von Zeilenvektoren :
+\def\coords(#1,#2){\left({\textstyle#1\coords@i#2,,}\right)}
+\def\coords@i#1,{\if,#1,\else|{#1}\expandafter\coords@i\fi}
+\makeatother
+
+%% end maths ------------------------------------
+
+
+
+
+
+
+
+
+
+ %%%%%%  %%    %% %%     %% %%%%%%%%   %%%%%%%  %%       %%%%%%%% 
+%%    %%  %%  %%  %%%   %%% %%     %% %%     %% %%       %%       
+%%         %%%%   %%%% %%%% %%     %% %%     %% %%       %%       
+ %%%%%%     %%    %% %%% %% %%%%%%%%  %%     %% %%       %%%%%%   
+      %%    %%    %%     %% %%     %% %%     %% %%       %%       
+%%    %%    %%    %%     %% %%     %% %%     %% %%       %%       
+ %%%%%%     %%    %%     %% %%%%%%%%   %%%%%%%  %%%%%%%% %%%%%%%% 
+
+
+
+%% Widerspruchshaken oder -blitz --------
+% Suche Paket stmaryrd :
+\IfFileExists{stmaryrd.sty}{\RequirePackage[only,lightning]{stmaryrd}}{}
+% Dort steht \lightning zur Verfügung.
+%
+% Alternativ mit xelatexs fontspec:
+%\newcommand{\lightning}{{\fontspec{DejaVuSans.ttf}\text{\symbol{"26A1}}}}
+
+
+% Das Paket amssymb verursacht unter Umständen Probleme mit den Fonts
+% und es lädt viel zu viele Symbole ein, die in der Schule gar nicht ge-
+% braucht werden. 
+\@ifpackageloaded{amssymb}{}{% Falls nicht geladen:
+     \begingroup \catcode`\"=12
+     \DeclareMathSymbol{\square}{\mathord}{AMSa}{"03}% kleines Quadrat
+     \DeclareMathSymbol{\blacksquare}{\mathord}{AMSa}{"04}%gefülltes Quadrat
+     \DeclareMathSymbol{\nparallel}{\mathrel}{AMSb}{"2C}%parallel durchgestrichen
+     \DeclareMathSymbol{\sphericalangle} {\mathord}{AMSa}{"5E}% Symbol Winkel
+     \endgroup
+}% ende if.
 
