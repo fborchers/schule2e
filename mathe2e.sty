@@ -7,7 +7,7 @@
 
 
 %% LOAD PACKAGES ---------------------------
-\RequirePackage{amsmath}
+\RequirePackage{amsmath,amsfonts}
 
 
 
@@ -129,6 +129,14 @@
 \newcommand{\hateq}{\mathrel{\hat{=}}}% Quelle:
 % https://tex.stackexchange.com/questions/186841/how-to-write-≙-in-latex
 
+% Weitere Gleichheitszeichen
+%   :=    definiere
+% \neq    ungleich
+% \equiv  identisch-gleich ≡
+% \approx ungefähr gleich ≈
+% \sim für proportional zu ~
+% \cong   kongruent zu =~
+
 
 %% Relationszeichen --------
 
@@ -137,9 +145,6 @@
 
 % \cdot für Multiplizieren (englisch \times)
 %   :   für Dividieren (englisch \div mit dem Strich)
-% 
-% \sim für "proportional zu": ~
-% \cong für "kongruent zu"  : =~
 
 % \mid für "teilt": a \mid b, also a teilt b. Oder in groß mit:
 % \left. \middle| \right.
@@ -221,7 +226,7 @@
 \def\pmatrix@ii#1{\left(\!\begin{smallmatrix}#1\end{smallmatrix}\!\right)}
 
 %% Definition \coords zum Drucken von Zeilenvektoren :
-\def\coords(#1,#2){\left({\textstyle#1\coords@i#2,,}\right)}
+\def\coords(#1,#2){\left(#1\coords@i#2,,\right)}
 \def\coords@i#1,{\if,#1,\else|{#1}\expandafter\coords@i\fi}
 \makeatother
 
@@ -255,8 +260,8 @@
 
 
 % Das Paket amssymb verursacht unter Umständen Probleme mit den Fonts
-% und es lädt viel zu viele Symbole ein, die in der Schule gar nicht ge-
-% braucht werden. 
+% und es lädt viel zu viele Symbole ein, die in der Schule gar nicht gebraucht werden. 
+\makeatletter
 \@ifpackageloaded{amssymb}{}{% Falls nicht geladen:
      \begingroup \catcode`\"=12
      \DeclareMathSymbol{\square}{\mathord}{AMSa}{"03}% kleines Quadrat
@@ -265,4 +270,4 @@
      \DeclareMathSymbol{\sphericalangle} {\mathord}{AMSa}{"5E}% Symbol Winkel
      \endgroup
 }% ende if.
-
+\makeatother
