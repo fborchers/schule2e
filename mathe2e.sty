@@ -33,8 +33,16 @@
 
 
 % Proper support for units --------
-\RequirePackage{siunitx}[2022/02/15]% für die Einheiten und Größen
 \RequirePackage{textcomp}% für \texteuro, Definition \curren s.u.
+\RequirePackage{siunitx}[2022/02/15]% für die Einheiten und Größen
+\sisetup{% 
+  per-mode        = fraction,
+  locale          = DE,
+  list-final-separator  = { und },
+  list-pair-separator   = { und },
+  list-separator    = {; },
+  range-phrase      = { bis }
+}% end siunitx setup.
 
 % mit den folgenden neu definierten Einheiten:
 \DeclareSIUnit\LE{LE}% Längeneinheiten
@@ -59,11 +67,8 @@
 \DeclareSIUnit\byte{B}
 % Alternativ kann das Paket 'siunitx' mit Option "binary-units" geladen werden. Dann ggf. mit Zweierpotenzen.
 
-% Compatibility with the new version of siunitx
-% add the "do nothing unit" \noop (see documentation):
-\DeclareSIUnit\noop{\relax}
-% Use to to construct an output for unit prefixes, e.g. \prefix{\kilo}:
-\newcommand{\prefix}[1]{\unit{#1\noop}}
+% Einheiten-Vorzeichen, z.B. m für milli mit \prefix{\milli}:
+\newcommand{\prefix}[1]{\unit{#1\relax}}
 
 % end siunitx ---
 
