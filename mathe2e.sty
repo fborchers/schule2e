@@ -31,10 +31,12 @@
  %%%%%%  %%%%  %%%%%%%  %%    %% %%%%    %%    %%     %% 
 
 
-
-% Proper support for units --------
+% Paket siunitx für das Setzen von Größen und Einheiten --------
 \RequirePackage{textcomp}% für \texteuro, Definition \curren s.u.
 \RequirePackage{siunitx}[2022/02/15]% für die Einheiten und Größen
+
+% Spracheinstellungen:
+\@ifpackagewith{babel}{ngerman}{
 \sisetup{% 
   per-mode        = fraction,
   locale          = DE,
@@ -42,9 +44,18 @@
   list-pair-separator   = { und },
   list-separator    = {; },
   range-phrase      = { bis }
-}% end siunitx setup.
+}% Ende Einstellungen siunix bei ngerman
+}{}
+\@ifpackagewith{babel}{english}{
+\sisetup{% 
+  per-mode        = fraction,
+  locale          = UK,
+}% Ende Einstellungen siunitx bei english
+}{}
 
-% mit den folgenden neu definierten Einheiten:
+
+% Neu definierte Einheiten ---
+
 \DeclareSIUnit\LE{LE}% Längeneinheiten
 \DeclareSIUnit\ppm{ppm}% parts per million
 
@@ -70,7 +81,7 @@
 % Einheiten-Vorzeichen, z.B. m für milli mit \prefix{\milli}:
 \newcommand{\prefix}[1]{\unit{#1\relax}}
 
-% end siunitx ---
+% Ende Einstellungen siunitx.
 
 
 
