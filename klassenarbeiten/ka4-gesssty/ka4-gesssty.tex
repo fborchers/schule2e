@@ -5,7 +5,7 @@
 
 
 %% Seitenlayout (mit 'exam') --------
-\extrawidth{.9in}
+\extrawidth{.5in}
 \extraheadheight[-0.8in]{-.7in}% optionales Arg. trifft auf erste Seite zu.
 \extrafootheight{-.7in}
 
@@ -31,7 +31,7 @@
 
 
 
-\begin{question}[1]
+\begin{question}[3]
 	Eine Frage mit der Nummer \thequestion
 \begin{parts}
 	\part Teilaufgabe \\ Lorem ipsum\ldots
@@ -54,14 +54,17 @@
 
 \renewcommand{\thesubpart}{\arabic{subpart}}% Unteraufgaben nummeriert
 \renewcommand{\subpartlabel}{\thequestion.\thepartno.\thesubpart}% als: 1.1.1
-
-\question[3]
-Für die Abituraufgaben kann der Zähler auch angepasst werden wie in dieser Aufgabe: 
+\qformat{\bfseries Aufgabe~\thequestion\hfill}
+\question
+Für die Abituraufgaben kann der Zähler und Punkte auch angepasst werden wie in dieser Aufgabe: 
 \begin{parts}
-	\part Teilaufgabe
+\part[1] Teilaufgabe
 \begin{subparts}
 	\subpart Unteraufgabe
 \end{subparts}
+\pointsdroppedatright
+	\part[2] Weitere Teilaufgabe. Die Punkte werden mit dem Befehl \textbackslash droppoints am Ende des Absatzes gedruckt. 
+	\droppoints
 \end{parts}
 
 

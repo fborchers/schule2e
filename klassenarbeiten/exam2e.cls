@@ -35,13 +35,23 @@
 
 %% EXAMDOC-Spracheinstellungen ------------
 
-\pointsinrightmargin% Punkte werden rechts gedruckt
-\marginpointname{}%
+
 
 \AtBeginDocument{%
+% Falls auf Englisch:
+\@ifpackagewith{babel}{english}{%
+    \pointpoints{mark}{marks}
+    \bonuspointpoints{mark (bonus)}{marks (bonus)}
+    \pointsinrightmargin% Punkte werden rechts auf den Rand gedruckt
+    \marginpointname{m}% Abkürzung für Punkte in diesem Fall.
+}{}
+% Neue Rechtschreibung:
 \@ifpackagewith{babel}{ngerman}{% falls Sprache deutsch (neue RS):
     % Punkte alias Bewertungseinheiten:
     \pointpoints{Punkt}{Punkte}%
+    \pointsinrightmargin% Punkte werden rechts auf den Rand gedruckt
+    \marginpointname{P.}% Abkürzung für Punkte in diesem Fall.
+    %
     % Wörter für die Angabe der Punkte in der Tabelle:
     \hqword{Aufgabe}\vqword{Aufgabe}%
     \hpword{Punkte}\vpword{Punkte}%
@@ -50,9 +60,13 @@
     % Wörter für Lösungen:
     \renewcommand\solutiontitle{\noindent\textbf{Lösung:}\par}%
 }{}
+% Alte Rechtschreibung:
 \@ifpackagewith{babel}{german}{% falls Sprache deutsch (alte RS):
     % Punkte alias Bewertungseinheiten:
     \pointpoints{Punkt}{Punkte}%
+    \pointsinrightmargin% Punkte werden rechts auf den Rand gedruckt
+    \marginpointname{P.}% Abkürzung für Punkte in diesem Fall.
+    %
     % Wörter für die Angabe der Punkte in der Tabelle:
     \hqword{Aufgabe}\vqword{Aufgabe}%
     \hpword{Punkte}\vpword{Punkte}%
@@ -125,13 +139,11 @@
 %%%%%%%% %%     %% %%     %% %%     %% 
 
 
-%% EXAMDOC-Spezifisches ------------
+%% EXAMDOC: Aufgaben --------
 
-% Layout einer Aufgabe, das sog. 'question format'. \@vqword ist das Makro mit
-% dem Label einer Aufgabe, "Question" ist die Standardeinstellung, ist aber ggfs.
-% oben geändert, siehe Spracheinstellungen:
-\qformat{{\bfseries \@vqword\ \thequestion\hfill} 
-(\totalpoints\ \points)\hfill\\}%
+% Layout einer Aufgabe, das sog. 'question format'. 
+% \@vqword ist das Makro mit dem Label einer Aufgabe, "Question" ist die Standardeinstellung, ist aber ggfs. oben geändert, siehe Spracheinstellungen:
+\qformat{{\bfseries \@vqword\ \thequestion}\hfill(\totalpoints\ \points)\hfill\\}%
 
 
 % Erscheinung der Counter der 'exam' documentclass:
@@ -158,8 +170,6 @@
 \renewcommand\subsubpartlabel{\thesubsubpart.}% i. ii.  
 
 
-
-
 % Die Befehle \questionshook und \partshook usw. sind in der Dokumentenklasse 'exam' als leer definiert. Sie können umdefiniert werden, um Abstände anzupassen, siehe Dolumentation von 'exam'.
 
 % Entferne die Einrückung der 'question', Diese vier Zeilen sind der Dokumentation der Dokumentenklasse 'exam' entnommen:
@@ -174,6 +184,11 @@
 
 
 
+%% EXAMDOC: Punkte --------
+% siehe Spracheinstellungen.
+
+
+%% Platz für Lösungen --------
 % Einstellungen für Kästchen und Linien zum Schreiben der Antworten. Die Größe und Linienstärke der Kästchen kann angepasst werden:
 \setlength{\gridsize}{5mm}% Größe
 \setlength{\gridlinewidth}{.05pt}% Linienstärke
