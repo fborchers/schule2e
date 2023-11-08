@@ -152,15 +152,18 @@
 % Zeile 6 ---
 	&& {#3}% Klasse                           <- #3
 	&& {#4}% Datum                            <- #4
-\\\specialrule{0.05em}{4pt}{5pt}% midrule ---------
+\\\specialrule{0.05em}{3pt}{4pt}% midrule ---------
 \end{tabular*}
 % Es folgen die Details und Hinweise, die man im Dokument eintippt.
 }{% Abschließend die Tabelle mit Punkten, Alternativen: 
 	% \gradetable[h][questions] mit Zellen zum Ausfüllen der Punkte
 	% \pointtable[h][questions] ohne solche Zellen (nur zwei Zeilen)
-	\par\noindent\raisebox{1ex}{\rule{\textwidth}{0.05em}}%	------------
-	\par\noindent{\small \pointtable[h][questions]}% Tabelle
-	\par\noindent\raisebox{-.8ex}{\rule{\textwidth}{0.08em}}% ------------
+	\par
+	\noindent\raisebox{1.5ex}{\rule{\textwidth}{0.05em}}%	------------
+	\\[-1ex]
+	\noindent{\footnotesize \pointtable[h][questions]}% Tabelle
+	\par
+	\noindent\raisebox{-.8ex}{\rule{\textwidth}{0.08em}}% ------------
 }% end klassenarbeitskopf.
 
 % Hinweis zur Summe der Punkte im Klassenarbeitskopf:
