@@ -13,7 +13,7 @@ Das Stylesheet `exam2e.sty` dient der Kompatibilität, wenn man die Aufgaben von
 
 Das Stylesheet `gess.sty` enthält einige spezifische Formatierungen für `exam2e`, die wir an unserer Schule verwenden. 
 
-Die Pakete `schule2e` sind kein Fork des [Projektes von P. Breitfeld]{http://www.pbreitfeld.de/schule2e.sty}. Dieses ist meines Wissens leider nicht mehr verfügbar. Der Name des Pakets ist diesem Andenken gewidmet. 
+Die Pakete `schule2e` sind kein Fork des [Projektes von P. Breitfeld]{http://www.pbreitfeld.de/schule2e.sty}. Das Paket ist meines Wissens nicht mehr verfügbar. Der Name des Paketes ist diesem Andenken gewidmet. 
 
 
 Informationen für LaTeX-Neulinge
@@ -70,6 +70,6 @@ Zusätzlich wird `siunitx` geladen für die korrekte Darstellung der Einheiten (
 Dank 
 ----
 
-Dieses Projekt begann als fork von P. Breitfelds Paket schule2e, geworden ist es eine Neufassung der wichtigsten Funktionen für die Nutzung in der Schule. Das Original schule2e ist leider nicht mehr verfügbar, sein letzter Beitrag zur Zeit der Niederschrift über zehn Jahre her. Es ist daher nicht anmaßend gemeint, den Namen schule2e weiterzuführen, sondern dankend.
+Dieses Projekt begann  irgendwann als fork von P. Breitfelds Paket schule2e, geworden ist es eine Neufassung der wichtigsten Funktionen für die Nutzung in der Schule. Das Original schule2e ist leider nicht mehr verfügbar, sein letzter Beitrag zur Zeit der Niederschrift über zehn Jahre her. Es ist daher nicht anmaßend gemeint, den Namen schule2e weiterzuführen, sondern dankend.
 
 

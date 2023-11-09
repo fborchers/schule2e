@@ -106,12 +106,14 @@
 %%     %% %%     %%    %%    %%     %% %%       
 %%     %% %%     %%    %%    %%     %% %%%%%%%% 
 
+%% Einfacher, beschrifteter Pfeil (definiert im amsmath-Paket):
+% \xrightarrow, im Mathematikmodus z.B. zu verwenden als
+% f(x) \xrightarrow{x\rightarrow\infty} -\infty
 
-
-%%                          x
-% Ein beschrifteter Pfeil ----->
-% \xrightarrow aus dem AMS math Paket:
-% strange spacing problem at the end (requires graphicx):
+%%                                 x
+% Doppelter, beschrifteter Pfeil =====>
+% z.B. im Mathemodus zu verwenden als \xRightarrow{GTR}, 
+% wenn der grafikfähige Taschenrechner zum Einsatz kommt.
 \newcommand{\xRightarrow}[2][]{\ext@arrow 0359\Rightarrowfill@{#1}{#2\,}}
 
 
@@ -146,12 +148,12 @@
 % https://tex.stackexchange.com/questions/186841/how-to-write-≙-in-latex
 
 % Weitere Gleichheitszeichen
-%   :=    definiere
-% \neq    ungleich
-% \equiv  identisch-gleich ≡
-% \approx ungefähr gleich ≈
-% \sim für proportional zu ~
-% \cong   kongruent zu =~
+%    :=     definiere
+%  \neq     ungleich
+%  \equiv   identisch-gleich ≡
+%  \approx  ungefähr gleich ≈
+%  \sim für proportional zu ~
+%  \cong    kongruent zu =~
 
 
 %% Relationszeichen --------
@@ -186,7 +188,7 @@
 % \setminus, zum Beispiel:
 % \setR\setminus\set{0} oder \setR\setminus\setQ
 
-% Elemente:
+% Elemente von Mengen:
 % a \in\setR
 % a\notin\setR
 
@@ -243,7 +245,7 @@
 
 %% Definition \coords zum Drucken von Zeilenvektoren :
 \def\coords(#1,#2){\left(#1\coords@i#2,,\right)}
-\def\coords@i#1,{\if,#1,\else|{#1}\expandafter\coords@i\fi}
+\def\coords@i#1,{\if,#1,\else\middle|{#1}\expandafter\coords@i\fi}
 \makeatother
 
 %% end maths ------------------------------------
