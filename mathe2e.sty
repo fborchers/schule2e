@@ -228,7 +228,7 @@
 
 
 
-%% BEFEHLE FÜR DIE vektorgeometrie- --------
+%% BEFEHLE für die VEKTORGEOMETRIE --------
 
 \makeatletter
 %% Definition von \vector zum Drucken von Spaltenvektoren :
@@ -256,36 +256,3 @@
 
 
 
-
-
- %%%%%%  %%    %% %%     %% %%%%%%%%   %%%%%%%  %%       %%%%%%%% 
-%%    %%  %%  %%  %%%   %%% %%     %% %%     %% %%       %%       
-%%         %%%%   %%%% %%%% %%     %% %%     %% %%       %%       
- %%%%%%     %%    %% %%% %% %%%%%%%%  %%     %% %%       %%%%%%   
-      %%    %%    %%     %% %%     %% %%     %% %%       %%       
-%%    %%    %%    %%     %% %%     %% %%     %% %%       %%       
- %%%%%%     %%    %%     %% %%%%%%%%   %%%%%%%  %%%%%%%% %%%%%%%% 
-
-
-
-%% Widerspruchshaken oder -blitz --------
-% Suche Paket stmaryrd :
-\IfFileExists{stmaryrd.sty}{\RequirePackage[only,lightning]{stmaryrd}}{}
-% Dort steht \lightning zur Verfügung.
-%
-% Alternativ mit xelatexs fontspec:
-%\newcommand{\lightning}{{\fontspec{DejaVuSans.ttf}\text{\symbol{"26A1}}}}
-
-
-% Das Paket amssymb verursacht unter Umständen Probleme mit den Fonts
-% und es lädt viel zu viele Symbole ein, die in der Schule gar nicht gebraucht werden. 
-\makeatletter
-\@ifpackageloaded{amssymb}{}{% Falls nicht geladen:
-     \begingroup \catcode`\"=12
-     \DeclareMathSymbol{\square}{\mathord}{AMSa}{"03}% kleines Quadrat
-     \DeclareMathSymbol{\blacksquare}{\mathord}{AMSa}{"04}%gefülltes Quadrat
-     \DeclareMathSymbol{\nparallel}{\mathrel}{AMSb}{"2C}%parallel durchgestrichen
-     \DeclareMathSymbol{\sphericalangle} {\mathord}{AMSa}{"5E}% Symbol Winkel
-     \endgroup
-}% ende if.
-\makeatother
