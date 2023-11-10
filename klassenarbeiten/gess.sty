@@ -1,6 +1,6 @@
 \NeedsTeXFormat{LaTeX2e}
 
-\ProvidesClass{../gess}[v0.0.1 erster Versuch]
+\ProvidesClass{../gess}[v0.0.3 mit Zeile und Kopf fertig]
 
 % Dieses Paket enthält Feineinstellungen, wie wir sie an unserer
 % Schule verwenden wie z.B. die große Tabelle als Klassenarbeits-
@@ -9,7 +9,7 @@
 
 % Pakete einladen:
 \RequirePackage{graphicx}
-\RequirePackage{siunitx}
+
 \RequirePackage{booktabs}% wird für klassenarbeitskopf verwendet.
 
 
@@ -64,11 +64,12 @@
 
 % Wir wählen eine serifenlose Schriftart (optional):
 \RequirePackage{cmbright}
-% Die folgenden beiden Zeilen beheben einen Fehler, vgl. hier:
+% Die folgenden beiden Zeilen beheben einen Fehler bei der Verwendung von cmbright mit siunitx, vgl. hier:
 % https://tex.stackexchange.com/questions/629019/siunitx-in-apperent-conflict-with-cmbright/629022#629022
-\DeclareMathAlphabet{\mathsf}{OT1}{\familydefault}{m}{n}
-\AtBeginDocument{\sisetup{unit-font-command = \mathrm}}
-
+\@ifpackageloaded{siunitx}{%
+	\DeclareMathAlphabet{\mathsf}{OT1}{\familydefault}{m}{n}%
+	\AtBeginDocument{\sisetup{unit-font-command = \mathrm}}%
+}
 
 
 
@@ -112,15 +113,15 @@
 	\lfoot{#1 am #4}
 	\cfoot{}
 	\rfoot{Seite \thepage\ von \numpages}
-}% end newcommand klassenarbeitszeile.
+}% Ende Definition von \klassenarbeitszeile.
 
 
 
 %%
 % OPTION 2 -- Die große Tabelle (requires graphicx and booktabs)
 % Ausführlicher Dokumentenkopf mit allen Informationen zur Prüfung
-% Verwendung wie \klassenarbeitszeile oben mit vier Argumenten, z.B.
-% \begin{klassenarbeitskopf}{Klassenarbeit 1}{Mathematik}{10c}{10.10.2023}
+% Verwendung wie \klassenarbeitszeile oben mit vier Argumenten, also z.B.
+% \begin{klassenarbeitskopf}{Klassenarbeit 1}{Mathematik}{10c}{10.10.2023}\end{klassenarbeitskopf}
 \newenvironment{klassenarbeitskopf}[4]{%
 \noindent\rule{\textwidth}{0.08em}\\% toprule
 \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}@{}c@{}*{6}{l}@{}}
@@ -147,13 +148,13 @@
 \multicolumn{2}{@{}l@{}}{{\scriptsize Vor- und Nachname}}
 &	{\scriptsize Klasse}
 &&{\scriptsize Datum}
-& \multicolumn{2}{l}{{\scriptsize Kenntnisnahme der Eltern:}}
+& \multicolumn{2}{l}{{\scriptsize Kenntnisnahme der Eltern}}
 \\[1.5ex]
 % Zeile 6 ---
 	&& {#3}% Klasse                           <- #3
 	&& {#4}% Datum                            <- #4
 \\\specialrule{0.05em}{3pt}{4pt}% midrule ---------
-\end{tabular*}
+\end{tabular*}%
 % Es folgen die Details und Hinweise, die man im Dokument eintippt.
 }{% Abschließend die Tabelle mit Punkten, Alternativen: 
 	% \gradetable[h][questions] mit Zellen zum Ausfüllen der Punkte
@@ -164,7 +165,7 @@
 	\noindent{\footnotesize \pointtable[h][questions]}% Tabelle
 	\par
 	\noindent\raisebox{-.8ex}{\rule{\textwidth}{0.08em}}% ------------
-}% end klassenarbeitskopf.
+}% Ende Definition der Umgebung klassenarbeitskopf.
 
 % Hinweis zur Summe der Punkte im Klassenarbeitskopf:
 % Man könnte die Summe entfernen, indem man diesen Patch einfügt, siehe:
