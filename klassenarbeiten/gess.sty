@@ -1,10 +1,11 @@
 \NeedsTeXFormat{LaTeX2e}
 
-\ProvidesClass{../gess}[v0.0.3 mit Zeile und Kopf fertig]
+\ProvidesClass{../gess}[v0.0.3 Zeile und Kopf fertig]
 
 % Dieses Paket enthält Feineinstellungen, wie wir sie an unserer
 % Schule verwenden wie z.B. die große Tabelle als Klassenarbeits-
-% kopf. 
+% kopf. Klassenarbeitszeile verwendet einen etwas einfacheren Kopf, den wenigstens einer von uns jahrlange in Verwendung hatte und der relativ einfach anzupassen ist. 
+%   Wenn das Paket ohne die Dokumentenklasse exam2e bzw. exam geladen wird, so müssen die Befehle numpoints und gradetable bzw. pointtable definiert werden, siehe die Dokumentation von schule2e.
 
 
 % Pakete einladen:
@@ -32,9 +33,13 @@
 \setlength{\parindent}{0pt}
 
 
-
-
-
+%% Fußzeile
+% falls fancyhdr ... falls scrlayer-scrpage
+	% % Einstellen der Fußzeile:
+	% \footrule
+	% \lfoot{#1 am #4}
+	% \cfoot{}
+	% \rfoot{Seite \thepage\ von \numpages}
 
 
 
@@ -108,11 +113,6 @@
 	\noindent\textbf{\large #1, #2\ #3, am #4} 
 	\end{large} \\[1ex]
 	{\small \gradetable[h][questions]}
-	% Einstellen der Fußzeile:
-	\footrule
-	\lfoot{#1 am #4}
-	\cfoot{}
-	\rfoot{Seite \thepage\ von \numpages}
 }% Ende Definition von \klassenarbeitszeile.
 
 
@@ -162,7 +162,7 @@
 	\par
 	\noindent\raisebox{1.5ex}{\rule{\textwidth}{0.05em}}%	------------
 	\\[-1ex]
-	\noindent{\footnotesize \pointtable[h][questions]}% Tabelle
+	\noindent{\small \pointtable[h][questions]}% Tabelle
 	\par
 	\noindent\raisebox{-.8ex}{\rule{\textwidth}{0.08em}}% ------------
 }% Ende Definition der Umgebung klassenarbeitskopf.

@@ -1,4 +1,4 @@
-\documentclass{../exam2e}
+\documentclass[12pt]{../exam2e}
 
 \usepackage{../gess}
 \usepackage[english,ngerman]{babel}
@@ -7,7 +7,7 @@
 %% Seitenlayout (mit 'exam') --------
 \extrawidth{.5in}
 \extraheadheight[-0.8in]{-.7in}% optionales Arg. trifft auf erste Seite zu.
-\extrafootheight{-.7in}
+\extrafootheight{-.2in}
 
 % oder alternativ stattdessen Seitenlayout mit 'geometry'
 % \usepackage{geometry}
@@ -19,7 +19,8 @@
 \begin{document}
 
 
-% Kopf
+% Dokumentkopf --------
+\thispagestyle{empty}
 %\klassenarbeitszeile{Klassenarbeit 1}{Mathematik}{10c}{10.10.2023}
 \begin{klassenarbeitskopf}{Klassenarbeit 1}{Mathematik}{10c}{10.10.2023}
 	Thema:\\
@@ -51,6 +52,9 @@
 	\end{subsubparts}
 \end{subparts}
 
+
+
+\clearpage
 
 \renewcommand{\thesubpart}{\arabic{subpart}}% Unteraufgaben nummeriert
 \renewcommand{\subpartlabel}{\thequestion.\thepartno.\thesubpart}% als: 1.1.1

@@ -1,16 +1,24 @@
-\NeedsTeXFormat{LaTeX2e}[1994/06/01]
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesClass{../exam2e}[v0.0.3 exam2e mit subpart hook aaa@ii]
 
-\ProvidesClass{../exam2e}[v0.0.2 exam2e mit subpart hook aaa@ii]
+
+%%
+% Alle Optionen, mit denen exam2e geladen wurde, werden an exam weiter-
+% gereicht, z.B. Schriftgröße 10pt, 11pt, oder 12pt:
+\DeclareOption*{\PassOptionsToClass{\CurrentOption}{exam}}
+\ProcessOptions\relax
+% oder 
+%\ProcessOptions*
+% Siehe: https://tex.stackexchange.com/questions/61487/processoptions-and-processkeyvaloptions/82441#82441
 
 
 %%
 % Die zugrunde liegende Klasse wird geladen:
-\LoadClass[a4paper,12pt,addpoints,fleqn]{exam}
+\LoadClass[addpoints,fleqn]{exam}
 
-% Einstellungen können in der Zeile oben geändert werden:
-% Die Schriftgröße 10pt, 11pt, oder 12pt 
+% Einstellungen können in der Zeile oben geändert werden: 
 % Mit 'fleqn' werden die mathematischen Gleichungen linksbündig.
-% Die Option ''addpoints'' lässt die documentclass die Punkte zusammenrechnen. 
+% Die Option ''addpoints'' lässt die documentclass die Punkte zusammenrechnen. Genau das ist erwünscht. 
 
 
 
