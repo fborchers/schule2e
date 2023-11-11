@@ -8,6 +8,7 @@
 %   Wenn das Paket ohne die Dokumentenklasse exam2e bzw. exam geladen wird, so müssen die Befehle numpoints und gradetable bzw. pointtable definiert werden, siehe die Dokumentation von schule2e.
 
 
+
 % Pakete einladen:
 \RequirePackage{graphicx}
 
@@ -29,19 +30,18 @@
 %%   %% %%         %%     %%    %%  %%   %%% %%    %% %%   %%
  %%%%%  %%%%%%%    %%     %%   %%%% %%    %%  %%%%%%   %%%%% 
 
-% Einrückungen links einstellen
+
+% Einrückungen links einstellen ---
 \setlength{\parindent}{0pt}
 
 
-%% Fußzeile
-% falls fancyhdr ... falls scrlayer-scrpage
-	% % Einstellen der Fußzeile:
-	% \footrule
-	% \lfoot{#1 am #4}
-	% \cfoot{}
-	% \rfoot{Seite \thepage\ von \numpages}
+%% Fußzeile ---
+% Versuch: exam documentclass
+% Falls das Stylesheet mit 'exam' geladen wird, dann stehen die folgenden Befehle zur Verfügung, ansonsten wird die Fußzeile hiervon nicht gesetzt. Mit \ifdefined verhindern wir einen Fehler. 
 
-
+%\ifdefined \runningfootrule \runningfootrule \fi% für eine Linie.
+\ifdefined \firstpagefooter \firstpagefooter{}{}{\pagename\ \thepage\ von \numpages} \fi
+\ifdefined \runningfooter \runningfooter{}{}{\pagename\ \thepage\ von \numpages} \fi
 
 
 
