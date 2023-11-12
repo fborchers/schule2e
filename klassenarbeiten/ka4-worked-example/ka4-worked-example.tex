@@ -1,0 +1,284 @@
+\documentclass[12pt]{../exam2e}
+
+\usepackage{../gess}
+\usepackage{../../mathe2e}
+
+\usepackage[ngerman]{babel}
+
+
+%% Lade PSTricks ein ---
+\usepackage{pst-3dplot}
+
+%% pstricks settings for three dimensional coordinates
+\psset{coorType=2}
+%\psset{linecolor=black}% without effect on coord. systems.
+% Labels of the coordinate axes: 
+\psset{nameX=$x_1$,nameY=$x_2$,nameZ=$x_3$}
+\psset{unit=1cm}
+
+
+%% Seitenlayout (mit 'exam') --------
+\extrawidth{1.4cm}
+\extraheadheight[-2.2cm]{-1.5cm}% optionales Arg. betrifft nur 1. Seite
+\extrafootheight{-.5cm}
+
+% oder alternativ stattdessen Seitenlayout mit 'geometry'
+% \usepackage{geometry}
+% \geometry{%
+% 	margin=1.5cm
+% }
+
+
+
+
+\begin{document}
+
+
+% Dokumentkopf --------
+%\klassenarbeitszeile{Klassenarbeit 1}{Mathematik}{10c}{10.10.2023}
+\begin{klassenarbeitskopf}{Klassenarbeit 1}{Mathematik}{10c}{10.10.2023}
+	Thema:\\
+	Zeit:	
+\end{klassenarbeitskopf}
+
+\vspace*{1.5ex}
+% einleitender Text:
+Übersichtlichkeit, Darstellung und Rechtschreibung werden bewertet.
+Rechnungen müssen nachvollziehbar gestaltet werden. 
+%Textaufgaben sollen mit einem Antwortsatz beendet werden. 
+Achte bei allen Größen auf die richtige Einheit.
+
+
+
+
+\begin{questions}% Fragen --------
+
+\subsection*{Teil 1: Keine Hilfsmittel zugelassen}
+
+%% Aufg. 1 --------
+\begin{question}[4]
+	Löse das folgende lineare Gleichungssystem:
+% TeX Ausdruck des Gleichungssystems : 
+\begin{equation*}
+\begin{lgs}{2}{1}
+	&  & 3x& -& 7y	&==&  & 5	&	\\
+	& -& 2x& +& 4y	&==& -& 7	&
+\end{lgs}
+\end{equation*}
+\end{question}
+\omitsolution
+
+\fillwithgrid{\stretch{1}}  % Karos
+
+
+
+\clearpage
+
+
+
+%% Aufgabe 2 -- Punkte einzeichnen --------
+\begin{question}[6]
+Im abgebildeten Koordinatensystem befinden sich
+\begin{itemize}
+	\item der Punkt $P$ in der $x_1x_2$-Ebene,
+	\item der Punkt $Q$ in der $x_2x_3$-Ebene,
+	\item der Punkt $R$ in der $x_1x_3$-Ebene.
+\end{itemize}
+\begin{subparts}
+	\subpart Bestimme die Koordinaten der drei Punkte $P$, $Q$ und $R$.
+	\subpart Gib den Ortsvektor $\overrightarrow{OP}$ an und zeichne ihn ein.
+	\subpart Zeichne den Punkt~$M\coords(-5,2,-4)$ ein. 
+\end{subparts}
+
+\begin{figure}
+\psset{unit=1cm}
+\begin{pspicture}(-4,-3)(5,4)
+\psgrid[unit=0.5cm,subgriddiv=1,gridlabels=0pt,gridwidth=0.2pt,gridcolor=gray](-8,-5)(10.5,8)
+\pstThreeDCoor[IIIDticks,IIIDlabels,xMin=-5.5,xMax=4,yMin=-4,yMax=4,zMin=-2,zMax=3]
+\pstThreeDDot(3,2,0)
+\pstThreeDPut(3,2.3,.2){$P$}
+\pstThreeDDot(0,1.5,2)
+\pstThreeDPut(0,1.2,2.2){$Q$}
+\pstThreeDDot(3,0,4)
+\pstThreeDPut(3,-.3,4.2){$R$}
+\end{pspicture}	
+\end{figure}
+\end{question}
+
+\begin{solution}
+Die Koordinaten lauten: $P\coords(3,2,0)$, $Q\coords(0,\frac32,2)$ 
+und $R\coords(3,0,4)$.
+
+\begin{pspicture}(-4,-2.5)(5,3.8)
+\psgrid[unit=0.5cm,subgriddiv=1,gridlabels=0pt,gridwidth=0.2pt,gridcolor=gray](-8,-4)(10.5,7)
+\pstThreeDCoor[IIIDticks,IIIDlabels,xMin=-5.5,xMax=4,yMin=-4,yMax=4,zMin=-2,zMax=3]
+\pstThreeDDot[drawCoor=true](3,2,0)
+\pstThreeDPut(3,2.3,.2){$P$}
+\pstThreeDDot[drawCoor=true](0,1.5,2)
+\pstThreeDPut(0,1.2,2.2){$Q$}
+\pstThreeDDot[drawCoor=true](3,0,4)
+\pstThreeDPut(3,-.3,4.2){$R$}
+\pstThreeDDot[drawCoor=true](-5,2,-4)
+\pstThreeDPut(-5,1.8,-4.2){$M$}
+\end{pspicture}
+\end{solution}
+% end aufgabe punkte im raum. 
+
+
+
+
+
+
+%% Aufgabe 3 --------
+% Widerlege die Aussage (als AFB3), ursprünglich waren dies Ankreuzaufgaben.
+\begin{question}[4] 
+Widerlege die folgenden Aussagen:
+\begin{subparts}
+	\subpart Wenn bei einem Vektor zwei Komponenten negativ sind, dann müssen bei einem anderen, parallelen Vektor diese Komponenten auch negativ sein. 
+	\subpart Wenn zwei Geraden einen gemeinsamen Spurpunkt haben, dann sind sie parallel oder identisch.
+\end{subparts}
+\end{question}
+\omitsolution
+
+\fillwithgrid{\stretch{1}}  % Karos
+
+
+
+
+
+
+
+
+
+\clearpage 
+\subsection*{Teil 2: mit Taschenrechner und Formelsammlung}
+
+
+
+%% Aufgabe mit der Pyramide, deren Grundfläche gedreht ist.
+\begin{question}[7]
+	Es ist eine Pyramide mit quadratischer Grundfläche~$ABCD$ und Spitze~$S$ gegeben (vgl. die angefügte, nicht maßstabsgetreue Abbildung einer Pyramide mit quadratischer Grundfläche).
+\begin{figure}
+	\includegraphics[width=6cm]{pyramide-aufgabe.png}
+\end{figure}
+
+\noindent Von der Grundfläche sind die folgenden drei Punkte bekannt:
+\begin{equation*}
+	A\coords(-5,-3,0), 	\quad
+	C\coords(12,4,0) 	\quad\text{und}\quad
+	D\coords(0,9,0).
+\end{equation*}
+Die Spitze~$S$ liegt bei $S\coords(\num{3.5}, \num{.5}, 5)$.
+\begin{subparts}
+	\subpart Bestimme die Koordinaten des Eckpunktes~$B$.% so, dass $ABCD$ ein Quadrat ergibt.
+	\subpart Berechne den Abstand des Mittelpunktes~$M_{CD}$ der Seite~$CD$ von der Spitze~$S$ der Pyramide.
+\end{subparts}
+\end{question}
+\omitsolution
+
+
+
+
+
+
+
+
+
+
+%% Einfache Fragen zum Schnittpunkt ---
+\begin{question}[7]
+%	Gegeben sind die Geraden $g$ und $h$ mit
+Untersuche die Lagebeziehung der folgenden Geraden zueinander und bestimme gegebenenfalls den Schnittpunkt.
+	\begin{equation*}
+		g:\;\vec{x} = \vector(\frac27,1,0) + t\cdot \vector(-3,-3,-4)
+		\qquad\text{und}\quad
+		h:\;\vec{x} = \vector(0,9,1) + s \cdot \vector(-5,-7,-7)
+	\end{equation*}
+\end{question}
+
+
+
+
+
+
+
+
+% Vergleichbare Anwendungsaufgabe zu Geraden: Zwei Flugzeuge.
+\begin{question}[19]
+Zwei Flugzeuge fliegen mit je konstanter Geschwindigkeit auf gradlinigen Flugbahnen. Die Position der Flugzeuge wird bezüglich eines Koordinatensystems mit der Längeneinheit \qty{1}{\km} angegeben, die $x_3$-Koordinate gibt die Flughöhe an. 
+Um 8:00 Uhr ist das Flugzeug~1 im Punkt $P_1\coords(-10,0,0)$
+und das Flugzeug~2 im Punkt $P_2\coords(-25,-30,8)$. 
+
+Wir betrachten im folgenden die Zeit $t$ in \si{\min} ab 8:00 Uhr:
+Nach vier Minuten hat das Flugzeug~1 die Position $Q_1\coords(6,16,4)$ erreicht. 
+Nach fünf Minuten hat das Flugzeug~2 die Position $Q_2\coords(20,30,8)$ erreicht. 
+
+\begin{parts}
+% Geradengleichung erläutern.
+\part Erläutere, warum die Gleichung
+\begin{equation*}
+	g_1:\quad \overrightarrow{OX} = \vector(-10,0,0) + t\cdot\vector(4,4,1)
+\end{equation*}
+die Position des Flugzeugs~1 in Abhängigkeit von der Zeit angibt.
+
+% Geradengleichung ermitteln:
+\part Ermittle analog zur Gleichung in \aaa{-1}
+eine Gleichung~$g_2$, die die Position des Flugzeugs 2 in Abhängigkeit von der Zeit angibt.
+
+\part Berechne die Geschwindigkeit des Flugzeugs~1 in \si{\km\per\hour}.
+
+\uplevel{Der Luftraum, der von den Flugzeugen genutzt wird, wird von zwei verschiedenen Radarstationen überwacht. 
+%Die \glqq{}Übergabe\grqq %% requires babel, or with shorthands:
+Die "`Übergabe"' der Flugzeuge erfolgt, 
+wenn die Flugzeuge die $x_2x_3$-Ebene durchfliegen.}
+	\part Bestimme den Zeitpunkt und die Positions des Flugzeugs~1 bei der Übergabe. 
+
+	\part Ermittle, zu welchem Zeitpunkt das Flugzeug~1 eine Flughöhe von \qty{8}{\km} erreicht und wie groß zu diesem Zeitpunkt der Abstand der beiden Flugzeuge ist. 
+\end{parts}
+\end{question}
+\omitsolution
+
+
+
+
+
+
+
+
+
+
+
+%% Aufgabe Parameter: Beurteile Existenz
+\begin{question}[4]
+	Gegeben sei ein Vektor $\vec{v}$ mit einem noch unbestimmten Eintrag $a\in \setR$: 
+\begin{equation*}
+	\vec{v} = \vector(17,a,8)
+\end{equation*}
+	Beurteile, ob es Werte~$a$ gibt, für die der Vektor~$\vec{v}$ die Länge~$18$ hat.
+\end{question}
+\omitsolution
+
+
+
+
+
+
+\end{questions}% Ende der Fragen --------
+
+
+%% Eine leere Seite mit Zeilen/Kästchen zum Schreiben ---
+%\clearpage
+%\addtocounter{page}{-1}
+%\thispagestyle{empty} 
+%\fillwithgrid{\stretch{1}}  % Kästchen
+%\fillwithlines{\stretch{1}} % Zeilen
+
+%% Füge N cm leerer Zeilen/Kästchen zum Schreiben ein ---
+% \fillwithgrid{Ncm}  % Kästchen, z.B. 5cm
+% \fillwithlines{Ncm} % Zeilen, z.B. 5cm
+
+%% Füge Zeilen/Kästchen bis zum Seitenende ein ---
+% \fillwithgrid{\stretch{1}}  % Kästchen
+% \fillwithlines{\stretch{1}} % Zeilen
+
+\end{document}
