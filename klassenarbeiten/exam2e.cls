@@ -42,7 +42,9 @@
 
 
 %% EXAMDOC-Spracheinstellungen ------------
-% Durch die folgenden Zeilen die keywords von `exam` auf deutsch übersetzt. 
+% Durch die folgenden Zeilen die keywords von `exam` auf deutsch übersetzt. Wenn allerdings das Paket babel mit der Spracheinstellung 'english' geladen wird, dann werden die keywords zurückgesetzt, siehe unten.
+
+%% DEUTSCH ---
 
 % Punkte alias Bewertungseinheiten:
 \pointpoints{Punkt}{Punkte}%
@@ -67,6 +69,23 @@
 
 
 
+%% ENGLISH ---
+% Wenn das Paket babel mit der Option Englisch geladen wird, stellt exam2e einmalig die Sprache um. Mehrsprachige Dokumente werden also nicht unterstützt.
+\AtBeginDocument{%
+\@ifpackagewith{babel}{english}{%
+    % Punkte alias Bewertungseinheiten:
+    \pointpoints{mark}{marks}%            <- marks
+    \marginpointname{m}% Abkürzung für Punkte in diesem Fall.
+    % Wörter für die Angabe der Punkte in der Tabelle:
+    \hqword{Question}\vqword{Question}%
+    \hpword{Marks}\vpword{Marks}%         <- marks
+    \htword{Total}\vtword{Total}%
+    \hsword{Score}\vsword{Score}%
+    % Wörter für Lösungen:
+    \renewcommand\solutiontitle{\noindent\textbf{Solution:}\par}%
+    % Fußzeile:
+    \footer{}{}{\pagename{}\ \thepage{}\ of \numpages}%
+}}
 
 
 
