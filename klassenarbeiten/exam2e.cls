@@ -42,48 +42,31 @@
 
 
 %% EXAMDOC-Spracheinstellungen ------------
+% Durch die folgenden Zeilen die keywords von `exam` auf deutsch übersetzt. 
+
+% Punkte alias Bewertungseinheiten:
+\pointpoints{Punkt}{Punkte}%
+\pointsinrightmargin% Punkte werden rechts auf den Rand gedruckt
+\marginpointname{P.}% Abkürzung für Punkte in diesem Fall.
+
+% Wörter für die Angabe der Punkte in der Tabelle:
+\hqword{Aufgabe}\vqword{Aufgabe}%
+\hpword{Punkte}\vpword{Punkte}%
+\htword{Summe}\vtword{Summe}%
+\hsword{erzielt}\vsword{erzielt}%
+
+% Wörter für Lösungen:
+\renewcommand\solutiontitle{\noindent\textbf{Lösung:}\par}%
+
+
+% Fußzeile ---
+%\ifdefined \runningfootrule \runningfootrule \fi% für eine Linie.
+%\firstpagefooter{}{}{\pagename\ \thepage\ von \numpages}
+%\runningfooter{}{}{\pagename\ \thepage\ von \numpages}
+\footer{}{}{Seite\ \thepage{}\ von \numpages}
 
 
 
-\AtBeginDocument{%
-% Falls auf Englisch:
-\@ifpackagewith{babel}{english}{%
-    \pointpoints{mark}{marks}
-    \bonuspointpoints{mark (bonus)}{marks (bonus)}
-    \pointsinrightmargin% Punkte werden rechts auf den Rand gedruckt
-    \marginpointname{m}% Abkürzung für Punkte in diesem Fall.
-}{}
-% Neue Rechtschreibung:
-\@ifpackagewith{babel}{ngerman}{% falls Sprache deutsch (neue RS):
-    % Punkte alias Bewertungseinheiten:
-    \pointpoints{Punkt}{Punkte}%
-    \pointsinrightmargin% Punkte werden rechts auf den Rand gedruckt
-    \marginpointname{P.}% Abkürzung für Punkte in diesem Fall.
-    %
-    % Wörter für die Angabe der Punkte in der Tabelle:
-    \hqword{Aufgabe}\vqword{Aufgabe}%
-    \hpword{Punkte}\vpword{Punkte}%
-    \htword{Summe}\vtword{Summe}%
-    \hsword{erzielt}\vsword{erzielt}%
-    % Wörter für Lösungen:
-    \renewcommand\solutiontitle{\noindent\textbf{Lösung:}\par}%
-}{}
-% Alte Rechtschreibung:
-\@ifpackagewith{babel}{german}{% falls Sprache deutsch (alte RS):
-    % Punkte alias Bewertungseinheiten:
-    \pointpoints{Punkt}{Punkte}%
-    \pointsinrightmargin% Punkte werden rechts auf den Rand gedruckt
-    \marginpointname{P.}% Abkürzung für Punkte in diesem Fall.
-    %
-    % Wörter für die Angabe der Punkte in der Tabelle:
-    \hqword{Aufgabe}\vqword{Aufgabe}%
-    \hpword{Punkte}\vpword{Punkte}%
-    \htword{Summe}\vtword{Summe}%
-    \hsword{erzielt}\vsword{erzielt}%
-    % Wörter für Lösungen:
-    \renewcommand\solutiontitle{\noindent\textbf{Lösung:}\par}%
-}{}
-}% Ende AtBeginDocument-Haken.
 
 
 

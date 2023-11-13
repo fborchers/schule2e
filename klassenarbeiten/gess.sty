@@ -40,46 +40,12 @@
 \setlength{\parindent}{0pt}
 
 
-%% Fußzeile ---
-% Versuch: exam documentclass
-% Falls das Stylesheet mit 'exam' geladen wird, dann stehen die folgenden Befehle zur Verfügung, ansonsten wird die Fußzeile hiervon nicht gesetzt. Mit \ifdefined verhindern wir einen Fehler. 
-
-%\ifdefined \runningfootrule \runningfootrule \fi% für eine Linie.
-\ifdefined \firstpagefooter \firstpagefooter{}{}{\pagename\ \thepage\ von \numpages} \fi
-\ifdefined \runningfooter \runningfooter{}{}{\pagename\ \thepage\ von \numpages} \fi
 
 
 
 
 
 
-
-
-
-
- %%%%%%   %%%%%%  %%     %% %%%%%%%%  %%%% %%%%%%% %%%%%%%%      
-%%    %% %%    %% %%     %% %%     %%  %%  %%         %%         
-%%       %%       %%     %% %%     %%  %%  %%         %%         
- %%%%%%  %%       %%%%%%%%% %%%%%%%%   %%  %%%%%%     %%   %%%%%%
-      %% %%       %%     %% %%   %%    %%  %%         %%         
-%%    %% %%    %% %%     %% %%    %%   %%  %%         %%         
- %%%%%%   %%%%%%  %%     %% %%     %% %%%% %%         %%         
-   %%%    %%%%%%%%  %%%%%%%%                                         
-  %% %%   %%     %%    %%                                            
- %%   %%  %%     %%    %%                                            
-%%     %% %%%%%%%%     %%                                            
-%%%%%%%%% %%   %%      %%                                            
-%%     %% %%    %%     %%                                            
-%%     %% %%     %%    %%                                            
-
-% Wir wählen eine serifenlose Schriftart (optional):
-\RequirePackage{cmbright}
-% Die folgenden beiden Zeilen beheben einen Fehler bei der Verwendung von cmbright mit siunitx, vgl. hier:
-% https://tex.stackexchange.com/questions/629019/siunitx-in-apperent-conflict-with-cmbright/629022#629022
-\@ifpackageloaded{siunitx}{%
-	\DeclareMathAlphabet{\mathsf}{OT1}{\familydefault}{m}{n}%
-	\AtBeginDocument{\sisetup{unit-font-command = \mathrm}}%
-}
 
 
 
@@ -179,5 +145,66 @@
 
 
 % OPTION 3 -- Eigenen Kopf für Klassenarbeiten entwickeln...
+
+
+
+
+
+
+
+
+
+
+
+
+ %%%%%%   %%%%%%  %%     %% %%%%%%%%  %%%% %%%%%%% %%%%%%%%      
+%%    %% %%    %% %%     %% %%     %%  %%  %%         %%         
+%%       %%       %%     %% %%     %%  %%  %%         %%         
+ %%%%%%  %%       %%%%%%%%% %%%%%%%%   %%  %%%%%%     %%   %%%%%%
+      %% %%       %%     %% %%   %%    %%  %%         %%         
+%%    %% %%    %% %%     %% %%    %%   %%  %%         %%         
+ %%%%%%   %%%%%%  %%     %% %%     %% %%%% %%         %%         
+   %%%    %%%%%%%%  %%%%%%%%                                         
+  %% %%   %%     %%    %%                                            
+ %%   %%  %%     %%    %%                                            
+%%     %% %%%%%%%%     %%                                            
+%%%%%%%%% %%   %%      %%                                            
+%%     %% %%    %%     %%                                            
+%%     %% %%     %%    %%                                            
+
+% Wir wählen eine serifenlose Schriftart (optional):
+\RequirePackage{cmbright}
+% Die folgenden beiden Zeilen beheben einen Fehler bei der Verwendung von cmbright mit siunitx, vgl. hier:
+% https://tex.stackexchange.com/questions/629019/siunitx-in-apperent-conflict-with-cmbright/629022#629022
+\@ifpackageloaded{siunitx}{%
+	\DeclareMathAlphabet{\mathsf}{OT1}{\familydefault}{m}{n}%
+	\AtBeginDocument{\sisetup{unit-font-command = \mathrm}}%
+}
+
+
+
+
+
+
+
+ %%%%%  %%%%%%%  %%%%%%%     %%     %%%%%  %%    %% %%%%%%%
+%%   %% %%    %% %%    %%   %%%%   %%   %% %%    %% %%     
+%%      %%    %% %%    %%  %%  %%  %%      %%    %% %%     
+ %%%%%  %%%%%%%  %%%%%%%  %%    %% %%      %%%%%%%% %%%%%  
+     %% %%       %%  %%   %%%%%%%% %%      %%    %% %%     
+%%   %% %%       %%   %%  %%    %% %%   %% %%    %% %%     
+ %%%%%  %%       %%    %% %%    %%  %%%%%  %%    %% %%%%%%%
+
+
+%% EXAMDOC-Spracheinstellungen ------------
+
+% \@ifpackagewith{babel}{english}{%
+% \addto\captionsenglish{%
+%      \pointpoints{mark}{marks}%
+% }}
+
+% Kommentar: Diese Definitionen hier einzugeben, wirft Fehler auf, wenn dieses Paket ohne die Klasse `exam` verwendet wird. Es erscheint nicht trivial, die Spracheinstellungen zu ermöglichen, denn wenn man sie in exam2e.cls einbaut, dann hat TeX zu diesem Zeitpunkt babel *noch nicht* geladen. 
+
+
 
 
