@@ -35,23 +35,37 @@
 \RequirePackage{textcomp}% für \texteuro, Definition \curren s.u.
 \RequirePackage{siunitx}[2022/02/15]% für die Einheiten und Größen
 
-% Spracheinstellungen:
-\@ifpackagewith{babel}{ngerman}{
-\sisetup{% 
+
+% Spracheinstellungen ---
+\sisetup{% Standardeinstellung
   per-mode        = fraction,
   locale          = DE,
   list-final-separator  = { und },
   list-pair-separator   = { und },
   list-separator    = {; },
   range-phrase      = { bis }
-}% Ende Einstellungen siunix bei ngerman
-}{}
-\@ifpackagewith{babel}{english}{
+}% Ende
+
+% Auskommentiert, siehe Standardeinstellung
+% \@ifpackagewith{babel}{ngerman}{%
+% \sisetup{% falls babel mit ngerman geladen wird
+%   per-mode        = fraction,
+%   locale          = DE,
+%   list-final-separator  = { und },
+%   list-pair-separator   = { und },
+%   list-separator    = {; },
+%   range-phrase      = { bis }
+% }% Ende Einstellungen siunix bei ngerman
+% }{}
+
+% Falls Sprache mit babel auf Englisch gesetzt:
+\@ifpackagewith{babel}{english}{%
 \sisetup{% 
   per-mode        = fraction,
   locale          = UK,
 }% Ende Einstellungen siunitx bei english
 }{}
+
 
 
 % Neu definierte Einheiten ---
@@ -78,8 +92,8 @@
 \DeclareSIUnit\byte{B}
 % Alternativ kann das Paket 'siunitx' mit Option "binary-units" geladen werden. Dann ggf. mit Zweierpotenzen.
 
-% Einheiten-Vorzeichen, z.B. m für milli mit \prefix{\milli}:
-\newcommand{\prefix}[1]{\unit{#1\relax}}
+% Einheiten-Vorzeichen, z.B. m für milli mit \unit{\milli\noop}:
+\DeclareSIUnit\noop{\relax}
 
 % Ende Einstellungen siunitx.
 
