@@ -3,11 +3,11 @@
 ### Für Ungeduldige
 
 
-- Mit der Dokumentenklasse `exam2e` werden Klassenarbeiten gesetzt, siehe Beispiel `klassenarbeiten/ka1-minimal.tex`. Es baut auf `exam` auf, der [Dokumentenklasse von P. Hirschhorn](https://ctan.org/pkg/exam?lang=en), und stellt auf die deutsche Sprache um. 
-- Das Stylesheet `mathe2e` lädt `amsmath` und passt an den Gebrauch in der Schule an. Umgebungen für lineare Gleichungsysteme und Vektoren werden bereit gestellt.
+- Mit der Dokumentenklasse `exam2e` werden Klassenarbeiten gesetzt, siehe `ka4-worked-example.tex` für ein Beispiel aus dem Alltag. Es baut auf `exam` auf, der [Dokumentenklasse von P. Hirschhorn](https://ctan.org/pkg/exam?lang=en), und stellt auf die deutsche Sprache um. 
+- Das Stylesheet `mathe2e` lädt `amsmath` und passt an den Gebrauch in der Schule an. Umgebungen für lineare Gleichungsysteme und Vektoren werden bereit gestellt. Mit `siunitx` werden Einheiten gesetzt. 
 - `gess.sty` enthält einige spezifische Formatierungen für `exam2e`, die wir an unserer Schule verwenden. 
 - Das Stylesheet `exam2e.sty` dient der Kompatibilität, wenn man die Aufgaben von Klassenarbeiten in einem Skript sammeln will (z.B. Dokumentenklasse `article`). 
-- Die Pakete `schule2e` sind kein Fork des [Projektes von P. Breitfeld](http://www.pbreitfeld.de/schule2e.sty). Das Paket ist meines Wissens nicht mehr verfügbar. Der Name des Paketes ist diesem Andenken gewidmet. 
+- Die Pakete `schule2e` sind kein Fork des [Projektes von P. Breitfeld](http://www.pbreitfeld.de/schule2e.sty). Das Paket ist unseres Wissens nicht mehr verfügbar. Der Name des Paketes ist diesem Andenken gewidmet. 
 
 
 
@@ -27,7 +27,7 @@ Wenn Sie später Details ändern möchten oder Ihre eigenen Klassen bauen werden
 
 ### Die Dokumentenklasse exam2e.cls
 
-Als Grundbestandteil betrachten wir die Dokumentenklasse `exam2e.cls`. Die Sprache wird auf deutsch gestellt und die Bezeichnungen der Aufgaben und Unteraufgaben wird angepasst. Teilaufgaben werden ab 1.1 durchnummeriert, Unteraufgaben wie üblich mit (a), (b) usw. durchgezählt. Entscheidend ist, dass man *die* Struktur verwenden kann, die man für die eigenen Aufgaben benötigt. Die Datei `ka1` zeigt ein Minimalbeispiel auf, `ka4` eine echte Klassenarbeit aus unserem Unterricht.
+Als Grundbestandteil betrachten wir die Dokumentenklasse `exam2e.cls`. Die Sprache wird auf deutsch gestellt und die Bezeichnungen der Aufgaben und Unteraufgaben wird angepasst. Teilaufgaben werden ab 1.1 durchnummeriert, Unteraufgaben wie üblich mit (a), (b) usw. durchgezählt. Entscheidend ist, dass man *die* Struktur verwenden kann, die man für die eigenen Aufgaben benötigt. Die Klassenarbeit `ka1` zeigt ein Minimalbeispiel auf, `ka4` eine echte Klassenarbeit aus unserem Unterricht (sie ist dem PDF dieses Dokumentes angehängt, siehe unten).
 
 Die Klasse `exam2e` ruft intern die Dokumentenklasse `exam` von Philip Hirschhorn auf, daher sei auf [deren Dokumentation](https://ctan.org/pkg/exam?lang=en) (englisch) verwiesen für alle Detailfragen. `exam` ist ein wohl gepflegtes, umfangreiches Projekt, ohne das `exam2e` in dieser Form nicht möglich wäre. 
 
@@ -46,12 +46,12 @@ Als zweiten, unabhängigen Grundbaustein verstehen wir das Paket `exam.sty`. Es 
 
 Das Paket ist für die Verwendung mit der Dokumentenklasse `article`, `scrarticle`, `book` usw. gedacht und macht die `exam2e`-Makros dort verfügbar. Wenn Sie also Aufgaben und Unterlagen in einem LaTeX-Dokument sammeln, können Sie denselben Markup und dieselben Befehle verwenden wie für die Prüfungsaufgaben auch. Später können Sie dann die Aufgaben durch Kopieren und Einfügen in Klassenarbeiten (documentclass `exam2e`) einfließen lassen, oder umgekehrt, Prüfungsaufgaben aus einer Klassenarbeit herauskopieren und in den Skripten archivieren. Es ist genau dieses Zusammenspiel, das einigen Mehrwert verspricht. 
 
-Wie eine solche Sammlung aussehen kann, zeigt das Beispiel unter `dokumentation/einskript`. Das Paket `exam2e` wird geladen, im Text befinden sich die Aufgaben in einer Umgebung `question` oder nach einem Befehl `\question`. 
+Das Beispiel unter `dokumentation/einskript` zeigt, wie eine solche Sammlung aussehen kann. Das Paket `exam2e` wird geladen, im Text befinden sich die Aufgaben in einer Umgebung `question` oder nach einem Befehl `\question`. 
 
 
 ### Das Stylesheet `gess.sty`
 
-In diesem Paket sind einige Funktionen zusammengefasst, die wir an unserer Schule nutzen. Insbesondere ist die Tabelle `klassenarbeitskopf` bei uns in Gebrauch; es ist höchstwahrscheinlich, dass Sie dieses abändern müssten, wenn Sie einen ähnlichen Kopf für Klassenarbeiten verwenden wollen. Ein kleinerer, allgemeiner Kopf für eine Klassenarbeit entsteht mit `\klassenarbeitszeile`, die Syntax ist identisch. 
+In diesem Paket sind einige Funktionen zusammengefasst, die wir an unserer Schule nutzen. Insbesondere ist die Tabelle `klassenarbeitskopf` bei uns in Gebrauch; es ist höchstwahrscheinlich, dass Sie dieses abändern müssten, wenn Sie einen ähnlichen Kopf für Klassenarbeiten verwenden wollen. Ein kleinerer, allgemeiner Kopf für eine Klassenarbeit entsteht durch den Aufruf von `\klassenarbeitszeile`, die Syntax ist identisch. 
 
 
 
