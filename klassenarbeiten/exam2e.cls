@@ -14,11 +14,9 @@
 
 %%
 % Die zugrunde liegende Klasse wird geladen:
-\LoadClass[addpoints,fleqn]{exam}
+\LoadClass[addpoints]{exam}
 
-% Einstellungen können in der Zeile oben geändert werden: 
-% Mit 'fleqn' werden die mathematischen Gleichungen linksbündig.
-% Die Option ''addpoints'' lässt die documentclass die Punkte zusammenrechnen. Genau das ist erwünscht. 
+% Die Option ''addpoints'' lässt die documentclass die Punkte zusammenrechnen, genau das ist erwünscht. 
 
 
 

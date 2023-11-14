@@ -37,7 +37,7 @@
 
 
 % Spracheinstellungen ---
-\sisetup{% Standardeinstellung
+\sisetup{% Standardeinstellung für deutsch:
   per-mode        = fraction,
   locale          = DE,
   list-final-separator  = { und },
@@ -224,19 +224,17 @@
 %% LINEARE GLEICHUNGSSYSTEME (LGS) --------
 
 \makeatletter
-%% Lineare Gleichungssysteme (LGS) 
 \newenvironment{lgs}[2]{%
 \left|% Füge nun den array ein:
 \begin{array}{l@{}*{#1}{r@{\hspace{1pt}}r@{\;}}@{\;\,}>{\@ifnextchar=}c@{\;\;}*{#2}{r@{\hspace{1pt}}r@{\;}}@{\hspace{6mm}}>{\rm}l}}%
 {\end{array}\right.}% Ende der Definition der Umgebung lgs.
-\makeatother
-
-%% Matrixform für LGS nach Format (rrr|r) 
+%% Matrixform für LGS nach Format (cc...c|c): 
 \newenvironment{qmatrix}[2]{%
   \left(\begin{array}{@{}*{#1}{c}|*{#2}{c}@{}}%
 }{%
   \end{array}\right)%
-}% Ende Definition der Umgebung qmatrix.
+}% Ende der Definition der Umgebung qmatrix.
+\makeatother
 
 
 

@@ -1,16 +1,17 @@
-\documentclass[12pt]{../exam2e}
+\documentclass[12pt,fleqn]{../exam2e}
+% Mit 'fleqn' werden die mathematischen Gleichungen linksbündig.
+
 
 \usepackage[ngerman]{babel}
 \usepackage[german=quotes]{csquotes}
+
 
 \usepackage{../gess}
 \usepackage{../../mathe2e}
 
 
-
 %% Lade PSTricks ein ---
 \usepackage{pst-3dplot}
-
 %% pstricks settings for three dimensional coordinates
 \psset{coorType=2}
 %\psset{linecolor=black}% without effect on coord. systems.
@@ -21,7 +22,7 @@
 
 %% Seitenlayout (mit 'exam') --------
 \extrawidth{1.4cm}
-\extraheadheight[-2.2cm]{-1.5cm}% optionales Arg. betrifft nur 1. Seite
+\extraheadheight[-2.2cm]{-1.5cm}% optionales Argument ist der Wert, der nur 1. Seite betrifft. 
 \extrafootheight{-.5cm}
 
 % oder alternativ stattdessen Seitenlayout mit 'geometry'
@@ -39,8 +40,8 @@
 % Dokumentkopf --------
 %\klassenarbeitszeile{Klassenarbeit 1}{Mathematik}{10c}{10.10.2023}
 \begin{klassenarbeitskopf}{Klassenarbeit 1}{Mathematik}{10c}{10.10.2023}
-	Thema:\\
-	Zeit:	
+	Thema: Vektorgeometrie\\
+	Zeit: 90 Minuten --- Hilfsmittel: Taschenrechner, Formelsammlung.
 \end{klassenarbeitskopf}
 
 \vspace*{1.5ex}
@@ -219,13 +220,15 @@ Nach fünf Minuten hat das Flugzeug~2 die Position $Q_2\coords(20,30,8)$ erreich
 \begin{parts}
 % Geradengleichung erläutern.
 \part Erläutere, warum die Gleichung
-\begin{equation*}
+\begin{equation}
 	g_1:\quad \overrightarrow{OX} = \vector(-10,0,0) + t\cdot\vector(4,4,1)
-\end{equation*}
+	\tag{*}
+	\label{eq:bwglflugzeug1}
+\end{equation}
 die Position des Flugzeugs~1 in Abhängigkeit von der Zeit angibt.
 
 % Geradengleichung ermitteln:
-\part Ermittle analog zur Gleichung in \aaa{-1}
+\part Ermittle analog zu Gleichung~\eqref{eq:bwglflugzeug1}
 eine Gleichung~$g_2$, die die Position des Flugzeugs 2 in Abhängigkeit von der Zeit angibt.
 
 \part Berechne die Geschwindigkeit des Flugzeugs~1 in \si{\km\per\hour}.
