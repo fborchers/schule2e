@@ -8,24 +8,28 @@
 \usepackage{../../mathe2e}% Mathematiksatz
 
 
+% Seitenlayout mit 'geometry'
+\usepackage{geometry}
+\geometry{%
+	top=.8cm,
+	margin=1.5cm,
+	right=2.2cm,
+	bottom=2cm
+}
 
 
-%% Seitenlayout (mit 'exam')
-\extrawidth{1.4cm}
-\extraheadheight[-1.5cm]{-1.2cm}% optionales Argument trifft auf erste Seite zu.
-\extrafootheight{-1cm}
+% Einrückungen ---
+\setlength{\parindent}{0pt}% Paragraphen links
+\raggedright% Flattersatz rechts
 
-% oder alternativ stattdessen Seitenlayout mit 'geometry'
-% \usepackage{geometry}
-% \geometry{%
-% 	margin=1.5cm
-% }
-
-% Einrückung:
-\setlength{\parindent}{0pt}
+% Unteraufgaben ganz links einrücken:
+\renewcommand{\subpartshook}{% 
+  \setlength{\leftmargin}{0pt}%
+  \setlength{\labelwidth}{-\labelsep}%
+}
 
 
-\begin{document}
+
 
 % Formatierung der Aufgaben --------
 
@@ -53,6 +57,10 @@
 \makeatother
 
 
+
+
+
+\begin{document}
 \section*{Abiturprüfung 2023:}
 
 \begin{questions}% Aufgaben --------
@@ -72,15 +80,18 @@ Für die Abituraufgaben können Nummerierung und Punkte auch angepasst werden wi
 	\part[10] Weitere Teilaufgabe. Die Punkte werden mit dem Befehl \textbackslash droppoints am Ende des Absatzes rechts auf den Rand gedruckt. 
 	\droppoints
 \end{parts}
+% Ende Aufgabe
 
 %% Aufgabe 2
 % Zweite Aufgabe ---
-\titledquestion{Titel der zweiten Aufgabe} 
-asdf
+\titledquestion{Titel der zweiten Aufgabe}\label{ques:dieeineaufg}
 \begin{parts}
-    \part[10] asdf\droppoints
-    \part[10] asdfasdf\droppoints
+    \part[10] usw.\droppoints
+    \part[10] usw.\droppoints
 \end{parts}
+% Ende Aufgabe
+
+
 
 \titledquestion{Titel dieser Aufgabe}
 \begin{parts}
@@ -90,9 +101,9 @@ asdf
 	a^ab^b\ge\left(\frac{a+b}{2}\right)^{\!a+b}\ge a^bb^a\,.
 	\tag*{\parbox{1pt}{\droppoints}}% accident
 \end{equation}
-	\part[1] asdf\droppoints
+	\part[1] Mit \textbackslash{}label und \textbackslash{}ref können die Aufgaben wie üblich referenziert werden, wie hier z.B. die Aufgabe~\ref{ques:dieeineaufg}.\droppoints
 \end{parts}
-
+% Ende Aufgabe.
 
 
 
