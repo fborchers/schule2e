@@ -113,12 +113,12 @@
 %%     %%  %%  %%        %%     %%    %%     %%    %%          
 %%%%%%%%  %%%% %%%%%%%% %%%%    %%    %%     %%    %%          
 
+
 %% Kompatibilität mit den Definitionen in den Skripten ------------
 
+% Die 'question' kann auch als Umgebung verwendet werden, also in dieser Form: \begin{question} Text der Frage \end{question}. Dazu ist keine weitere Definition nötig:
+% \newenvironment{question}{\question}{}%
 
-% Die 'question' wird als Umgebung verwendet, also in dieser Form:
-% \begin{question} Text der Frage \end{question}. Dazu wird definiert:
-\newenvironment{question}{\question}{}%
 \newcommand{\omitsolution}{}% \omitsolution dient der Kontrolle der Counter in den Skripten, siehe das entsprechende style sheet (.sty).
 
 

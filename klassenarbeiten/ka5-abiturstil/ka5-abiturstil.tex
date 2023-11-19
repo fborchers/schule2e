@@ -1,19 +1,19 @@
 \documentclass[12pt,fleqn]{../exam2e}
 
-\usepackage{graphicx}
+\usepackage{graphicx}% Bilder
 
-\usepackage[ngerman]{babel}
+\usepackage[ngerman]{babel}% Sprache
 
-\usepackage{cmbright}
-
-\usepackage{../../mathe2e}
-
+\usepackage{cmbright}% Schriftart
+\usepackage{../../mathe2e}% Mathematiksatz
 
 
-%% Seitenlayout (mit 'exam') --------
+
+
+%% Seitenlayout (mit 'exam')
 \extrawidth{1.4cm}
 \extraheadheight[-1.5cm]{-1.2cm}% optionales Argument trifft auf erste Seite zu.
-\extrafootheight{-1.2cm}
+\extrafootheight{-1cm}
 
 % oder alternativ stattdessen Seitenlayout mit 'geometry'
 % \usepackage{geometry}
@@ -21,30 +21,70 @@
 % 	margin=1.5cm
 % }
 
+% Einrückung:
 \setlength{\parindent}{0pt}
 
 
 \begin{document}
 
-\begin{questions}% Fragen --------
+% Formatierung der Aufgaben --------
 
+% Nenne Punkte hier "Bewertungseinheiten" BEs:
+\pointpoints{BE}{BE}
+\marginpointname{ BE}
 
-
+% Drucke die Punkte von Teilaufgaben rechts auf den Rand:
 \pointsdroppedatright
-\renewcommand{\thesubpart}{\arabic{subpart}}% Unteraufgaben nummeriert
-\renewcommand{\subpartlabel}{\thequestion.\thepartno.\thesubpart}% als: 1.1.1
-\qformat{\bfseries Aufgabe~\thequestion\hfill}
+% Verwende dazu je \droppoints.
 
-\question[1]
-Für die Abituraufgaben kann der Zähler und Punkte auch angepasst werden wie in dieser Aufgabe: 
+% Die Unteraufgaben sollen nummeriert sein:
+\renewcommand{\thesubpart}{\arabic{subpart}}% Unteraufgaben numeriert,
+% und Unteraufgaben dann gedruckt als 1.1.1 :
+\renewcommand{\subpartlabel}{\thequestion.\thepartno.\thesubpart}
+
+% Aufgabenlayout ---
+% vgl. https://tex.stackexchange.com/questions/111460/how-do-i-use-titledquestion-in-the-exam-class-with-or-without-points
+\makeatletter
+\qformat{%
+    {\bfseries Aufgabe \thequestion: \thequestiontitle}% 
+    \enspace\if\totalpoints0\else~(\totalpoints~\points)\fi%
+    \hfill%
+    }
+\makeatother
+
+
+\section*{Abiturprüfung 2023:}
+
+\begin{questions}% Aufgaben --------
+
+%% Aufgabe 1
+\titledquestion{Titel der ersten Aufgabe}
+Für die Abituraufgaben können Nummerierung und Punkte auch angepasst werden wie etwa in dieser Aufgabe.
 \begin{parts}
-\part[1] Teilaufgabe
+\part[1] Teilaufgabe tue jenes\ldots\droppoints
 \begin{subparts}
-	\subpart Unteraufgabe
+	\subpart[9] Unteraufgabe
+	\begin{equation*}
+		\frac{2\pi}{T}
+	\end{equation*}
+	Löse\ldots\droppoints
 \end{subparts}
-	\part[2] Weitere Teilaufgabe. Die Punkte werden mit dem Befehl \textbackslash droppoints am Ende des Absatzes gedruckt. 
+	\part[10] Weitere Teilaufgabe. Die Punkte werden mit dem Befehl \textbackslash droppoints am Ende des Absatzes rechts auf den Rand gedruckt. 
 	\droppoints
 \end{parts}
 
+%% Aufgabe 2
+% Zweite Aufgabe ---
+\titledquestion{Titel der zweiten Aufgabe} 
+asdf
+\begin{parts}
+    \part[10] asdf\droppoints
+    \part[10] asdfasdf\droppoints
+\end{parts}
+
+\titledquestion{Titel dieser Aufgabe}[8]
+Den Teil wie in Aufg
+
 \end{questions}
+
 \end{document}
