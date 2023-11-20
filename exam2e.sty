@@ -2,9 +2,6 @@
 \ProvidesPackage{../../exam2e}[2023/10/10 v0.0.1 Ein Paket für die Kompatibilität mit der exam documentclass]
 
 
-\RequirePackage{amsmath}
-\RequirePackage{amsthm}
-
 
 
 
@@ -46,7 +43,17 @@
 %%   %%  %%   %% %%    %%   %%  %%    %%  %%   %% %%   %%% %%   %%
  %%%% %%  %%%%%  %%%%%% %%%%%   %%   %%%%  %%%%%  %%    %%  %%%%% 
 
-% Die Umgebung 'questions' wird nicht definiert, sie wird nur bei den Klassenarbeiten (exam documentclass) verwendet, nicht in den Skripten. Es folgen die Definitionen von question, part, subpart und subsubpart.
+% Die Umgebung 'questions' wird nicht definiert, sie wird nur bei den Klassenarbeiten (exam documentclass) verwendet, nicht in den Skripten. 
+% Es folgen die Definitionen der Aufgaben und Unteraufgaben mit der folgenden Hierarchie, einzelne Stufen der Hierarchie können aber ausgelassen werden:
+%
+%         BEFEHL              in UMGEBUNG
+%         --------------      -------------
+%         question            questions
+%         part                parts
+%         subpart             subparts
+%         subsubpart          subsubparts
+%         choice              checkboxes
+
 
 
 %% --- QUESTION, die Umgebung für Aufgaben --------------------
@@ -54,8 +61,8 @@
 \newcounter{exerciseID}% fortlaufender Zähler
 \setcounter{exerciseID}{0} 
 
-\newcounter{question}[section]% neu zählen bei section
 \makeatletter
+\newcounter{question}[section]% neu zählen bei section
 \@addtoreset{question}{subsection}% zurückgesetzt mit subsection
 \@addtoreset{question}{subsubsection}% zurückgesetzt mit subsubsection 
 \makeatother
@@ -76,9 +83,9 @@
 
 %% --- QUESTIONPARTS (mit Zähler partno) --------------------
 
-% Wir halten uns fern vom part counter (doc.class report und book):
-\newcounter{partno}[question]% Neu zählen bei question.
+% Wir halten uns fern vom part counter (documentclass report und book):
 \makeatletter
+\newcounter{partno}[exerciseID]% neu zählen bei question.
 \@addtoreset{partno}{solutionID}% zurückgesetzt mit solution (s.u.)
 \@addtoreset{partno}{section}% zurückgesetzt mit section
 \@addtoreset{partno}{subsection}% zurückgesetzt mit subsection
@@ -89,10 +96,10 @@
 % Eine Environment für Teilaufgaben von Fragen, hat Format "1.1":
 \newenvironment{parts}{%
 \begin{list}%
-{\bf \arabic{question}.\arabic{partno}}% markup des part labels
+{\arabic{question}.\arabic{partno}}% markup des part labels
 {\usecounter{partno}%
  \setlength\labelsep{.5em}% Abstand label zu Text.
- \setlength\leftmargin{1.5em}% Abstand Text vom linken Rand
+ \setlength\leftmargin{1em}% Abstand Text vom linken Rand
  \setlength\listparindent{0.5in}% Absatz einrücken
  \setlength\parsep{0in}%
 }}{\end{list}}
@@ -104,9 +111,9 @@
 
 %% --- SUBPARTS --------------------
 
-\newcounter{subpart}[partno]% Neu zählen bei part.
 \makeatletter
-\@addtoreset{subpart}{question}% zurückgesetzt mit Aufgabe
+\newcounter{subpart}[partno]% neu zählen bei part.
+\@addtoreset{subpart}{exerciseID}% zurückgesetzt mit Aufgabe
 \@addtoreset{subpart}{solutionID}% zurückgesetzt mit solution (s.u.)
 \@addtoreset{subpart}{section}% zurückgesetzt mit section
 \@addtoreset{subpart}{subsection}% zurückgesetzt mit subsection
@@ -132,10 +139,10 @@
 
 %% --- SUBSUBPARTS --------------------
 
-\newcounter{subsubpart}[subpart]% Neu zählen bei subpart.
 \makeatletter
+\newcounter{subsubpart}[subpart]% Neu zählen bei subpart.
 \@addtoreset{subsubpart}{partno}% zurückgesetzt mit Teilaufgaben
-\@addtoreset{subsubpart}{question}% zurückgesetzt mit Aufgaben
+\@addtoreset{subsubpart}{exerciseID}% zurückgesetzt mit Aufgaben
 \@addtoreset{subsubpart}{solutionID}% zurückgesetzt mit solution (s.u.)
 \@addtoreset{subsubpart}{section}% zurückgesetzt mit section
 \@addtoreset{subsubpart}{subsection}% zurückgesetzt mit subsection
@@ -143,7 +150,7 @@
 \makeatother
 \setcounter{subsubpart}{0}%
 
-% Eine Environment Unteraufgaben, hat Format "(a)" :
+% Eine Environment Unteraufgaben, hat Format "i.", "ii." usw. :
 \newenvironment{subsubparts}{%
 \begin{list}%
 {\roman{subsubpart}.}% markup des subsubpart labels.
@@ -163,17 +170,18 @@
 
 % Auf der Niveaustufe subsubpart endet die eins-zu-eins-Kompatibilität mit 'exam'. Wir bieten nur noch die Ankreuzmöglichkeit an mit 'checkboxes':
 
-% Eine Environment Ankreuzboxen ( ):
+% Eine Umgebung für Ankreuzboxen, hat Format "□" :
 \newenvironment{checkboxes}{%
 \begin{list}%
-{\choice}% markup des subsubpart labels.
+{\choice}% kein markup, siehe Definition von \choice unten.
 {\setlength\labelsep{.5em}% Abstand label zu Text.
  \setlength\leftmargin{2em}% Abstand Text vom linken Rand
  \setlength\listparindent{0.5in}% Absatz einrücken
  \setlength\parsep{0in}%
 }}{\end{list}}%end newenvironment parts.
 %
-% Die Umgebung wird genutzt mit \choice (wie in exam documentclass):
+% Die Umgebung wird genutzt mit \choice (wie in exam documentclass),
+% das Kästchen □ wird mit \framebox gezeichnet:
 \newcommand{\choice}{\item[\framebox(1.333ex,1.333ex){}]}%
 \newcommand{\checkbox}{\item[\framebox(1.333ex,1.333ex){}]}% legacy
 
@@ -200,7 +208,7 @@
 % \aaa zur Verwendung im Dokument als \aaa:
 \newcommand{\aaa}{\@ifnextchar\bgroup{\aaa@i}{\aaa@i{}}}
 \def\aaa@i{%
-   \stepcounter{subpart}%
+   \refstepcounter{subpart}%
    \aaa@ii{subpart}%
 }%
 
@@ -237,14 +245,13 @@
 %%     %%  %%  %%        %%     %%    %%     %%    %%          
 %%%%%%%%  %%%% %%%%%%%% %%%%    %%    %%     %%    %%          
 
+
 %% Kompatibilität zu weiteren Befehlen aus 'exam' ------------
 
-
 \makeatletter
-
-% Der Befehl \uplevel ---
+% Der Befehl \uplevel für Kommentare zwischen Teil- und Unteraufgaben
 \long\def\uplevel#1{% leicht verändert aus exam.cls übernommen:
-  \par\bigskip
+  \par\smallskip%\bigskip
   \vbox{%
     % We entered internal vertical mode, and so we get \parshape=0.
     % We set \leftskip to provide the correct left margin for whatever
@@ -258,7 +265,7 @@
 \noindent #1%
   }% vbox
   \nobreak
-}
+}% Ende Definition von \uplevel.
 \makeatother
 
 
