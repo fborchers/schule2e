@@ -6,23 +6,20 @@
 %   [2016/08/28 v0.01 first version]
 
 
-\RequirePackage{hyperref} 
 
-% In the past we used the @ifnotempty conditional from the amsthm package:
-% \RequirePackage{amsthm}
+%% Kompatibilität, falls hyperref nicht geladen ---
 
-
-% if hyperref is not loaded there shouldn't be errors:
+% \RequirePackage{hyperref}% keine Voraussetzung.
+% Falls hyperref nicht geladen werden sollte, werden keine
+% Links erzeugt und auch kein Fehler produziert:
 \newcommand*\ex@hypertarget[2]{#2}
 \newcommand*\ex@hyperlink[2]{#2}
-
-\AtBeginDocument{
-  \@ifpackageloaded{hyperref}{}
-  {
-    \let\hypertarget\ex@hypertarget
-    \let\hyperlink\ex@hyperlink
-  }
+\@ifpackageloaded{hyperref}{}%
+{% sonst bleiben die Links tot:
+  \let\hypertarget\ex@hypertarget
+  \let\hyperlink\ex@hyperlink
 }
+
 
 
 
@@ -78,6 +75,17 @@
 {}% end question environment
 
 
+
+ %%%%%%   %%%%%%  %%     %%    %% %%%%%% %%%%  %%%%%%  %%    %%
+%%    %% %%    %% %%     %%    %%   %%    %%  %%    %% %%%   %%
+%%       %%    %% %%     %%    %%   %%    %%  %%    %% %%%%  %%
+ %%%%%%  %%    %% %%     %%    %%   %%    %%  %%    %% %% %% %%
+      %% %%    %% %%     %%    %%   %%    %%  %%    %% %%  %%%%
+%%    %% %%    %% %%     %%    %%   %%    %%  %%    %% %%   %%%
+ %%%%%%   %%%%%%  %%%%%%% %%%%%%    %%   %%%%  %%%%%%  %%    %%
+
+%% --- SOLUTIONS (mit Zähler solutionID) --------
+
 % Umgebung für die Lösungen: solution
 \newcounter{solutionID}%
 \newenvironment{solution}[1][Lösung]%
@@ -107,16 +115,14 @@
 %%        %%     %% %%     %%    %%     %%%%%%  
 
 
-%% --- QUESTIONPARTS (mit Zähler partno) --------------------
+%% --- QUESTIONPARTS (mit Zähler partno) --------
 
 % Wir halten uns fern vom part counter (documentclass report und book):
-\makeatletter
 \newcounter{partno}[questionID]% neu zählen bei question.
 \@addtoreset{partno}{solutionID}% zurückgesetzt mit solution (s.u.)
 \@addtoreset{partno}{section}% zurückgesetzt mit section
 \@addtoreset{partno}{subsection}% zurückgesetzt mit subsection
 \@addtoreset{partno}{subsubsection}% zurückgesetzt mit subsection
-\makeatother
 \setcounter{partno}{0}%
 
 % Eine Environment für Teilaufgaben von Fragen, hat Format "1.1":
@@ -135,16 +141,14 @@
 \renewcommand{\part}{\item}% Diese Zeile falls documentclass report oder book, in der der Befehle \part definiert wird.
 
 
-%% --- SUBPARTS --------------------
+%% --- SUBPARTS --------
 
-\makeatletter
 \newcounter{subpart}[partno]% neu zählen bei part.
 \@addtoreset{subpart}{questionID}% zurückgesetzt mit Aufgabe
 \@addtoreset{subpart}{solutionID}% zurückgesetzt mit solution (s.u.)
 \@addtoreset{subpart}{section}% zurückgesetzt mit section
 \@addtoreset{subpart}{subsection}% zurückgesetzt mit subsection
 \@addtoreset{subpart}{subsubsection}% zurückgesetzt mit subsubsection
-\makeatother
 \setcounter{subpart}{0}%
 
 % Eine Environment Unteraufgaben, hat Format "(a)" :
@@ -163,9 +167,8 @@
 
 
 
-%% --- SUBSUBPARTS --------------------
+%% --- SUBSUBPARTS --------
 
-\makeatletter
 \newcounter{subsubpart}[subpart]% Neu zählen bei subpart.
 \@addtoreset{subsubpart}{partno}% zurückgesetzt mit Teilaufgaben
 \@addtoreset{subsubpart}{questionID}% zurückgesetzt mit Aufgaben
@@ -173,7 +176,6 @@
 \@addtoreset{subsubpart}{section}% zurückgesetzt mit section
 \@addtoreset{subsubpart}{subsection}% zurückgesetzt mit subsection
 \@addtoreset{subsubpart}{subsubsection}% zurückgesetzt mit subsubsect.
-\makeatother
 \setcounter{subsubpart}{0}%
 
 % Eine Environment Unteraufgaben, hat Format "i.", "ii." usw. :
@@ -192,7 +194,7 @@
 
 
 
-%% --- Checkboxes --------------------
+%% --- Checkboxes --------
 
 % Auf der Niveaustufe subsubpart endet die eins-zu-eins-Kompatibilität mit 'exam'. Wir bieten nur noch die Ankreuzmöglichkeit an mit 'checkboxes':
 
@@ -226,7 +228,7 @@
 %%     %% %%     %% %%     %% 
 
 
-%% --- SUBPARTS -- Zugriff mit \aaa --------------------
+%% --- SUBPARTS -- Zugriff mit \aaa --------
 
 \makeatletter
 % Identische Definition in exam2e.cls ---
@@ -268,7 +270,7 @@
 %%%%%%%%  %%%% %%%%%%%% %%%%    %%    %%     %%    %%          
 
 
-%% Kompatibilität zu weiteren Befehlen aus 'exam' ------------
+%% Kompatibilität zu weiteren Befehlen aus 'exam' --------
 
 \makeatletter
 % Der Befehl \uplevel für Kommentare zwischen Teil- und Unteraufgaben
