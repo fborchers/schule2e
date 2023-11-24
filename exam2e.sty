@@ -6,12 +6,10 @@
 %   [2016/08/28 v0.01 first version]
 
 
-\RequirePackage{geometry}
-
 \RequirePackage{hyperref} 
 
-% We use the @ifnotempty conditional from the amsthm package:
-\RequirePackage{amsthm}
+% In the past we used the @ifnotempty conditional from the amsthm package:
+% \RequirePackage{amsthm}
 
 
 % if hyperref is not loaded there shouldn't be errors:
@@ -69,10 +67,13 @@
   \fi%
   % Markup mit \questionletter, Definition siehe oben:
   \smallskip\makebox[0pt][r]{\bfseries\hyperlink{sol:\thequestionID}{\questionletter\thequestion}\hspace*{.5em}}%
+  % Punkte:
+  % {\@ifnotempty{#1}{#1}}% alte Version: in dieselbe Zeile.
+  %\@ifnotempty{#1}{\marginpar{#1~Punkt(e)}}% Punkte auf den Rand
+  % ifnotempty stammt aus dem Paket amsthm, wie folgt geht es ohne:
+  \ifx;#1;\else\marginpar{\footnotesize\quad{}#1~BE}\fi
+  % Nachfolgende Abstände werden ignoriert:
   \ignorespaces
-%  {{\@ifnotempty{#1}{#1}}}% optionally: name of the question OLD
-%  \@ifnotempty{#1}{\marginpar{#1}}% possibly followed by '.' or ':'. For reference: Tufte paragraph adds 1em. 
-% ifnotempty is from the amsthm package.
 }% end begin question.
 {}% end question environment
 
