@@ -1,9 +1,27 @@
-\NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{../../exam2e}[2023/10/10 v0.0.1 Ein Paket für die Kompatibilität mit der exam documentclass]
+\NeedsTeXFormat{LaTeX2e}[1994/06/01]
+\ProvidesPackage{../../exam2e}%
+    [2023/10/02 v0.2.1 use \emph for markup]
+%   [2020/01/11 v0.02 with aaa@i for references]
+%   [2016/08/28 v0.01 first version]
+
+
+\RequirePackage{geometry}
+
+\RequirePackage{hyperref} 
+
+% We use the @ifnotempty conditional from the amsthm package:
+\RequirePackage{amsthm}
+
+% The \square command from the amssymb package for \checkbox has
+% been replaced with \Box to make sure it's a hollow square. This 
+% incidentally makes this package independent of amssymb.
 
 
 
-\RequirePackage{hyperref}
+%% questionS AND SOLUTIONS ----------------------
+% \newenvironment{questions}{\subsubsection{Aufgaben:}}{}
+% disabled as never used and language incompatible.
+
 
 % if hyperref is not loaded there shouldn't be errors:
 \newcommand*\ex@hypertarget[2]{#2}
@@ -17,86 +35,78 @@
   }
 }
 
-
-
-
- %%%%%   %%%%%%  %%    %%    %% %%%%%% %%%%  %%%%%%  %%    %%  %%%%% 
-%%   %% %%    %% %%    %%    %%   %%    %%  %%    %% %%%   %% %%   %%
-%%      %%    %% %%    %%    %%   %%    %%  %%    %% %%%%  %% %%     
- %%%%%  %%    %% %%    %%    %%   %%    %%  %%    %% %% %% %%  %%%%% 
-     %% %%    %% %%    %%    %%   %%    %%  %%    %% %%  %%%%      %%
-%%   %% %%    %% %%    %%    %%   %%    %%  %%    %% %%   %%% %%   %%
- %%%%%   %%%%%%  %%%%%% %%%%%%    %%   %%%%  %%%%%%  %%    %%  %%%%% 
-
-\newcounter{solutionID}% fortlaufender Zähler
-\setcounter{solutionID}{0} 
-\newenvironment{solution}[1][Lösung]%
-{
-  \refstepcounter{solutionID}%
-  \emph{#1:} 
-}{}
-
-
-
-
-
-
-
-
-
- %%%%%%  %%   %% %%%%%% %%%%% %%%%%% %%%%  %%%%%  %%    %%  %%%%% 
-%%    %% %%   %% %%    %%   %%  %%    %%  %%   %% %%%   %% %%   %%
-%%    %% %%   %% %%    %%       %%    %%  %%   %% %%%%  %% %%     
-%%    %% %%   %% %%%%%  %%%%%   %%    %%  %%   %% %% %% %%  %%%%% 
-%%  % %% %%   %% %%         %%  %%    %%  %%   %% %%  %%%%      %%
-%%   %%  %%   %% %%    %%   %%  %%    %%  %%   %% %%   %%% %%   %%
- %%%% %%  %%%%%  %%%%%% %%%%%   %%   %%%%  %%%%%  %%    %%  %%%%% 
-
-% Die Umgebung 'questions' wird nicht definiert, sie wird nur bei den Klassenarbeiten (exam documentclass) verwendet, nicht in den Skripten. 
-% Es folgen die Definitionen der Aufgaben und Unteraufgaben mit der folgenden Hierarchie, einzelne Stufen der Hierarchie können aber ausgelassen werden:
+%% -- the QUESTION environment, counted sectionwise ---------------
+\newcounter{question}[section]
+\newcounter{questionID}
+\renewcommand*\thequestion{\arabic{question}} 
+%instead of \thesection and omitting the "\arabic{section}."
 %
-%         BEFEHL              in UMGEBUNG
-%         --------------      -------------
-%         question            questions
-%         part                parts
-%         subpart             subparts
-%         subsubpart          subsubparts
-%         choice              checkboxes
-
-
-
-%% --- QUESTION, die Umgebung für Aufgaben --------------------
-
-\newcounter{exerciseID}% fortlaufender Zähler
-\setcounter{exerciseID}{0} 
-
-\makeatletter
-\newcounter{question}[section]% neu zählen bei section
-\@addtoreset{question}{subsection}% zurückgesetzt mit subsection
-\@addtoreset{question}{subsubsection}% zurückgesetzt mit subsubsection 
-\makeatother
-\setcounter{question}{0} 
-
-
 % Label to be used in the left margin of a question:
 \newcommand{\questionletter}{A}
-
-\newcommand{\question}[1][]% optional argument to ignore exercise points if provided
-{\smallskip%
+% Change this letter to "S" within the "stationen" environment:
+\newenvironment{stationen}%
+{%
+  \renewcommand{\questionletter}{S}%
+  \setcounter{question}{0}
+}
+{\renewcommand{\questionletter}{A}}
+% end newcommand stationen.
+%
+\newenvironment{question}[1][]% optional argument to ignore question points if provided
+{% zunächst die Counter:
   \stepcounter{question}%
-  \refstepcounter{exerciseID}%
+  \refstepcounter{questionID}%
+  % Es folgt das Target für hyperref:
+  \hypertarget{ex:\thequestionID}{}%
+  \expandafter\xdef\csname question\roman{questionID}\endcsname{\thequestion}%
+  \ifcsname solution\roman{questionID}\endcsname%
+  \else%
+    \let\hyperlink\ex@hyperlink%
+  \fi%
   % Markup:
-  \noindent\hbox to 0pt{\hss \bfseries{\questionletter{}\thequestion}\hskip.5em}%
+  % "A" for Aufgabe and "S" for Station: \questionletter 
+  \smallskip\noindent\makebox[0pt][r]{\hyperlink{sol:\thequestionID}{\questionletter\thequestion}\quad}%
+% #1\unskip
+%  {{\@ifnotempty{#1}{#1}}}% optionally: name of the question OLD
+  {\@ifnotempty{#1}{\emph{#1}\hspace{.75em}}}% possibly followed by '.' or ':'. For reference: Tufte paragraph adds 1em. 
+% ifnotempty is from the amsthm package.
 }% end begin question.
+{}% end question environment
+
+% the solution environment
+\newcounter{solutionID}%
+\newenvironment{solution}[1][Lösung]%
+{%
+  \refstepcounter{solutionID}%
+  \immediate\write\@auxout{%
+    \noexpand\global\noexpand\@namedef{solution\roman{solutionID}}{\thesolutionID}}%
+  \hypertarget{sol:\thesolutionID}{}%
+  % Markup:
+  \noindent\makebox[0pt][r]{\hyperlink{ex:\thesolutionID}{L\@nameuse{question\roman{solutionID}}}\quad}%
+  % Text der Lösung:
+  \emph{#1:\enskip}%
+}{}%
 
 
+
+
+
+
+
+%%%%%%%%     %%%    %%%%%%%%  %%%%%%%%  %%%%%%  
+%%     %%   %% %%   %%     %%    %%    %%    %% 
+%%     %%  %%   %%  %%     %%    %%    %%       
+%%%%%%%%  %%     %% %%%%%%%%     %%     %%%%%%  
+%%        %%%%%%%%% %%   %%      %%          %% 
+%%        %%     %% %%    %%     %%    %%    %% 
+%%        %%     %% %%     %%    %%     %%%%%%  
 
 
 %% --- QUESTIONPARTS (mit Zähler partno) --------------------
 
 % Wir halten uns fern vom part counter (documentclass report und book):
 \makeatletter
-\newcounter{partno}[exerciseID]% neu zählen bei question.
+\newcounter{partno}[questionID]% neu zählen bei question.
 \@addtoreset{partno}{solutionID}% zurückgesetzt mit solution (s.u.)
 \@addtoreset{partno}{section}% zurückgesetzt mit section
 \@addtoreset{partno}{subsection}% zurückgesetzt mit subsection
@@ -124,7 +134,7 @@
 
 \makeatletter
 \newcounter{subpart}[partno]% neu zählen bei part.
-\@addtoreset{subpart}{exerciseID}% zurückgesetzt mit Aufgabe
+\@addtoreset{subpart}{questionID}% zurückgesetzt mit Aufgabe
 \@addtoreset{subpart}{solutionID}% zurückgesetzt mit solution (s.u.)
 \@addtoreset{subpart}{section}% zurückgesetzt mit section
 \@addtoreset{subpart}{subsection}% zurückgesetzt mit subsection
@@ -153,7 +163,7 @@
 \makeatletter
 \newcounter{subsubpart}[subpart]% Neu zählen bei subpart.
 \@addtoreset{subsubpart}{partno}% zurückgesetzt mit Teilaufgaben
-\@addtoreset{subsubpart}{exerciseID}% zurückgesetzt mit Aufgaben
+\@addtoreset{subsubpart}{questionID}% zurückgesetzt mit Aufgaben
 \@addtoreset{subsubpart}{solutionID}% zurückgesetzt mit solution (s.u.)
 \@addtoreset{subsubpart}{section}% zurückgesetzt mit section
 \@addtoreset{subsubpart}{subsection}% zurückgesetzt mit subsection
@@ -235,10 +245,6 @@
 
 
 
-
-
-
-
 %%    %%  %%%%%%%  %%     %% %%%%%%%%     %%%    %%%%%%%% %%%% 
 %%   %%  %%     %% %%%   %%% %%     %%   %% %%      %%     %%  
 %%  %%   %%     %% %%%% %%%% %%     %%  %%   %%     %%     %%  
@@ -284,3 +290,11 @@
 % omitting solutions:
 \newcommand*\omitsolution{\stepcounter{solutionID}}
 
+
+
+
+
+
+
+
+\endinput
