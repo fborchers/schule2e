@@ -130,10 +130,12 @@
 \begin{list}%
 {\arabic{question}.\arabic{partno}}% markup des part labels
 {\usecounter{partno}%
+ \setlength\topsep{0pt}% Abstände oben und unten.
+ \setlength\itemsep{0pt}% Abstände zwischen den Einträgen.
  \setlength\labelsep{.5em}% Abstand label zu Text.
  \setlength\leftmargin{1em}% Abstand Text vom linken Rand
- \setlength\listparindent{0.5in}% Absatz einrücken
- \setlength\parsep{0in}%
+ \setlength\listparindent{0pt}% Absatz einrücken
+ \setlength\parsep{0pt}% Abstand der Absätze
 }}{\end{list}}
 %
 % Die Umgebung wird genutzt mit \part (wie in exam documentclass):
@@ -156,6 +158,7 @@
 \begin{list}%
 {(\alph{subpart})}% markup des subpartlabels, gleich wie \aaa@ii unten
 {\usecounter{subpart}%
+ \setlength\topsep{0pt}% Abstände oben und unten.
  \setlength\labelsep{.5em}% Abstand label zu Text.
  \setlength\leftmargin{2em}% Abstand Text vom linken Rand
  \setlength\listparindent{0.5in}% Absatz einrücken
@@ -183,6 +186,7 @@
 \begin{list}%
 {\roman{subsubpart}.}% markup des subsubpart labels.
 {\usecounter{subsubpart}%
+ \setlength\topsep{0pt}% Abstände oben und unten.
  \setlength\labelsep{.5em}% Abstand label zu Text.
  \setlength\leftmargin{2em}% Abstand Text vom linken Rand
  \setlength\listparindent{0.5in}% Absatz einrücken
@@ -202,7 +206,9 @@
 \newenvironment{checkboxes}{%
 \begin{list}%
 {\choice}% kein markup, siehe Definition von \choice unten.
-{\setlength\labelsep{.5em}% Abstand label zu Text.
+{%
+ \setlength\topsep{0pt}% Abstände oben und unten.
+ \setlength\labelsep{.5em}% Abstand label zu Text.
  \setlength\leftmargin{2em}% Abstand Text vom linken Rand
  \setlength\listparindent{0.5in}% Absatz einrücken
  \setlength\parsep{0in}%
