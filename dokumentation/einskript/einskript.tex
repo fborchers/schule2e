@@ -18,7 +18,7 @@
 \section{Prüfungsaufgaben}
 
 
-\begin{question}
+\question%\begin{question}
 	Eine Frage mit der Nummer %\thequestion
 \begin{parts}
 	\part Teilaufgabe \\ Lorem ipsum\ldots
@@ -31,7 +31,7 @@
 	\aaa\quad \frac{1}{2} 
 \end{equation}
 \end{parts}
-\end{question}% Ende von Aufgabe 1
+%\end{question}% Ende von Aufgabe 1
 %
 \begin{solution}
 	Antwort ...
@@ -41,7 +41,7 @@
 Text zwischen den Fragen\ldots Eine zweite Frage. Hier folgt als nächste Struktur nicht die Teilaufgabe, sondern gleich die Unteraufgabe. Die Abstände werden automatisch angepasst.
 
 
-\begin{question}
+\question%\begin{question}
 Eine zweite Frage. Hier folgt als nächste Struktur nicht die Teilaufgabe, sondern gleich die Unteraufgabe. Die Abstände werden automatisch angepasst.
 \begin{subparts}
 		\subpart Unteraufgabe. Untersuchen Sie  dazu:
@@ -55,12 +55,12 @@ Eine zweite Frage. Hier folgt als nächste Struktur nicht die Teilaufgabe, sonde
 		\subsubpart lorem ipsum
 	\end{subsubparts}
 \end{subparts}
-\end{question}
+%\end{question}
 \omitsolution
 
 
 
-\begin{question}
+\question%\begin{question}
 	Diese Aufgabe zeigt die ganze Struktur der documentclass \texttt{exam2e}, also question, part, subpart, subsubpart und choice:
 \begin{parts}
 	\part Teilaufgabe
@@ -82,13 +82,13 @@ Eine zweite Frage. Hier folgt als nächste Struktur nicht die Teilaufgabe, sonde
 		\choice Ankreuzmöglichkeit 2
 	\end{checkboxes}
 \end{parts}
-\end{question}
+%\end{question}
 \omitsolution
 
 
 
 
-\begin{question}[5]
+\question[5]%\begin{question}[5]
 	Aus einer Tüte mit 
 	3 orangenen und 2 gelben Bonbons
 %	2 orangenen und 3 gelben Bonbons
@@ -98,7 +98,7 @@ Eine zweite Frage. Hier folgt als nächste Struktur nicht die Teilaufgabe, sonde
 \uplevel{Nutze das Baumdiagramm zur Beantwortung der folgenden Frage:}%
 	\subpart Berechne die Wahrscheinlichkeit zwei verschiedenfarbige Bonbons zu ziehen.
 \end{subparts}
-\end{question}
+%\end{question}
 
 % Lösung zur Aufgabe oben:
 \begin{solution}
@@ -109,7 +109,6 @@ Eine zweite Frage. Hier folgt als nächste Struktur nicht die Teilaufgabe, sonde
 
 	\subpart Zu verschiedenfarbig gehören die Fälle von orange-gelb und gelb-orange. In beiden Fällen ist die Wahrscheinlichkeit gleich $\frac{3}{10}$, insgesamt also $\frac{6}{10}$.
 \end{subparts}
-
 \end{solution}
 
 

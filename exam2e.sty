@@ -50,7 +50,7 @@
 }{\renewcommand{\questionletter}{A}}%
 % Ende der Umgebung stationen.
 
-\newenvironment{question}[1][]% Optionales Argument für die Punkte.
+\newcommand{\question}[1][]% Optionales Argument für die Punkte.
 {% zunächst die Counter einstellen:
   \stepcounter{question}%
   \refstepcounter{questionID}%
@@ -71,8 +71,8 @@
   \ifx;#1;\else\marginpar{\footnotesize\quad{}#1~BE}\fi
   % Nachfolgende Abstände werden ignoriert:
   \ignorespaces
-}% end begin question.
-{}% end question environment
+}% Ende der Definition von \question.
+
 
 
 
