@@ -68,10 +68,10 @@
     \let\hyperlink\ex@hyperlink%
   \fi%
   % Markup mit \questionletter, Definition siehe oben:
-  \smallskip\noindent\makebox[0pt][r]{\hyperlink{sol:\thequestionID}{\questionletter\thequestion}\quad}%
-% #1\unskip
+  \smallskip\makebox[0pt][r]{\bfseries\hyperlink{sol:\thequestionID}{\questionletter\thequestion}\hspace*{.5em}}%
+  \ignorespaces
 %  {{\@ifnotempty{#1}{#1}}}% optionally: name of the question OLD
-  {\@ifnotempty{#1}{\emph{#1}\hspace{.75em}}}% possibly followed by '.' or ':'. For reference: Tufte paragraph adds 1em. 
+%  \@ifnotempty{#1}{\marginpar{#1}}% possibly followed by '.' or ':'. For reference: Tufte paragraph adds 1em. 
 % ifnotempty is from the amsthm package.
 }% end begin question.
 {}% end question environment
@@ -86,7 +86,7 @@
     \noexpand\global\noexpand\@namedef{solution\roman{solutionID}}{\thesolutionID}}%
   \hypertarget{sol:\thesolutionID}{}% Anker
   % Markup mit \questionletter:
-  \noindent\makebox[0pt][r]{\hyperlink{ex:\thesolutionID}{L\@nameuse{question\roman{solutionID}}}\quad}%
+  \noindent\makebox[0pt][r]{\itshape\hyperlink{ex:\thesolutionID}{L\@nameuse{question\roman{solutionID}}}\hspace*{.5em}}%
   % Text der Lösung:
   \emph{#1:\enskip}%
 }{}%
