@@ -3,10 +3,19 @@
 
 
 
+\RequirePackage{hyperref}
 
+% if hyperref is not loaded there shouldn't be errors:
+\newcommand*\ex@hypertarget[2]{#2}
+\newcommand*\ex@hyperlink[2]{#2}
 
-
-
+\AtBeginDocument{
+  \@ifpackageloaded{hyperref}{}
+  {
+    \let\hypertarget\ex@hypertarget
+    \let\hyperlink\ex@hyperlink
+  }
+}
 
 
 
@@ -69,15 +78,17 @@
 \setcounter{question}{0} 
 
 
-% Eine Environment für 'question':
-\newenvironment{question}[1][]{
-  \refstepcounter{exerciseID}% globalen Zähler erhöhen
-  \stepcounter{question}% erhöht den abschnittsinternen Zähler
-  \noindent{\bf Aufgabe~\arabic{question}}\hspace*{1em}% markup
-}{}
-% Die Zeile oben definiert ebenfalls den Befehle \question, sodass hier
-% die Kompatibilität mit 'exam' genauso hergestellt wird. Die Punktzahl
-% wird nicht ausgegeben. 
+% Label to be used in the left margin of a question:
+\newcommand{\questionletter}{A}
+
+\newcommand{\question}[1][]% optional argument to ignore exercise points if provided
+{\smallskip%
+  \stepcounter{question}%
+  \refstepcounter{exerciseID}%
+  % Markup:
+  \noindent\hbox to 0pt{\hss \bfseries{\questionletter{}\thequestion}\hskip.5em}%
+}% end begin question.
+
 
 
 
