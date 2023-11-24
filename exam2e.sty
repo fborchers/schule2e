@@ -1,6 +1,7 @@
 \NeedsTeXFormat{LaTeX2e}[1994/06/01]
 \ProvidesPackage{../../exam2e}%
-    [2023/10/02 v0.2.1 use \emph for markup]
+    [2023/11/24 v0.2.2 part and subpart compatible]
+%   [2023/10/02 v0.2.1 use \emph for markup]
 %   [2020/01/11 v0.02 with aaa@i for references]
 %   [2016/08/28 v0.01 first version]
 
@@ -11,16 +12,6 @@
 
 % We use the @ifnotempty conditional from the amsthm package:
 \RequirePackage{amsthm}
-
-% The \square command from the amssymb package for \checkbox has
-% been replaced with \Box to make sure it's a hollow square. This 
-% incidentally makes this package independent of amssymb.
-
-
-
-%% questionS AND SOLUTIONS ----------------------
-% \newenvironment{questions}{\subsubsection{Aufgaben:}}{}
-% disabled as never used and language incompatible.
 
 
 % if hyperref is not loaded there shouldn't be errors:
@@ -35,36 +26,48 @@
   }
 }
 
+
+
+
+ %%%%%%%  %%    %% %%%%%%%  %%%%%%  %%%%%% %%%%  %%%%%%  %%    %%
+%%     %% %%    %% %%      %%    %%   %%    %%  %%    %% %%%   %%
+%%     %% %%    %% %%      %%         %%    %%  %%    %% %%%%  %%
+%%     %% %%    %% %%%%%%   %%%%%%    %%    %%  %%    %% %% %% %%
+%%  %% %% %%    %% %%            %%   %%    %%  %%    %% %%  %%%%
+%%    %%  %%    %% %%      %%    %%   %%    %%  %%    %% %%   %%%
+ %%%%% %%  %%%%%%  %%%%%%%  %%%%%%    %%   %%%%  %%%%%%  %%    %%
+
 %% -- the QUESTION environment, counted sectionwise ---------------
+
 \newcounter{question}[section]
 \newcounter{questionID}
 \renewcommand*\thequestion{\arabic{question}} 
-%instead of \thesection and omitting the "\arabic{section}."
-%
-% Label to be used in the left margin of a question:
+% nur die arabische Ziffer.
+
+
+% Buchstabe für die question-Markierung:
 \newcommand{\questionletter}{A}
-% Change this letter to "S" within the "stationen" environment:
+% Innerhalb der Umgebung 'stationen' wird dieser Buchstabe zu einem S:
 \newenvironment{stationen}%
 {%
   \renewcommand{\questionletter}{S}%
-  \setcounter{question}{0}
-}
-{\renewcommand{\questionletter}{A}}
-% end newcommand stationen.
-%
-\newenvironment{question}[1][]% optional argument to ignore question points if provided
-{% zunächst die Counter:
+  \setcounter{question}{0}%
+}{\renewcommand{\questionletter}{A}}%
+% Ende der Umgebung stationen.
+
+\newenvironment{question}[1][]% Optionales Argument für die Punkte.
+{% zunächst die Counter einstellen:
   \stepcounter{question}%
   \refstepcounter{questionID}%
-  % Es folgt das Target für hyperref:
+  % Es folgen Anker und Ziel für hyperref. Falls keine Lösung zu 
+  % dieser Aufgabe besteht, wird auch kein Link erstellt:
   \hypertarget{ex:\thequestionID}{}%
   \expandafter\xdef\csname question\roman{questionID}\endcsname{\thequestion}%
   \ifcsname solution\roman{questionID}\endcsname%
   \else%
     \let\hyperlink\ex@hyperlink%
   \fi%
-  % Markup:
-  % "A" for Aufgabe and "S" for Station: \questionletter 
+  % Markup mit \questionletter, Definition siehe oben:
   \smallskip\noindent\makebox[0pt][r]{\hyperlink{sol:\thequestionID}{\questionletter\thequestion}\quad}%
 % #1\unskip
 %  {{\@ifnotempty{#1}{#1}}}% optionally: name of the question OLD
@@ -73,15 +76,16 @@
 }% end begin question.
 {}% end question environment
 
-% the solution environment
+
+% Umgebung für die Lösungen: solution
 \newcounter{solutionID}%
 \newenvironment{solution}[1][Lösung]%
-{%
+{% Counter erhöhen sowie Ziel und Anker für hyperref:
   \refstepcounter{solutionID}%
   \immediate\write\@auxout{%
     \noexpand\global\noexpand\@namedef{solution\roman{solutionID}}{\thesolutionID}}%
-  \hypertarget{sol:\thesolutionID}{}%
-  % Markup:
+  \hypertarget{sol:\thesolutionID}{}% Anker
+  % Markup mit \questionletter:
   \noindent\makebox[0pt][r]{\hyperlink{ex:\thesolutionID}{L\@nameuse{question\roman{solutionID}}}\quad}%
   % Text der Lösung:
   \emph{#1:\enskip}%
@@ -291,6 +295,9 @@
 \newcommand*\omitsolution{\stepcounter{solutionID}}
 
 
+
+% \newenvironment{questions}
+% Auf dieser Ebene wird keine Kompatibilität mit `exam` benötigt.
 
 
 
