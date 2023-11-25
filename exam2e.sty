@@ -114,6 +114,8 @@
 %%        %%     %% %%    %%     %%    %%    %% 
 %%        %%     %% %%     %%    %%     %%%%%%  
 
+% Zum Nachlesen über LaTeX-Listen siehe z.B. hier:
+% http://latexref.xyz/list.html
 
 %% --- QUESTIONPARTS (mit Zähler partno) --------
 
@@ -130,10 +132,10 @@
 \begin{list}%
 {\arabic{question}.\arabic{partno}}% markup des part labels
 {\usecounter{partno}%
- \setlength\topsep{0pt}% Abstände oben und unten.
- \setlength\itemsep{0pt}% Abstände zwischen den Einträgen.
+ \setlength\topsep{2pt}% Abstände oben und unten.
+ \setlength\itemsep{2pt}% Abstände zwischen den Einträgen.
  \setlength\labelsep{.5em}% Abstand label zu Text.
- \setlength\leftmargin{1em}% Abstand Text vom linken Rand
+ \setlength\leftmargin{0pt}% Abstand Text vom linken Rand
  \setlength\listparindent{0pt}% Absatz einrücken
  \setlength\parsep{0pt}% Abstand der Absätze
 }}{\end{list}}
@@ -158,7 +160,8 @@
 \begin{list}%
 {(\alph{subpart})}% markup des subpartlabels, gleich wie \aaa@ii unten
 {\usecounter{subpart}%
- \setlength\topsep{0pt}% Abstände oben und unten.
+ \setlength\topsep{2pt}% Abstände oben und unten.
+ \setlength\itemsep{2pt}% Abstände oben und unten.
  \setlength\labelsep{.5em}% Abstand label zu Text.
  \setlength\leftmargin{2em}% Abstand Text vom linken Rand
  \setlength\listparindent{0.5in}% Absatz einrücken
@@ -187,6 +190,7 @@
 {\roman{subsubpart}.}% markup des subsubpart labels.
 {\usecounter{subsubpart}%
  \setlength\topsep{0pt}% Abstände oben und unten.
+ \setlength\itemsep{0pt}% Abstände oben und unten.
  \setlength\labelsep{.5em}% Abstand label zu Text.
  \setlength\leftmargin{2em}% Abstand Text vom linken Rand
  \setlength\listparindent{0.5in}% Absatz einrücken
@@ -207,7 +211,7 @@
 \begin{list}%
 {\choice}% kein markup, siehe Definition von \choice unten.
 {%
- \setlength\topsep{0pt}% Abstände oben und unten.
+ \setlength\topsep{2pt}% Abstände oben und unten.
  \setlength\labelsep{.5em}% Abstand label zu Text.
  \setlength\leftmargin{2em}% Abstand Text vom linken Rand
  \setlength\listparindent{0.5in}% Absatz einrücken
@@ -281,7 +285,7 @@
 \makeatletter
 % Der Befehl \uplevel für Kommentare zwischen Teil- und Unteraufgaben
 \long\def\uplevel#1{% leicht verändert aus exam.cls übernommen:
-  \par\smallskip%\bigskip
+  \par\vspace*{2pt}%\smallskip%\bigskip
   \vbox{%
     % We entered internal vertical mode, and so we get \parshape=0.
     % We set \leftskip to provide the correct left margin for whatever
