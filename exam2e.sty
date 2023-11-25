@@ -50,8 +50,28 @@
 }{\renewcommand{\questionletter}{A}}%
 % Ende der Umgebung stationen.
 
-\newcommand{\question}[1][]% Optionales Argument für die Punkte.
-{% zunächst die Counter einstellen:
+
+%    \quest@ii% Markup
+    % Punkte:
+    % {\@ifnotempty{#1}{#1}}% alte Version: in dieselbe Zeile.
+    %\@ifnotempty{#1}{\marginpar{#1~Punkt(e)}}% Punkte auf den Rand
+    % ifnotempty stammt aus dem Paket amsthm, wie folgt geht es ohne:
+%    \marginpar{\footnotesize\quad{}#1~BE}%
+
+\def\question{%
+  \@ifnextchar[{\quest@i}%
+  {\quest@ii}% sonst nur Markup.
+}
+\def\titledquestion#1{
+  \quest@ii% nur Markup.
+  {\bfseries #1}% Titel fett gedruckt
+}
+\def\quest@i[#1]{
+  \quest@ii\marginpar{\footnotesize\quad{}#1~BE}
+}
+
+%% Counter und Markup:
+\def\quest@ii{% zunächst die Counter einstellen:
   \stepcounter{question}%
   \refstepcounter{questionID}%
   % Es folgen Anker und Ziel für hyperref. Falls keine Lösung zu 
@@ -62,17 +82,14 @@
   \else%
     \let\hyperlink\ex@hyperlink%
   \fi%
-  % Markup mit \questionletter, Definition siehe oben:
-  \smallskip\makebox[0pt][r]{\bfseries\hyperlink{sol:\thequestionID}{\questionletter\thequestion}\hspace*{.5em}}%
-  % Punkte:
-  % {\@ifnotempty{#1}{#1}}% alte Version: in dieselbe Zeile.
-  %\@ifnotempty{#1}{\marginpar{#1~Punkt(e)}}% Punkte auf den Rand
-  % ifnotempty stammt aus dem Paket amsthm, wie folgt geht es ohne:
-  \ifx;#1;\else\marginpar{\footnotesize\quad{}#1~BE}\fi
+  % Markup mit \questionletter, zur Definition siehe oben:
+  \par\smallskip\noindent%
+  \makebox[0pt][r]{\bfseries\hyperlink{sol:\thequestionID}{\questionletter\thequestion}\hspace*{.5em}}%
   % Nachfolgende Abstände werden ignoriert:
   \ignorespaces
 }% Ende der Definition von \question.
 
+ 
 
 
 
@@ -95,7 +112,8 @@
     \noexpand\global\noexpand\@namedef{solution\roman{solutionID}}{\thesolutionID}}%
   \hypertarget{sol:\thesolutionID}{}% Anker
   % Markup mit \questionletter:
-  \noindent\makebox[0pt][r]{\itshape\hyperlink{ex:\thesolutionID}{L\@nameuse{question\roman{solutionID}}}\hspace*{.5em}}%
+  \par\smallskip\noindent
+  \makebox[0pt][r]{\itshape\hyperlink{ex:\thesolutionID}{L\@nameuse{question\roman{solutionID}}}\hspace*{.5em}}%
   % Text der Lösung:
   \emph{#1:\enskip}%
 }{}%
