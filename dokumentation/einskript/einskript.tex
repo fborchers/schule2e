@@ -10,7 +10,7 @@
 
 \usepackage{hyperref}
 
-\setlength{\parindent}{0pt}
+\setlength{\parindent}{1em}
 \setlength{\parskip}{0pt}
 
 
@@ -27,6 +27,8 @@
 	Lorem ipsum\ldots
 	\begin{subparts}
 		\subpart Unteraufgabe mit Nummer, die so lang ist das ein Zeilenumbruch notwendig wird.
+
+		Außerdem
 	\end{subparts}
 	\part Nächste Teilaufgabe lautet berechne:%
 	\label{part:dieseeineteilaufgabe}
@@ -42,11 +44,13 @@
 \end{solution}
 
 
-Text zwischen den Fragen\ldots Eine zweite Frage. Hier folgt als nächste Struktur nicht die Teilaufgabe, sondern gleich die Unteraufgabe. Die Abstände werden automatisch angepasst, wie man in \ref{part:dieseeineteilaufgabe} sehen kann.
+Text zwischen den Fragen\ldots Eine zweite Frage. Hier folgt als nächste Struktur nicht die Teilaufgabe, sondern gleich die Unteraufgabe. Die Abstände werden automatisch angepasst, die Einstellung des \texttt{parindent} gilt auch für Absätze innerhalb von Fragen.
+
+Ref: wie man in \ref{part:dieseeineteilaufgabe} sehen kann.
 
 
 \question%\begin{question}
-Eine zweite Frage. Hier folgt als nächste Struktur nicht die Teilaufgabe, sondern gleich die Unteraufgabe. 
+Eine zweite Frage. Hier folgt als nächste Struktur nicht die Teilaufgabe, sondern gleich die Unteraufgabe. Dieses Vorgehen ist in der Unter- und Mittelstufe üblich.
 
 Die Abstände werden automatisch angepasst.
 \begin{subparts}
@@ -55,8 +59,9 @@ Die Abstände werden automatisch angepasst.
 		\subsubpart lorem ipsum
 		\subsubpart lorem ipsum
 	\end{subsubparts}
-		\subpart Unteraufgabe. Untersuchen Sie  dazu:
+		\subpart Neue Unteraufgabe. Untersuchen Sie dazu nun:
 	\begin{subsubparts}
+		\subsubpart lorem ipsum
 		\subsubpart lorem ipsum
 		\subsubpart lorem ipsum
 	\end{subsubparts}
@@ -121,18 +126,21 @@ Die Abstände werden automatisch angepasst.
 
 
 
-
-\subsection{Abituraufgaben}
-
-\question Dies ist eine abiturähnliche Aufgabe.
-\begin{parts}
-	\part asdf
-	\part asdf
-\end{parts}
-
+   %%%    %%%%%%%%  %%%% 
+  %% %%   %%     %%  %%  
+ %%   %%  %%     %%  %%  
+%%     %% %%%%%%%%   %%  
+%%%%%%%%% %%     %%  %%  
+%%     %% %%     %%  %%  
+%%     %% %%%%%%%%  %%%% 
 
 \section{Abituraufgaben}
-\subsubsection{Abiturähnliche Aufgabe}
+
+Hier ist noch die Neudefinition von \texttt{subpart} einzufügen, damit die Unteraufgaben fortlaufend mit 1.1.1 usw. durchnummeriert werden.
+
+Durch den neuen Abschnitt werden die Aufgabenzähler zurückgesetzt.
+
+\subsubsection*{Eine abiturähnliche Aufgabe}
 \titledquestion{Der Titel der Aufgabe:} Dies ist dann der Text der Aufgabe.
 \begin{parts}
 \part asdf
@@ -140,15 +148,16 @@ Die Abstände werden automatisch angepasst.
 	\subpart asdf
 	\subpart asdf
 \end{subparts}
-\part asdf
+\part
 \begin{subparts}
-	\subpart asdf
+	\subpart Nummerierung ohne einleitenden Text
 	\subpart asdf
 \end{subparts}
 \end{parts}
 
-\subsection{Abituraufgaben}
-\subsubsection{Abiturähnliche Aufgabe}
+
+
+\subsubsection*{Eine zweite abiturähnliche Aufgabe}
 
 \question asdf
 \begin{parts}

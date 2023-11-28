@@ -50,27 +50,20 @@
 }{\renewcommand{\questionletter}{A}}%
 % Ende der Umgebung stationen.
 
-
-%    \quest@ii% Markup
-    % Punkte:
-    % {\@ifnotempty{#1}{#1}}% alte Version: in dieselbe Zeile.
-    %\@ifnotempty{#1}{\marginpar{#1~Punkt(e)}}% Punkte auf den Rand
-    % ifnotempty stammt aus dem Paket amsthm, wie folgt geht es ohne:
-%    \marginpar{\footnotesize\quad{}#1~BE}%
-
+% Eine Aufgabe, ggf. mit Punkten
 \def\question{%
-  \@ifnextchar[{\quest@i}%
+  \@ifnextchar[{\quest@i}% falls Punkte gegeben
   {\quest@ii}% sonst nur Markup.
 }
-\def\titledquestion#1{
-  \quest@ii% nur Markup.
+\def\titledquestion#1{%
+  \quest@ii% nur Markup, dann:
   {\bfseries #1}% Titel fett gedruckt
 }
-\def\quest@i[#1]{
-  \quest@ii\marginpar{\footnotesize\quad{}#1~BE}
+\def\quest@i[#1]{% Markup, dann Punkte auf den Rand:
+  \quest@ii\marginpar{\footnotesize\quad{}#1~BE}%
 }
 
-%% Counter und Markup:
+%% Counter und Markup, die interne Routine von question:
 \def\quest@ii{% zunächst die Counter einstellen:
   \stepcounter{question}%
   \refstepcounter{questionID}%
@@ -114,9 +107,11 @@
   % Markup mit \questionletter:
   \par\smallskip\noindent
   \makebox[0pt][r]{\itshape\hyperlink{ex:\thesolutionID}{L\@nameuse{question\roman{solutionID}}}\hspace*{.5em}}%
-  % Text der Lösung:
+  % Text der Lösung folgt nach:
   \emph{#1:\enskip}%
-}{}%
+}{
+  \par\smallskip
+}%
 
 
 
@@ -135,9 +130,10 @@
 % Zum Nachlesen über LaTeX-Listen siehe z.B. hier:
 % http://latexref.xyz/list.html
 
+
 %% --- QUESTIONPARTS (mit Zähler partno) --------
 
-% Wir halten uns fern vom part counter (documentclass report und book):
+% Wir halten uns fern vom part counter (documentclass report und book), die Teilaufgaben werden von 'partno' gezählt:
 \newcounter{partno}[questionID]% neu zählen bei question.
 \@addtoreset{partno}{solutionID}% zurückgesetzt mit solution (s.u.)
 \@addtoreset{partno}{section}% zurückgesetzt mit section
@@ -154,8 +150,8 @@
  \setlength\itemsep{2pt}% Abstände zwischen den Einträgen.
  \setlength\labelsep{.5em}% Abstand label zu Text.
  \setlength\leftmargin{0pt}% Abstand Text vom linken Rand
- \setlength\listparindent{0pt}% Absatz einrücken
- \setlength\parsep{0pt}% Abstand der Absätze
+ \setlength\listparindent{0pt}% Absatz nicht einrücken
+ \setlength\parsep{0pt}% Kein vertikaler Abstand der Absätze
 }}{\end{list}}
 %
 % Die Umgebung wird genutzt mit \part (wie in exam documentclass):
@@ -182,8 +178,8 @@
  \setlength\itemsep{2pt}% Abstände oben und unten.
  \setlength\labelsep{.5em}% Abstand label zu Text.
  \setlength\leftmargin{2em}% Abstand Text vom linken Rand
- \setlength\listparindent{0.5in}% Absatz einrücken
- \setlength\parsep{0in}%
+ \setlength\listparindent{0pt}% Absatz nicht einrücken
+ \setlength\parsep{0in}% Kein vertikaler Abstand der Absätze
 }}{\end{list}}
 %
 % Die Umgebung wird genutzt mit \part (wie in exam documentclass):
@@ -211,8 +207,8 @@
  \setlength\itemsep{0pt}% Abstände oben und unten.
  \setlength\labelsep{.5em}% Abstand label zu Text.
  \setlength\leftmargin{2em}% Abstand Text vom linken Rand
- \setlength\listparindent{0.5in}% Absatz einrücken
- \setlength\parsep{0in}%
+ \setlength\listparindent{0pt}% Absatz nicht einrücken
+ \setlength\parsep{0in}% Kein vertikaler Abstand der Absätze
 }}{\end{list}}
 %
 % Die Umgebung wird genutzt mit \part (wie in exam documentclass):
@@ -232,8 +228,8 @@
  \setlength\topsep{2pt}% Abstände oben und unten.
  \setlength\labelsep{.5em}% Abstand label zu Text.
  \setlength\leftmargin{2em}% Abstand Text vom linken Rand
- \setlength\listparindent{0.5in}% Absatz einrücken
- \setlength\parsep{0in}%
+ \setlength\listparindent{0pt}% Absatz nicht einrücken
+ \setlength\parsep{0in}% Kein vertikaler Abstand der Absätze
 }}{\end{list}}%end newenvironment parts.
 %
 % Die Umgebung wird genutzt mit \choice (wie in exam documentclass),
