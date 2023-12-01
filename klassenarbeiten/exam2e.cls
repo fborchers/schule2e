@@ -3,13 +3,11 @@
 
 
 %%
-% Alle Optionen, mit denen exam2e geladen wurde, werden an exam weiter-
-% gereicht, z.B. Schriftgröße 10pt, 11pt, oder 12pt:
+% Alle Optionen, mit denen exam2e geladen wurde, werden an exam weitergereicht, z.B. Schriftgröße 10pt, 11pt, oder 12pt:
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{exam}}
 \ProcessOptions\relax
-% oder 
-%\ProcessOptions*
-% Siehe: https://tex.stackexchange.com/questions/61487/processoptions-and-processkeyvaloptions/82441#82441
+% oder mit \ProcessOptions*
+% Siehe dazu: https://tex.stackexchange.com/questions/61487/processoptions-and-processkeyvaloptions/82441#82441
 
 
 %%
@@ -166,7 +164,7 @@
 
 % \part :
 %\renewcommand{\partlabel}{\thequestion.\thepartno}% partlabel rechtsbündig, das ist LaTeX-Standard, oder linksbündig mit:
-\renewcommand\partlabel{\hbox to \labelwidth{\thequestion.\thepartno\hfil}}% macht das partlabel linksbündig und druckt 1.1 
+\renewcommand\partlabel{\hbox to \labelwidth{\thequestion.\thepartno\hfill}}% macht das partlabel linksbündig und druckt 1.1 
 
 % \subpart :
 %\renewcommand\subpartlabel{(\thesubpart)}% (a)
