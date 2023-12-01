@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{../exam2e}[v0.0.3 exam2e mit subpart hook aaa@ii]
+\ProvidesClass{../exam2e}[v0.1 exam2e mit subpart hook aaa@i]
 
 
 %%
@@ -14,7 +14,7 @@
 % Die zugrunde liegende Klasse wird geladen:
 \LoadClass[addpoints]{exam}
 
-% Die Option ''addpoints'' lässt die documentclass die Punkte zusammenrechnen, genau das ist erwünscht. 
+% Die Option 'addpoints' lässt die documentclass die Punkte zusammenrechnen, genau das ist erwünscht. 
 
 
 
@@ -154,31 +154,33 @@
 
 % Erscheinung der Counter der 'exam' documentclass:
 %\renewcommand{\thequestion}{\arabic{question}}% Nummerierung ist Standard
-\renewcommand{\thepartno}{\arabic{partno}}% Teilaufgaben auch nummeriert
-\renewcommand{\thesubpart}{\alph{subpart}}% Unteraufgaben a b c usw.
-\renewcommand{\thesubsubpart}{\roman{subsubpart}}% Unterunteraufg. i ii
+\renewcommand\thepartno{\thequestion.\arabic{partno}}% als 1.1
+\renewcommand{\thesubpart}{(\alph{subpart})}% Unteraufgaben (a) usw.
+\renewcommand{\thesubsubpart}{\roman{subsubpart}.}% Unterunteraufg. i.
 %\renewcommand{\thechoice}{\Alph{choice}}% letzte Unterebene unverändert
 
 
-% Erscheinung der Label (verwendet die Counter von oben). Dazu werden part, subpart, subsubpart geändert:
+% Erscheinung der Label (verwendet die Counter von oben). Dazu werden partlabel, subpartlabel, und subsubpartlabel geändert:
 
 % \part :
-%\renewcommand{\partlabel}{\thequestion.\thepartno}% partlabel rechtsbündig, das ist LaTeX-Standard, oder linksbündig mit:
-\renewcommand\partlabel{\hbox to \labelwidth{\thequestion.\thepartno\hfill}}% macht das partlabel linksbündig und druckt 1.1 
+% Das Label kann nun rechts- oder linksbündig angeordnet werden:
+%\renewcommand{\partlabel}{\thepartno}% rechtsbündig
+% oder linksbündig mit:
+\renewcommand\partlabel{\hbox to \labelwidth{\thepartno\hfill}}%
 
 % \subpart :
-%\renewcommand\subpartlabel{(\thesubpart)}% (a)
-\makeatletter
-\renewcommand\subpartlabel{\aaa@ii{subpart}}% (a)
-\makeatother% zur Definition von \aaa@ii s.u.
+%\makeatletter
+%\renewcommand\subpartlabel{\aaa@ii{subpart}}% (a)
+%\makeatother% zur Definition von \aaa@ii s.u.
+\renewcommand\subpartlabel{\thesubpart}%
 
 % \subsubpart :
-\renewcommand\subsubpartlabel{\thesubsubpart.}% i. ii.  
+\renewcommand\subsubpartlabel{\thesubsubpart}% 
 
 
-% Die Befehle \questionshook und \partshook usw. sind in der Dokumentenklasse 'exam' als leer definiert. Sie können umdefiniert werden, um Abstände anzupassen, siehe Dolumentation von 'exam'.
+% Die Befehle \questionshook und \partshook usw. sind in der Dokumentenklasse 'exam' als leer definiert. Sie können umdefiniert werden, um Abstände anzupassen, siehe Dokumentation von 'exam'.
 
-% Entferne die Einrückung der 'question', Diese vier Zeilen sind der Dokumentation der Dokumentenklasse 'exam' entnommen:
+% Entferne die Einrückung der 'question'. Diese vier Zeilen sind der Dokumentation der Dokumentenklasse 'exam' entnommen:
 \renewcommand{\questionshook}{%
     \setlength{\leftmargin}{0pt}%
     \setlength{\labelwidth}{-\labelsep}%
@@ -190,15 +192,17 @@
 
 
 
-%% EXAMDOC: Punkte --------
+
+%% examdoc: Punkte alias Bewertungseinheiten --------
 % siehe Spracheinstellungen.
 
 
-%% Platz für Lösungen --------
+
+%% examdoc: Platz für Lösungen --------
 % Einstellungen für Kästchen und Linien zum Schreiben der Antworten. Die Größe und Linienstärke der Kästchen kann angepasst werden:
 \setlength{\gridsize}{5mm}% Größe
 \setlength{\gridlinewidth}{.05pt}% Linienstärke
-%
+
 % Zeilenhöhe von Linien:
 \setlength\linefillheight{0.9cm}% Abstand
 
@@ -225,21 +229,16 @@
 % möglich, weswegen wir einen Haken \aaa definieren, der an dieser
 % Stelle ein greift, aber den Zähler subpart verwendet. 
 
-\makeatletter
 \@addtoreset{subpart}{question}% Counter zurücksetzen bei 'question'
 \@addtoreset{subpart}{partno}% und zurücksetzen bei Teilaufgaben.
 
-% Identische Definition in exam2e.sty ---
+% Ähnliche Definition in exam2e.sty ---
 % \aaa zur Verwendung im Dokument als \aaa:
 \newcommand{\aaa}{\@ifnextchar\bgroup{\aaa@i}{\aaa@i{}}}
 \def\aaa@i{%
     \stepcounter{subpart}%
-    \aaa@ii{subpart}%
+    \textnormal{\thesubpart}%
 }%
-
-% Es folgt noch der Befehl für den Markup auf Textoberfläche. Dieser wird auch für das subpartlabel verwendet, siehe oben.
-\def\aaa@ii#1{\textnormal{(\alph{#1})}}% date tag: 06 Jan 2020
-\makeatother
 
 
 
