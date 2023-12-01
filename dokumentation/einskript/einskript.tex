@@ -46,7 +46,7 @@
 
 Text zwischen den Fragen\ldots Eine zweite Frage. Hier folgt als nächste Struktur nicht die Teilaufgabe, sondern gleich die Unteraufgabe. Die Abstände werden automatisch angepasst, die Einstellung des \texttt{parindent} gilt auch für Absätze innerhalb von Fragen.
 
-Ref: wie man in \ref{part:dieseeineteilaufgabe} sehen kann.
+Ref: wie man in Teil~\ref{part:dieseeineteilaufgabe} sehen kann.
 
 
 \question%\begin{question}
@@ -54,12 +54,12 @@ Eine zweite Frage. Hier folgt als nächste Struktur nicht die Teilaufgabe, sonde
 
 Die Abstände werden automatisch angepasst.
 \begin{subparts}
-		\subpart Unteraufgabe. Untersuchen Sie  dazu:
+		\subpart\label{sbp:unteraufg1a} Unteraufgabe. Untersuchen Sie  dazu:
 	\begin{subsubparts}
 		\subsubpart lorem ipsum
 		\subsubpart lorem ipsum
 	\end{subsubparts}
-		\subpart Neue Unteraufgabe. Untersuchen Sie dazu nun:
+		\subpart Neue Unteraufgabe, die sich von Unteraufg.~\ref{sbp:unteraufg1a} unterscheidet. Untersuchen Sie dazu nun:
 	\begin{subsubparts}
 		\subsubpart lorem ipsum
 		\subsubpart lorem ipsum
@@ -125,47 +125,6 @@ Die Abstände werden automatisch angepasst.
 
 
 
-
-   %%%    %%%%%%%%  %%%% 
-  %% %%   %%     %%  %%  
- %%   %%  %%     %%  %%  
-%%     %% %%%%%%%%   %%  
-%%%%%%%%% %%     %%  %%  
-%%     %% %%     %%  %%  
-%%     %% %%%%%%%%  %%%% 
-
-\section{Abituraufgaben}
-
-Hier ist noch die Neudefinition von \texttt{subpart} einzufügen, damit die Unteraufgaben fortlaufend mit 1.1.1 usw. durchnummeriert werden.
-
-Durch den neuen Abschnitt werden die Aufgabenzähler zurückgesetzt.
-
-\subsubsection*{Eine abiturähnliche Aufgabe}
-\titledquestion{Der Titel der Aufgabe:} Dies ist dann der Text der Aufgabe.
-\begin{parts}
-\part asdf
-\begin{subparts}
-	\subpart asdf
-	\subpart asdf
-\end{subparts}
-\part
-\begin{subparts}
-	\subpart Nummerierung ohne einleitenden Text
-	\subpart asdf
-\end{subparts}
-\end{parts}
-
-
-
-\subsubsection*{Eine zweite abiturähnliche Aufgabe}
-
-\question asdf
-\begin{parts}
-	\part asdf
-	\part asdf
-	\part asdf
-	\part asdf
-\end{parts}
 
 
 \end{document}

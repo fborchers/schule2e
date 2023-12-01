@@ -139,12 +139,13 @@
 \@addtoreset{partno}{section}% zurückgesetzt mit section
 \@addtoreset{partno}{subsection}% zurückgesetzt mit subsection
 \@addtoreset{partno}{subsubsection}% zurückgesetzt mit subsection
-\setcounter{partno}{0}%
+\setcounter{partno}{0}% Dann Formatierung mit:
+\renewcommand\thepartno{\thequestion.\arabic{partno}}%
 
 % Eine Environment für Teilaufgaben von Fragen, hat Format "1.1":
 \newenvironment{parts}{%
 \begin{list}%
-{\arabic{question}.\arabic{partno}}% markup des part labels
+{\thepartno}% markup des part labels
 {\usecounter{partno}%
  \setlength\topsep{2pt}% Abstände oben und unten.
  \setlength\itemsep{2pt}% Abstände zwischen den Einträgen.
@@ -168,11 +169,12 @@
 \@addtoreset{subpart}{subsection}% zurückgesetzt mit subsection
 \@addtoreset{subpart}{subsubsection}% zurückgesetzt mit subsubsection
 \setcounter{subpart}{0}%
+\renewcommand\thesubpart{(\alph{subpart})}% Formatierung
 
 % Eine Environment Unteraufgaben, hat Format "(a)" :
 \newenvironment{subparts}{%
 \begin{list}%
-{(\alph{subpart})}% markup des subpartlabels, gleich wie \aaa@ii unten
+{\thesubpart}% markup des subpartlabels
 {\usecounter{subpart}%
  \setlength\topsep{2pt}% Abstände oben und unten.
  \setlength\itemsep{2pt}% Abstände oben und unten.
@@ -197,11 +199,12 @@
 \@addtoreset{subsubpart}{subsection}% zurückgesetzt mit subsection
 \@addtoreset{subsubpart}{subsubsection}% zurückgesetzt mit subsubsect.
 \setcounter{subsubpart}{0}%
+\renewcommand\thesubsubpart{\roman{subsubpart}.}% Formatierung
 
 % Eine Environment Unteraufgaben, hat Format "i.", "ii." usw. :
 \newenvironment{subsubparts}{%
 \begin{list}%
-{\roman{subsubpart}.}% markup des subsubpart labels.
+{\thesubsubpart}% markup des subsubpart labels.
 {\usecounter{subsubpart}%
  \setlength\topsep{0pt}% Abstände oben und unten.
  \setlength\itemsep{0pt}% Abstände oben und unten.
@@ -260,13 +263,10 @@
 % \aaa zur Verwendung im Dokument als \aaa:
 \newcommand{\aaa}{\@ifnextchar\bgroup{\aaa@i}{\aaa@i{}}}
 \def\aaa@i{%
-   \refstepcounter{subpart}%
-   \aaa@ii{subpart}%
+\refstepcounter{subpart}%
+\textnormal{\thesubpart}%
 }%
 
-% Es folgt noch der Befehl für den Markup auf Textoberfläche. Dieser wird auch für das subpartlabel verwendet, siehe oben.
-\def\aaa@ii#1{\textnormal{(\alph{#1})}}% date tag: 06 Jan 2020
-\makeatother
 
 
 
