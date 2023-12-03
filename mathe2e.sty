@@ -37,7 +37,7 @@
 
 
 % Spracheinstellungen ---
-\sisetup{% Standardeinstellung für deutsch:
+\sisetup{% siunitx-Spracheinstellung deutsch:
   per-mode        = fraction,
   locale          = DE,
   list-final-separator  = { und },
@@ -161,7 +161,7 @@
 \newcommand{\hateq}{\mathrel{\hat{=}}}% Quelle:
 % https://tex.stackexchange.com/questions/186841/how-to-write-≙-in-latex
 
-% Weitere Gleichheitszeichen
+% Weitere Gleichheitszeichen (vordefiniert):
 %    :=     definiere
 %  \neq     ungleich
 %  \equiv   identisch-gleich ≡
@@ -172,11 +172,11 @@
 
 %% Relationszeichen --------
 
-% Die kommentierten Befehle zeigen nur an, wie die entsprechende Funktion
-% in amsmath zu verwenden ist:
+% Die kommentierten Befehle zeigen nur an, wie die entsprechende Funktion in amsmath zu verwenden ist:
 
-% \cdot für Multiplizieren (englisch \times)
-%   :   für Dividieren (englisch \div mit dem Strich)
+% \cdot  für Multiplizieren (deutsch)
+% \times für Multiplizieren (englisch)
+%   :    für Dividieren (englisch \div mit dem Strich)
 
 % \mid für "teilt": a \mid b, also a teilt b. Oder in groß mit:
 % \left. \middle| \right.
@@ -259,8 +259,6 @@
 \def\coords(#1,#2){\left(#1\coords@i#2,,\right)}
 \def\coords@i#1,{\if,#1,\else\middle|{#1}\expandafter\coords@i\fi}
 \makeatother
-
-%% end maths ------------------------------------
 
 
 

@@ -47,7 +47,7 @@ Das Paket ist für die Verwendung mit der Dokumentenklasse `article`, `scrarticl
 Das Beispiel unter `dokumentation/einskript` zeigt, wie eine solche Sammlung aussehen kann. Das Paket `exam2e` wird geladen, im Text befinden sich die Aufgaben in einer Umgebung `question` oder nach einem Befehl `\question`. 
 
 
-### Das Stylesheet `gess.sty`
+### Unser Stylesheet `gess.sty`
 
 In diesem Paket sind einige Funktionen zusammengefasst, die wir an unserer Schule nutzen. Insbesondere ist die Tabelle `klassenarbeitskopf` bei uns in Gebrauch; es ist höchstwahrscheinlich, dass Sie dieses abändern müssten, wenn Sie einen ähnlichen Kopf für Klassenarbeiten verwenden wollen. Ein kleinerer, allgemeiner Kopf für eine Klassenarbeit entsteht durch den Aufruf von `\klassenarbeitszeile`, die Syntax ist identisch. 
 
@@ -65,4 +65,4 @@ Zusätzlich wird `siunitx` geladen für die korrekte Darstellung der Einheiten u
 
 Dieses Projekt begann irgendwann als Fork von [P. Breitfelds Paket `schule2e`](http://www.pbreitfeld.de/schule2e.sty), geworden ist es eine Neufassung der wichtigsten Funktionen für die Nutzung in der Schule. Das Original `schule2e` ist leider nicht mehr verfügbar, sein letzter Beitrag zur Zeit der Niederschrift über zehn Jahre her. Es ist daher nicht anmaßend gemeint, den Namen `schule2e` weiterzuführen, sondern dankend.
 
-
+Im "Maschinenraum" von `schule2e` wird die Dokumentenklasse `exam` von [P. Hirschhorn](https://ctan.org/pkg/exam?lang=en) aufgerufen. `exam` ist eine mächtige und mit über 8000 Zeilen Quellcode umfangreiche Klasse, die die Struktur der Aufgaben und auch den Punktzähler bereitstellt und die seit 30 Jahren gewissenhaft gepflegt wird.
