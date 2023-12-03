@@ -5,7 +5,7 @@
 
 - Mit der Dokumentenklasse `exam2e` werden Klassenarbeiten gesetzt. Es baut auf `exam` auf, der [Dokumentenklasse von P. Hirschhorn](https://ctan.org/pkg/exam?lang=en), und stellt auf die deutsche Sprache um. 
 - Der Dokumentation `schule2e.pdf` ist im Anhang ein Beispiel aus dem Alltag zur Ansicht beigefügt. Diese Klassenarbeit wurde aus `ka4-worked-example.tex` kompiliert. 
-- Das Stylesheet `mathe2e` lädt `amsmath` und passt an den Gebrauch in der Schule an. Umgebungen für lineare Gleichungsysteme und Vektoren werden bereit gestellt. Mit `siunitx` werden Einheiten gesetzt. 
+- Das Stylesheet `mathe2e` lädt `amsmath` und passt an den Gebrauch in der Schule an. Umgebungen für lineare Gleichungsysteme und Vektoren werden bereit gestellt. Mit `siunitx` werden Größen und Einheiten gesetzt. 
 - `gess.sty` enthält einige spezifische Formatierungen für `exam2e`, die wir an unserer Schule verwenden. 
 - Das Stylesheet `exam2e.sty` dient der Kompatibilität, wenn man die Aufgaben von Klassenarbeiten in einem Skript sammeln will (z.B. Dokumentenklasse `article`). 
 - Die Pakete `schule2e` sind kein Fork des [Projektes von P. Breitfeld](http://www.pbreitfeld.de/schule2e.sty). Das Paket ist unseres Wissens nicht mehr verfügbar. Der Name des Paketes ist diesem Andenken gewidmet. 
