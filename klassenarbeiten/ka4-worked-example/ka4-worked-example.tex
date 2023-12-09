@@ -160,11 +160,28 @@ Widerlege die folgenden Aussagen:
 
 %% Aufgabe mit der Pyramide, deren Grundfläche gedreht ist.
 \begin{question}[7]
-	Es ist eine Pyramide mit quadratischer Grundfläche~$ABCD$ und Spitze~$S$ gegeben (vgl. die angefügte, nicht maßstabsgetreue Abbildung einer Pyramide mit quadratischer Grundfläche).
-% Abbildung Pyramide
-\begin{figure}
+	Es ist eine Pyramide mit quadratischer Grundfläche~$ABCD$ und Spitze~$S$ gegeben.
+
+\begin{figure}%% Abbildung einer quadratischen Pyramide ---
 \begin{minipage}[t]{0.45\textwidth}\vspace{0pt}
-    \includegraphics[width=\textwidth]{pyramide-aufgabe.png}
+\centering\small
+\psset{unit=1cm}
+\begin{pspicture}(-3,-1.2)(3,5.4)
+%\psframe[linecolor=yellow!90!black](-3,-1.2)(3,5.4)
+%	\pstThreeDCoor[axes=none]
+	% Punkte der quadratischen Grundfläche:
+	\pstThreeDNode(1.5,-1.5,0){A}\uput[dl](A){$A$}
+	\pstThreeDNode(1.5,1.5,0){B}\uput[dr](B){$B$}
+	\pstThreeDNode(-1.5,1.5,0){C}\uput[r](C){$C$}
+	\pstThreeDNode(-1.5,-1.5,0){D}\uput[l](D){$D$}
+	% Spitze:
+	\pstThreeDNode(0,0,5){S}\uput[ur](S){$S$}
+	\pspolygon[linestyle=none,fillstyle=solid,fillcolor=gray!20](A)(B)(C)(D)(A)
+	\psline(B)(S)(C)(B)(A)(S)% Ränder
+	\psset{linestyle=dashed}%Linie hinten gestrichelt
+	\psline(C)(D)(A)
+	\psline(S)(D)
+\end{pspicture}
 \end{minipage}\hfill
 \begin{minipage}[t]{0.5\textwidth}\vspace{0pt}%
 	\caption{Nicht-maß\-stäbliche Abbildung einer Pyramide mit quadratischer Grundfläche}
@@ -183,7 +200,7 @@ Widerlege die folgenden Aussagen:
 Die Spitze~$S$ liegt bei $S\coords(\num{3.5}, \num{.5}, 5)$.
 \begin{subparts}
 	\subpart Bestimme die Koordinaten des Eckpunktes~$B$.% so, dass $ABCD$ ein Quadrat ergibt.
-	\subpart Berechne den Abstand des Mittelpunktes~$M_{CD}$ der Seite~$CD$ von der Spitze~$S$ der Pyramide.
+	\subpart Berechne den Abstand des Mittelpunktes~$M_{BC}$ der Seite~$BC$ von der Spitze~$S$ der Pyramide.
 \end{subparts}
 \end{question}
 \omitsolution
