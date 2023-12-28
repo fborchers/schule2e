@@ -60,6 +60,8 @@ Das Paket `mathe2e` ist ebenfalls optional und kann sowohl in Klassenarbeiten al
 `mathe2e` lädt im Hintergrund `amsmath` und stellt damit alle Strukturen zur Verfügung. Wir ergänzen nur noch die, die für die Schulmathematik gebraucht werden: Zahlbereiche und Mengen, Relationen, lineare Gleichungssysteme (LGS) und die Vektorgeometrie. 
 Zusätzlich wird `siunitx` geladen für die korrekte Darstellung der Einheiten und des richtigen Abstandes (ins. das Verhindern eines Zeilenumbruchs zwischen Zahl und Einheit). Damit können Einheiten ohne Zahlwerte, Prozente, Währungen und Kommazahlen entsprechend der deutschen Notation dargestellt werden. 
 
+Für die linearen Gleichungssysteme (LGS) ist außerdem ein Konverter beigefügt, der bei Bedarf aus der Matrixdarstellung eines LGS den zugehörigen TeX-Code erzeugt. Mit diesem Konverter wird die Verwendung der Umgebung `lgs` sehr bequem. Der Konverter ist in der Programmiersprache [`R`](https://www.r-project.org) geschrieben, die für die Verwendung ggfs. zu installieren ist. 
+
 
 ### Dank 
 
