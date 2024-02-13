@@ -6,9 +6,9 @@
 - Mit der Dokumentenklasse `exam2e` werden Klassenarbeiten gesetzt. Es baut auf `exam` auf, der [Dokumentenklasse von P. Hirschhorn](https://ctan.org/pkg/exam?lang=en), und stellt auf die deutsche Sprache um. 
 - Der Dokumentation `schule2e.pdf` ist im Anhang ein Beispiel aus dem Alltag zur Ansicht beigefügt. Diese Klassenarbeit wurde aus `ka4-worked-example.tex` kompiliert. 
 - Das Stylesheet `mathe2e` lädt `amsmath` und passt an den Gebrauch in der Schule an. Umgebungen für lineare Gleichungsysteme und Vektoren werden bereit gestellt. Mit `siunitx` werden Größen und Einheiten gesetzt. 
-- `gess.sty` enthält einige spezifische Formatierungen für `exam2e`, die wir an unserer Schule verwenden. 
+- `gess.sty` enthält einige spezifische Formatierungen für `exam2e`, die wir an unserer Schule verwenden, insb. einen Dokumentenkopf.
 - Das Stylesheet `exam2e.sty` dient der Kompatibilität, wenn man die Aufgaben von Klassenarbeiten in einem Skript sammeln will (z.B. Dokumentenklasse `article`). 
-- Die Pakete `schule2e` sind kein Fork des [Projektes von P. Breitfeld](http://www.pbreitfeld.de/schule2e.sty). Das Paket ist unseres Wissens nicht mehr verfügbar. Der Name des Paketes ist diesem Andenken gewidmet. 
+- Die Pakete `schule2e` sind kein Fork des [Projektes von P. Breitfeld](http://www.pbreitfeld.de/schule2e.sty), das unseres Wissens nach nicht mehr verfügbar ist. Der Name dieses Paketes ist diesem Andenken gewidmet. 
 
 
 
@@ -40,9 +40,10 @@ Mit dem Makro `\aaa` haben Sie einen feinkörnigen Zugriff auf den Zähler `subp
 
 ### Das exam2e-Stylesheet (`exam2e.sty`)
 
-Als zweiten, unabhängigen Grundbaustein verstehen wir das Paket `exam.sty`. Es wird *nicht* zusammen mit der Klasse `exam2e.cls` verwendet, sondern dient der Kompatibilität mit dieser Klasse. Dazu werden die Umgebungen `question`, `part`, `subpart` und `subsubpart` definiert und erzeugen einen vergleichbaren Output wie in der `exam` documentclass. 
+Als zweiten, unabhängigen Grundbaustein verstehen wir das Paket `exam.sty`. Es wird *nicht* zusammen mit der Klasse `exam2e.cls` verwendet, sondern dient der Kompatibilität mit dieser Klasse, die Umgebungen `question`, `part`, `subpart` und `subsubpart` werden definiert und erzeugen einen vergleichbaren Output wie in der `exam` documentclass. 
 
-Das Paket ist für die Verwendung mit der Dokumentenklasse `article`, `scrarticle`, `book` usw. gedacht und macht die `exam2e`-Makros dort verfügbar. Wenn Sie also Aufgaben und Unterlagen in einem LaTeX-Dokument sammeln, können Sie denselben Markup und dieselben Befehle verwenden wie für die Prüfungsaufgaben auch. Später können Sie dann die Aufgaben durch Kopieren und Einfügen in Klassenarbeiten (documentclass `exam2e`) einfließen lassen, oder umgekehrt, Prüfungsaufgaben aus einer Klassenarbeit herauskopieren und in den Skripten archivieren. Es ist genau dieses Zusammenspiel, das einigen Mehrwert verspricht. 
+Das Paket ist für die Verwendung mit der Dokumentenklasse 
+`book`, `article`, `scrarticle` usw. gedacht und macht die `exam2e`-Makros dort verfügbar. Wenn Sie also Aufgaben und Unterlagen als Skript in einem LaTeX-Dokument sammeln, können Sie denselben Markup und dieselben Befehle verwenden wie für die Prüfungsaufgaben auch. Später können Sie dann die Aufgaben durch Kopieren und Einfügen in Klassenarbeiten (documentclass `exam2e`) einfließen lassen, oder umgekehrt, Prüfungsaufgaben aus einer Klassenarbeit herauskopieren und in den Skripten archivieren. Es ist genau dieses Zusammenspiel, das einigen Mehrwert verspricht. 
 
 Das Beispiel unter `dokumentation/einskript` zeigt, wie eine solche Sammlung aussehen kann. Das Paket `exam2e` wird geladen, im Text befinden sich die Aufgaben in einer Umgebung `question` oder nach einem Befehl `\question`. 
 
@@ -67,4 +68,5 @@ Für die linearen Gleichungssysteme (LGS) ist außerdem ein Konverter beigefügt
 
 Dieses Projekt begann irgendwann als Fork von [P. Breitfelds Paket `schule2e`](http://www.pbreitfeld.de/schule2e.sty), geworden ist es eine Neufassung der wichtigsten Funktionen für die Nutzung in der Schule. Das Original `schule2e` ist leider nicht mehr verfügbar, sein letzter Beitrag zur Zeit der Niederschrift über zehn Jahre her. Es ist daher nicht anmaßend gemeint, den Namen `schule2e` weiterzuführen, sondern dankend.
 
-Im "Maschinenraum" von `schule2e` wird die Dokumentenklasse `exam` von [P. Hirschhorn](https://ctan.org/pkg/exam?lang=en) aufgerufen. `exam` ist eine mächtige und mit über 8000 Zeilen Quellcode umfangreiche Klasse, die die Struktur der Aufgaben und auch den Punktzähler bereitstellt und die seit 30 Jahren gewissenhaft gepflegt wird.
+Im "Maschinenraum" von `schule2e` wird die Dokumentenklasse `exam` von [P. Hirschhorn](https://ctan.org/pkg/exam?lang=en) aufgerufen, die daher auf Ihrem System installiert sein muss. 
+`exam` ist eine mächtige und mit über 8000 Zeilen Quellcode umfangreiche Klasse, die die Struktur der Aufgaben und auch den Punktzähler bereitstellt und die seit 30 Jahren gewissenhaft gepflegt wird.

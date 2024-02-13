@@ -65,26 +65,27 @@
 
 % Neu definierte Einheiten ---
 
-\DeclareSIUnit\LE{LE}% Längeneinheiten
-\DeclareSIUnit\ppm{ppm}% parts per million
+\DeclareSIUnit\LE{LE}% Längeneinheit
+\DeclareSIUnit\FE{FE}% Flächeneinheit
+\DeclareSIUnit\VE{VE}% Volumeneinheit
+\DeclareSIUnit\ME{ME}% Mengeneinheit
 
-\DeclareSIUnit\litre{l}% changes both litre and liter to l
-\DeclareSIUnit\amu{u}% atomic mass unit (Dalton)
+\DeclareSIUnit\litre{l}% ändert sowohl litre als auch liter zu "l"
+\DeclareSIUnit\amu{u}% atomare Masseneinheit (Dalton)
 
 \DeclareSIUnit\year{a}% Jahr
-
-\DeclareSIUnit\huygens{Hy}% für Impuls
+\DeclareSIUnit\huygens{Hy}% für den Impuls (eher selten)
 \DeclareSIUnit\kmh{\km\per\hour}% Kilometer pro Stunde
 
-% Währung: Für €3.99 , also € vorne, verwende mit: \qty{3.99}[\euro]{}
+% Für €3.99 , also € vorne, verwende mit: \qty{3.99}[\euro]{}
 \DeclareSIUnit\euro{\text{\texteuro}}
 \DeclareSIUnit\curren{\text{\texteuro}}% ggfs. andere Währung
 
 % Promille (Prozent ist bereits vordefiniert):
 \DeclareSIUnit\permille{\text{\textperthousand}}
+\DeclareSIUnit\ppm{ppm}% Anteil pro Million (parts per million)
 
-% Informatik :
-\DeclareSIUnit\byte{B}
+\DeclareSIUnit\byte{B} % byte in der Informatik
 % Alternativ kann das Paket 'siunitx' mit Option "binary-units" geladen werden. Dann ggf. mit Zweierpotenzen.
 
 % Einheiten-Vorzeichen, z.B. m für milli mit \unit{\milli\noop}:
