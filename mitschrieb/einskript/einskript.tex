@@ -16,9 +16,19 @@
 
 \begin{document}
 
-\section{Prüfungsaufgaben}
+\section{Ein Skript}
+In den Skripten kommt nicht die Klasse \texttt{exam} zum Einsatz, sondern nur der minimale Aufsatz \texttt{exam2e} mit den Auflistungen Fragen, Teilaufgaben, Unteraufgaben und Unterunteraufgaben. Dies dient der Kompatibilität des Aufgabenformates von \texttt{exam} mit größeren Dokumentenklassen wie \texttt{article} oder \texttt{book}.
 
+Die Struktur von \texttt{exam} kann auch außerhalb der Hierarchie verwendet werden. Hier etwa stehen die Auflistungen von \texttt{subpart} nicht im Rahmen einer Frage:
+\begin{subparts}
+	\subpart Unteraufgabe
 
+\uplevel{Dieser Text hier steht mithilfe von \texttt{\textbackslash{}uplevel} wieder außerhalb. Die nächste Unteraufgabe setzt die Nummerierung fort.}
+	\subpart noch eine Unteraufgabe
+	\subpart und noch eine Unteraufgabe
+\end{subparts}
+
+\subsection{Prüfungsaufgaben}
 \question%\begin{question}
 	Eine Frage mit der Nummer \thequestion
 \begin{parts}
