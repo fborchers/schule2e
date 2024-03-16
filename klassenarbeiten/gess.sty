@@ -172,6 +172,8 @@
 %%     %% %%    %%     %%                                            
 %%     %% %%     %%    %%                                            
 
+\RequirePackage{siunitx}% Diese Zeile löst ein Problem mit der Schriftart der Einheiten mit cmbright, siehe unten. Es kommt dabei auf die Reihenfolge an, damit das ifpackageloaded auch ausgeführt wird.
+
 % Wir wählen eine serifenlose Schriftart (optional):
 \RequirePackage{cmbright}
 % Die folgenden beiden Zeilen beheben einen Fehler bei der Verwendung von cmbright mit siunitx, vgl. hier:
