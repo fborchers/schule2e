@@ -154,7 +154,7 @@
 
 % Symbol für entspricht:
 %\newcommand{\hateq}{\mathrel{\widehat{=}}}% mathrel adjusts spacing.
-\newcommand{\hateq}{\mathrel{\hat{=}}}% Quelle:
+\@ifundefined{hateq}{\newcommand{\hateq}{\mathrel{\hat{=}}}}{}% Quelle:
 % https://tex.stackexchange.com/questions/186841/how-to-write-≙-in-latex
 
 % Weitere Gleichheitszeichen (vordefiniert):
