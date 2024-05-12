@@ -10,7 +10,7 @@
 \usepackage{../../mathe2e}
 
 
-%% Lade PSTricks ein ---
+%% Lade PSTricks ein für die Vektorgeometrie ---
 \usepackage{pst-3dplot}
 %% pstricks settings for three dimensional coordinates
 \psset{coorType=2}
@@ -20,10 +20,12 @@
 \psset{unit=1cm}
 
 
-%% Seitenlayout (mit 'exam') --------
-\extrawidth{1.4cm}
-\extraheadheight[-2.2cm]{-1.5cm}% optionales Argument ist der Wert, der nur 1. Seite betrifft. 
-\extrafootheight{-.5cm}
+%% Seitenlayout (mit exam-Dokumentenklasse) --- 
+\extrawidth{1.5cm}%
+% Kopfzeile:
+\extraheadheight[-2.4cm]{-2cm}%
+% Fußzeile:
+\extrafootheight[-2.2cm]{-1.8cm}%
 
 % oder alternativ stattdessen Seitenlayout mit 'geometry'
 % \usepackage{geometry}
@@ -35,7 +37,7 @@
 
 
 \begin{document}
-
+\thispagestyle{empty}% erste Seite
 
 % Dokumentkopf --------
 %\klassenarbeitszeile{Klassenarbeit 1}{Mathematik}{10c}{10.10.2023}
