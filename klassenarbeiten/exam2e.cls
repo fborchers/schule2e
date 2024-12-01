@@ -45,7 +45,8 @@
 % Punkte alias Bewertungseinheiten:
 \pointpoints{Punkt}{Punkte}%
 \pointsinrightmargin% Punkte werden rechts auf den Rand gedruckt
-\marginpointname{P.}% Abkürzung für Punkte in diesem Fall.
+\marginpointname{P\hspace*{-.5ex}.}% Abkürzung für Punkte
+\setlength{\rightpointsmargin}{5mm}%
 
 % Wörter für die Angabe der Punkte in der Tabelle:
 \hqword{Aufgabe}\vqword{Aufgabe}%
