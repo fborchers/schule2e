@@ -128,18 +128,14 @@
 \end{tabular*}%
 % Es folgen die Details und Hinweise, die man im Dokument eintippt.
 }{% Abschließend die Tabelle mit Punkten, Alternativen: 
+	% \noindent\raisebox{1.5ex}{\rule{\textwidth}{0.05em}}%
 	% \gradetable[h][questions] mit Zellen zum Ausfüllen der Punkte
 	% \pointtable[h][questions] ohne solche Zellen (nur zwei Zeilen)
-	\par
-	\noindent\raisebox{1.5ex}{\rule{\textwidth}{0.05em}}%	------------
-	\\[-1ex]
-	\noindent{\small \gradetable[h][questions]}% Tabelle, alternativ: \pointtable
-	\par
-	\noindent\raisebox{-.8ex}{\rule{\textwidth}{0.08em}}% ------------
+	\noindent\raisebox{-.8ex}{\rule{\textwidth}{0.08em}}%
 }% Ende Definition der Umgebung klassenarbeitskopf.
 
 % Hinweis zur Summe der Punkte im Klassenarbeitskopf:
-% Man könnte die Summe entfernen, indem man diesen Patch einfügt, siehe:
+% Man könnte die Summe aus der Tabelle mit den Punkten entfernen, indem man diesen Patch einfügt, siehe:
 % https://tex.stackexchange.com/questions/698466/how-do-you-remove-exams-total-points-column-or-row-from-the-gradetable/698503#698503
 
 
