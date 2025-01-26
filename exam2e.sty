@@ -97,8 +97,9 @@
 %% --- SOLUTIONS (mit Zähler solutionID) --------
 
 % Umgebung für die Lösungen: solution
+\def\solutionID@ii{Lösung}
 \newcounter{solutionID}%
-\newenvironment{solution}[1][Lösung]%
+\newenvironment{solution}[1][\solutionID@ii]% siehe oben
 {% Counter erhöhen sowie Ziel und Anker für hyperref:
   \refstepcounter{solutionID}%
   \immediate\write\@auxout{%
@@ -108,7 +109,7 @@
   \par\smallskip\noindent
   \makebox[0pt][r]{\itshape\hyperlink{ex:\thesolutionID}{L\@nameuse{question\roman{solutionID}}}\hspace*{.5em}}%
   % Text der Lösung folgt nach:
-  \emph{#1:\enskip}%
+  \emph{#1:\enskip}% Doppelpunkt hier.
 }{
   \par\smallskip
 }%
