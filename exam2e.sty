@@ -7,19 +7,9 @@
 
 
 
-%% Kompatibilität, falls hyperref nicht geladen ---
+%% Kompatibilität ---
 
-% \RequirePackage{hyperref}% keine Voraussetzung.
-% Falls hyperref nicht geladen werden sollte, werden keine
-% Links erzeugt und auch kein Fehler produziert:
-\newcommand*\ex@hypertarget[2]{#2}
-\newcommand*\ex@hyperlink[2]{#2}
-\@ifpackageloaded{hyperref}{}%
-{% sonst bleiben die Links tot:
-  \let\hypertarget\ex@hypertarget
-  \let\hyperlink\ex@hyperlink
-}
-
+\RequirePackage{hyperref}% Voraussetzung.
 
 
 
@@ -73,7 +63,7 @@
   \expandafter\xdef\csname question\roman{questionID}\endcsname{\thequestion}%
   \ifcsname solution\roman{questionID}\endcsname%
   \else%
-    \let\hyperlink\ex@hyperlink%
+%    \let\hyperlink\ex@hyperlink%
   \fi%
   % Markup mit \questionletter, zur Definition siehe oben:
   \par\smallskip\noindent%
