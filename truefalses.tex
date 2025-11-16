@@ -1,0 +1,60 @@
+%% TRUEFALSES 
+
+% stellt die Umgebung ''truefalses'' sowie den Befehl
+%   \truefalse
+% bereit, um Ankreuzaufgaben im folgenden Format zu TeXen:
+% Kreuzen Sie jeweils an, ob die Aussage wahr (W) oder falsch (F) ist:
+% w  f 
+% ◻  ◻  Aussage 1 über Sachverhalt
+% ◻  ◻  Aussage 2 über Sachverhalt usw. 
+
+\makeatletter
+
+% Der Befehl ''\truefalse'' hat dasselbe
+% interface wie ''exam''s \tl mit den Optionen T und F:
+% \tl[T] oder \tl[F] oder einfach \tl (ohne Lösung im Quellcode)
+\newcommand*{\truefalse}[1][{}]{% #1 Voreinstellung ist {}
+\ifprintanswers% exam's Schalter für die Lösungen
+    \ifthenelse{\equal{#1}{T}}{%
+        \item[{\makebox[0pt][l]{$\checkmark$}\hspace{2.5em}\makebox[0pt][r]{$\square$}}]
+    }{% sonst prüfe ob gleich F:
+    \ifthenelse{\equal{#1}{F}}{%
+        \item[{\makebox[0pt][l]{$\square$}\hspace{2.5em}\makebox[0pt][r]{$\checkmark$}}]
+    }{% ansonsten ist eine Antwort nicht angegeben:
+        \item[{\makebox[0pt][l]{$\square$}\hspace{2.5em}\makebox[0pt][r]{$\square$}}]
+    }%
+    }%
+\else% sonst (sprich Antworten werden alle nicht gedruckt)
+        \item[{\makebox[0pt][l]{$\square$}\hspace{2.5em}\makebox[0pt][r]{$\square$}}]
+\fi
+}% end newcommand
+
+
+% Sub-Routinen für die Beschriftung der Spalten mit
+% W  F (falls aufgerufen mit \begin{truefalses}[WF] )
+% T  F (falls aufgerufen mit \begin{truefalses}[TF] )
+% Mit dieser Definition darf die Beschriftung kein @ enthalten.
+\def\extracttfletter@i#1#2@{\makebox[0pt][l]{\footnotesize{}#1}}
+\def\extracttfletter@ii#1#2@{\makebox[0pt][r]{\footnotesize{}#2\,}}
+
+% Umgebung für die Aufrufe von \truefalse:
+\newenvironment{truefalses}[1][WF]{% #1 Voreinstellung ist "WF"
+\vspace*{-1.2ex}% weniger vertikaler Abstand vor der ersten Zeile
+\begin{list}{{}}{%
+    \setlength{\leftmargin}{3.5em}% linke Einrückung
+    \setlength{\labelwidth}{2.5em}% Länge der Beschriftung (vgl. \truefalse)
+    % Abstand zwischen Beschriftung und Text:
+    \setlength{\labelsep}{1em}% Voreinstellung ist .5em%
+    }% Ende der Definition der Liste.
+    % Füge eine Zeile ein mit der Beschriftung der Spalten für die Kreuze:
+    \item[{\extracttfletter@i#1@{}%
+        \hspace{2.5em}%
+        \extracttfletter@ii#1@{}%
+        }]%
+        \phantom{.}% Die Zeile darf nicht leer sein.
+    \vspace*{-1ex}% weniger vertikaler Abstand nach der Beschriftung der Spalten.
+}{%
+    \end{list}
+}% Ende Definition der Umgebung 'truefalses'.
+
+\makeatother
