@@ -1,9 +1,12 @@
 \documentclass[a4paper,11pt]{../exam2e}
 
 \usepackage{graphicx}
-
 \usepackage[ngerman]{babel}
 
+\usepackage{amssymb}
+
+% Für die Ankreuzaufgabe wahr/falsch lade die Definitionen aus:
+\input{../../truefalses.tex}
 
 %% Seitenlayout (mit 'exam') --------
 \extrawidth{1.6cm}
@@ -118,10 +121,10 @@ Achte bei allen Größen auf die richtige Einheit.
 
 
 
-\question Ein paar Teilaufgaben
+\question[5] Ein paar Teilaufgaben
 \begin{parts}
 	\part\label{prt:einteilvonxyz} asdf
-\uplevel{Der Versuch, sich auf Teil~\ref{prt:einteilvonxyz} zu beziehen.}
+\uplevel{Der Versuch, sich auf Teil~\ref{prt:einteilvonxyz} zu beziehen. Im Vergleich zu oben sollen nun andere Voraussetzungen gelten.}
 	\part fds
 	\part sd
 	\begin{subsubparts}
@@ -132,6 +135,18 @@ Achte bei allen Größen auf die richtige Einheit.
 	wie in Teil~\ref{ssp:dieseunteraufg} bereits
 \end{parts}
 
+
+\question[3]
+Kreuze jeweils an, ob die Aussage wahr (W) oder falsch (F) ist:
+\begin{truefalses}
+    \truefalse Erste Aussage (ohne hinterlegte Lösung im Quellcode)
+    \truefalse[T] Die zweite Aussage dieser wahr/falsch-Ankreuzaufgabe enthält eine Gleichung:
+    \begin{equation}
+        \sum
+    \end{equation}
+    über die eine Aussage gemacht wird.
+    \truefalse[F] Die dritte Aussage enthält so viel Text, dass der Text in die nachfolgende Zeile gedruckt werden muss.
+\end{truefalses}
 
 
 \end{questions}% Ende der Fragen --------

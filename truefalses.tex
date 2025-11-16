@@ -10,10 +10,12 @@
 
 \makeatletter
 
-% Der Befehl ''\truefalse'' hat dasselbe
-% interface wie ''exam''s \tl mit den Optionen T und F:
+% Dasselbe interface wie exams \tl mit den Optionen T und F:
 % \tl[T] oder \tl[F] oder einfach \tl (ohne Lösung im Quellcode)
 \newcommand*{\truefalse}[1][{}]{% #1 Voreinstellung ist {}
+\@ifundefined{ifprintanswers}{%
+    \item[{\makebox[0pt][l]{$\square$}\hspace{2.5em}\makebox[0pt][r]{$\square$}}]
+}{ 
 \ifprintanswers% exam's Schalter für die Lösungen
     \ifthenelse{\equal{#1}{T}}{%
         \item[{\makebox[0pt][l]{$\checkmark$}\hspace{2.5em}\makebox[0pt][r]{$\square$}}]
@@ -27,6 +29,7 @@
 \else% sonst (sprich Antworten werden alle nicht gedruckt)
         \item[{\makebox[0pt][l]{$\square$}\hspace{2.5em}\makebox[0pt][r]{$\square$}}]
 \fi
+}
 }% end newcommand
 
 
