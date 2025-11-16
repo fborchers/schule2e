@@ -7,6 +7,10 @@
 \usepackage{../../exam2e}% lädt unser exam2e.sty
 \usepackage{../../mathe2e}% lädt unser math2e.sty
 
+% Für die Ankreuzaufgabe wahr/falsch lade die Definitionen aus:
+\makeatletter
+\input{../../truefalses.tex}
+\makeatother
 
 \usepackage{hyperref}
 
@@ -93,15 +97,16 @@ Die Abstände werden automatisch angepasst.
 		\subsubpart Unterunteraufgabe
 	\begin{checkboxes}
 		\choice Ankreuzmöglichkeit (alias choice)
+		\choice Ankreuzmöglichkeit (alias choice)
 	\end{checkboxes}
 	\end{subsubparts}
 \end{subparts}
 \uplevel{Test von \textbackslash{}uplevel \ldots}
-	\part Und dann wählen Sie noch hier:
-	\begin{checkboxes}
-		\choice Ankreuzmöglichkeit 1 \\ mit einem Zeilenumbruch.
-		\choice Ankreuzmöglichkeit 2
-	\end{checkboxes}
+	\part Und dann wählen Sie noch hier jeweils aus, ob die Aussagen wahr (W) oder falsch (F) sind:
+\begin{truefalses}
+		\truefalse Aussage 1 \\ mit einem Zeilenumbruch.
+		\truefalse Aussage 2
+\end{truefalses}
 \end{parts}
 %\end{question}
 \omitsolution
