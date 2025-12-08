@@ -16,7 +16,15 @@
 % Für die Ankreuzaufgabe wahr/falsch lade die Definitionen aus:
 \input{../../truefalses.tex}
 
-
+% Seitenlayout mit 'geometry'
+\RequirePackage{geometry}
+\geometry{%
+    top=.8cm,
+    margin=1.5cm,
+    right=2.5cm,
+    bottom=2cm,
+    marginparsep=0.5cm,% Abstand des Randes
+}
 
 
 
@@ -31,13 +39,58 @@
  %%%%%  %%%%%%%    %%     %%   %%%% %%    %%  %%%%%%   %%%%% 
 
 
-% Einrückungen links einstellen ---
-\setlength{\parindent}{0pt}
+% Einrückungen ---
+\setlength{\parindent}{0pt}% Paragraphen links
+\raggedright% Flattersatz rechts
+
+
+% Formatierung der Aufgaben --------
+
+% Unteraufgaben ganz links einrücken:
+\renewcommand{\subpartshook}{% 
+  \setlength{\leftmargin}{0pt}%
+  \setlength{\labelwidth}{-\labelsep}%
+}
+
+% Nenne Punkte hier "Bewertungseinheiten" BEs:
+\pointpoints{BE}{BE}
+\marginpointname{ BE}
+
+% Drucke die Punkte von Teilaufgaben rechts auf den Rand:
+\pointsdroppedatright
+% Verwende dazu je \droppoints.
+
+% Die Unteraufgaben sollen nummeriert sein:
+\renewcommand{\thesubpart}{\thepartno.\arabic{subpart}}% 1.1.1
+
+% Aufgabenlayout ---
+% vgl. https://tex.stackexchange.com/questions/111460/how-do-i-use-titledquestion-in-the-exam-class-with-or-without-points
+\qformat{%
+    {\bfseries Aufgabe \thequestion: \thequestiontitle}% 
+    \enspace\if\totalpoints0\else~(\totalpoints~\points)\fi%
+    \hfill%
+    }
 
 
 
 
+% Layout der Lösungen --------
+\renewcommand\solutiontitle{\noindent\textbf{Erwartungshorizont}\par}%
 
+\usepackage{marginnote}% für BE am Rand
+
+% linksbündig \afbi (eins):
+\newcommand{\afbi}[1]{%
+\marginnote{#1}
+}
+% mittig \afbii (zwei):
+\newcommand{\afbii}[1]{%
+\marginnote{\centering#1}
+}
+% rechtsbündig \afbiii (drei):
+\newcommand{\afbiii}[1]{%
+\marginnote{\hfill#1}
+}
 
 
 
