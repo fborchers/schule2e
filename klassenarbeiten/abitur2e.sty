@@ -1,0 +1,92 @@
+\NeedsTeXFormat{LaTeX2e}
+
+\ProvidesClass{../abitu2e}[v0.1 Abiturformat erstellt]
+
+% Dokumentation
+
+
+
+% Pakete einladen:
+\RequirePackage{graphicx}
+
+% Verwende 'htbp' als Standardeinstellung für Abbildungen und Tabellen:
+\renewcommand{\fps@figure}{htbp}
+\renewcommand{\fps@table}{htbp}
+
+% Für die Ankreuzaufgabe wahr/falsch lade die Definitionen aus:
+\input{../../truefalses.tex}
+
+
+
+
+
+
+
+ %%%%%  %%%%%%% %%%%%%% %%%%%% %%%% %%    %%  %%%%%%   %%%%% 
+%%   %% %%         %%     %%    %%  %%%   %% %%    %% %%   %%
+%%      %%         %%     %%    %%  %%%%  %% %%       %%     
+ %%%%%  %%%%%%     %%     %%    %%  %% %% %% %%   %%%% %%%%% 
+     %% %%         %%     %%    %%  %%  %%%% %%    %%      %%
+%%   %% %%         %%     %%    %%  %%   %%% %%    %% %%   %%
+ %%%%%  %%%%%%%    %%     %%   %%%% %%    %%  %%%%%%   %%%%% 
+
+
+% Einrückungen links einstellen ---
+\setlength{\parindent}{0pt}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ %%%%%%   %%%%%%  %%     %% %%%%%%%%  %%%% %%%%%%% %%%%%%%%      
+%%    %% %%    %% %%     %% %%     %%  %%  %%         %%         
+%%       %%       %%     %% %%     %%  %%  %%         %%         
+ %%%%%%  %%       %%%%%%%%% %%%%%%%%   %%  %%%%%%     %%   %%%%%%
+      %% %%       %%     %% %%   %%    %%  %%         %%         
+%%    %% %%    %% %%     %% %%    %%   %%  %%         %%         
+ %%%%%%   %%%%%%  %%     %% %%     %% %%%% %%         %%         
+   %%%    %%%%%%%%  %%%%%%%%                                         
+  %% %%   %%     %%    %%                                            
+ %%   %%  %%     %%    %%                                            
+%%     %% %%%%%%%%     %%                                            
+%%%%%%%%% %%   %%      %%                                            
+%%     %% %%    %%     %%                                            
+%%     %% %%     %%    %%                                            
+
+\RequirePackage{siunitx}% Diese Zeile löst ein Problem mit der Schriftart der Einheiten mit cmbright, siehe unten. Es kommt dabei auf die Reihenfolge an, damit das ifpackageloaded auch ausgeführt wird.
+
+% Wir wählen eine serifenlose Schriftart (optional):
+\RequirePackage{cmbright}
+% Die folgenden beiden Zeilen beheben einen Fehler bei der Verwendung von cmbright mit siunitx, vgl. hier:
+% https://tex.stackexchange.com/questions/629019/siunitx-in-apperent-conflict-with-cmbright/629022#629022
+\@ifpackageloaded{siunitx}{%
+	\DeclareMathAlphabet{\mathsf}{OT1}{\familydefault}{m}{n}%
+	\AtBeginDocument{\sisetup{unit-font-command = \mathrm}}%
+}
+
+
+
+
+
+
+
