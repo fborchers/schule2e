@@ -1,20 +1,24 @@
 \NeedsTeXFormat{LaTeX2e}
 
-\ProvidesClass{../abitu2e}[v0.1 Abiturformat erstellt]
+\ProvidesClass{../abitu2e}[v0.1.3 Abiturformat erstellt]
 
-% Dokumentation
+% Einstellungen für die schriftliche Abiturprüfung
+
+% Aufgabennummer in der Überschrift,
+% Teilaufgaben als 1.1, Unteraufgaben als 1.1.1,
+% Unterunteraufgaben als Nummerierung i., ii. usw.
+
+% Punkte werden als BE bezeichnet, sie erscheinen in
+% der Aufgabenstellung rechts am Rand.
+
+% Beim Erwartungshorizont kann die Vergabe der BE vor-
+% gegeben werden, sie kann sortiert nach AfBs erfolgen. 
 
 
-
-% Pakete einladen:
-\RequirePackage{graphicx}
-
-% Verwende 'htbp' als Standardeinstellung für Abbildungen und Tabellen:
-\renewcommand{\fps@figure}{htbp}
-\renewcommand{\fps@table}{htbp}
-
-% Für die Ankreuzaufgabe wahr/falsch lade die Definitionen aus:
+% Für die Ankreuzaufgabe wahr/falsch lade die Definitionen
+% aus dem Paket truefalses von schule2e:
 \input{../../truefalses.tex}
+
 
 % Seitenlayout mit 'geometry'
 \RequirePackage{geometry}
@@ -30,6 +34,8 @@
 
 
 
+
+
  %%%%%  %%%%%%% %%%%%%% %%%%%% %%%% %%    %%  %%%%%%   %%%%% 
 %%   %% %%         %%     %%    %%  %%%   %% %%    %% %%   %%
 %%      %%         %%     %%    %%  %%%%  %% %%       %%     
@@ -39,9 +45,14 @@
  %%%%%  %%%%%%%    %%     %%   %%%% %%    %%  %%%%%%   %%%%% 
 
 
-% Einrückungen ---
+% Einrückungen --------
 \setlength{\parindent}{0pt}% Paragraphen links
 \raggedright% Flattersatz rechts
+
+% Verwende 'htbp' als Standardeinstellung 
+% für Abbildungen und Tabellen:
+\renewcommand{\fps@figure}{htbp}
+\renewcommand{\fps@table}{htbp}
 
 
 % Formatierung der Aufgaben --------
@@ -81,15 +92,15 @@
 
 % linksbündig \afbi (eins):
 \newcommand{\afbi}[1]{%
-\marginnote{#1}
+    \marginnote{#1}
 }
 % mittig \afbii (zwei):
 \newcommand{\afbii}[1]{%
-\marginnote{\centering#1}
+    \marginnote{\centering#1}
 }
 % rechtsbündig \afbiii (drei):
 \newcommand{\afbiii}[1]{%
-\marginnote{\hfill#1}
+    \marginnote{\hfill#1}
 }
 
 
