@@ -14,38 +14,17 @@
 % Beim Erwartungshorizont kann die Vergabe der BE vor-
 % gegeben werden, sie kann sortiert nach AfBs erfolgen. 
 
-
 % Für die Ankreuzaufgabe wahr/falsch lade die Definitionen
 % aus dem Paket truefalses von schule2e:
-\input{../../truefalses.tex}
-
-
-% Seitenlayout mit 'geometry'
-\RequirePackage{geometry}
-\geometry{%
-    top=.8cm,
-    margin=1.5cm,
-    right=2.5cm,
-    bottom=2cm,
-    marginparsep=0.5cm,% Abstand des Randes
-}
+%\input{../../truefalses.tex}% kommt im Abitur nicht vor.
 
 
 
 
 
 
+%% Einstellungen, Einrückungen usw. --------
 
- %%%%%  %%%%%%% %%%%%%% %%%%%% %%%% %%    %%  %%%%%%   %%%%% 
-%%   %% %%         %%     %%    %%  %%%   %% %%    %% %%   %%
-%%      %%         %%     %%    %%  %%%%  %% %%       %%     
- %%%%%  %%%%%%     %%     %%    %%  %% %% %% %%   %%%% %%%%% 
-     %% %%         %%     %%    %%  %%  %%%% %%    %%      %%
-%%   %% %%         %%     %%    %%  %%   %%% %%    %% %%   %%
- %%%%%  %%%%%%%    %%     %%   %%%% %%    %%  %%%%%%   %%%%% 
-
-
-% Einrückungen --------
 \setlength{\parindent}{0pt}% Paragraphen links
 \raggedright% Flattersatz rechts
 
@@ -53,6 +32,24 @@
 % für Abbildungen und Tabellen:
 \renewcommand{\fps@figure}{htbp}
 \renewcommand{\fps@table}{htbp}
+
+
+
+
+
+
+%% Seitenlayout (mit 'exam') --------
+
+\extrawidth{1.6cm}% Textbreite, größer für mehr Text
+\extraheadheight{-.5cm}% Kopf, ggfs. optionales Arg. für 1. Seite
+\extrafootheight{-.6cm}% Fuß, kleiner für kleineren Abstand
+
+\footrule
+\footer{}{}{\thepage}
+
+
+
+
 
 
 % Formatierung der Aufgaben --------
@@ -85,7 +82,10 @@
 
 
 
-% Layout der Lösungen --------
+
+
+%% Formatierung der Lösungen --------
+
 \renewcommand\solutiontitle{\noindent\textbf{Erwartungshorizont}\par}%
 
 \usepackage{marginnote}% für BE am Rand
@@ -110,32 +110,7 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
- %%%%%%   %%%%%%  %%     %% %%%%%%%%  %%%% %%%%%%% %%%%%%%%      
-%%    %% %%    %% %%     %% %%     %%  %%  %%         %%         
-%%       %%       %%     %% %%     %%  %%  %%         %%         
- %%%%%%  %%       %%%%%%%%% %%%%%%%%   %%  %%%%%%     %%   %%%%%%
-      %% %%       %%     %% %%   %%    %%  %%         %%         
-%%    %% %%    %% %%     %% %%    %%   %%  %%         %%         
- %%%%%%   %%%%%%  %%     %% %%     %% %%%% %%         %%         
-   %%%    %%%%%%%%  %%%%%%%%                                         
-  %% %%   %%     %%    %%                                            
- %%   %%  %%     %%    %%                                            
-%%     %% %%%%%%%%     %%                                            
-%%%%%%%%% %%   %%      %%                                            
-%%     %% %%    %%     %%                                            
-%%     %% %%     %%    %%                                            
+% Schriftart --------                          
 
 \RequirePackage{siunitx}% Diese Zeile löst ein Problem mit der Schriftart der Einheiten mit cmbright, siehe unten. Es kommt dabei auf die Reihenfolge an, damit das ifpackageloaded auch ausgeführt wird.
 
