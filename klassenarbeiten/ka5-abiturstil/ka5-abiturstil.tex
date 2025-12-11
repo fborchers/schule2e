@@ -2,110 +2,29 @@
 
 \usepackage{graphicx}% Bilder
 
-\usepackage[ngerman]{babel}% Sprache
+\usepackage[ngerman]{babel}% Sprache deutsch
+%\usepackage[english]{babel}% für engl. Übersetzung
 
-\usepackage{cmbright}% Schriftart
+\usepackage{../abitur2e}% spezielle Formatierung für das Abitur
 \usepackage{../../mathe2e}% Mathematiksatz
 
 
-% Seitenlayout mit 'geometry'
-\usepackage{geometry}
-\geometry{%
-	top=.8cm,
-	margin=1.5cm,
-	right=2.2cm,
-	bottom=2cm
-}
 
 
-% Einrückungen ---
-\setlength{\parindent}{0pt}% Paragraphen links
-\raggedright% Flattersatz rechts
-
-% Unteraufgaben ganz links einrücken:
-\renewcommand{\subpartshook}{% 
-  \setlength{\leftmargin}{0pt}%
-  \setlength{\labelwidth}{-\labelsep}%
-}
-
-
-
-
-% Formatierung der Aufgaben --------
-
-% Nenne Punkte hier "Bewertungseinheiten" BEs:
-\pointpoints{BE}{BE}
-\marginpointname{ BE}
-
-% Drucke die Punkte von Teilaufgaben rechts auf den Rand:
-\pointsdroppedatright
-% Verwende dazu je \droppoints.
-
-% Die Unteraufgaben sollen nummeriert sein:
-\renewcommand{\thesubpart}{\thepartno.\arabic{subpart}}% 1.1.1
-
-
-% Aufgabenlayout ---
-% vgl. https://tex.stackexchange.com/questions/111460/how-do-i-use-titledquestion-in-the-exam-class-with-or-without-points
-\makeatletter
-\qformat{%
-    {\bfseries Aufgabe \thequestion: \thequestiontitle}% 
-    \enspace\if\totalpoints0\else~(\totalpoints~\points)\fi%
-    \hfill%
-    }
-\makeatother
-
-
-
-
+% Schalter zum Drucken von Lösungen --------
+% kommentieren, um Lösungen zu unterdrücken:
+\printanswers
+%\unframedsolutions% falls kein Rand gewünscht.
+% ------------------------------------------
 
 \begin{document}
-\section*{Abiturprüfung 2023:}
+%\section*{Abiturprüfung 2027}
 
 \begin{questions}% Aufgaben --------
 
-%% Aufgabe 1
-\titledquestion{Titel der ersten Aufgabe}
-Für die Abituraufgaben können Nummerierung und Punkte auch angepasst werden wie etwa in dieser Aufgabe.
-\begin{parts}
-\part[1] Teilaufgabe tue jenes\ldots\droppoints
-\begin{subparts}
-	\subpart[2]\label{ssp:dieseeineunteraufgabe} Unteraufgabe
-	\begin{equation*}
-		\frac{2\pi}{T}
-	\end{equation*}
-	Löse\ldots\droppoints
-	\subpart[1] Gib an\ldots\droppoints
-\end{subparts}
-	\part[10] Weitere Teilaufgabe. Die Punkte werden mit dem Befehl \textbackslash droppoints am Ende des Absatzes rechts auf den Rand gedruckt. 
-	\droppoints
-\end{parts}
-% Ende Aufgabe
+\include{aufg/aufg1}% Aufgabe 1
 
-%% Aufgabe 2
-% Zweite Aufgabe ---
-\titledquestion{Titel der zweiten Aufgabe}\label{que:dieeineaufg}
-\begin{parts}
-    \part[10] usw.\droppoints
-    \part[10] usw.\droppoints
-\end{parts}
-% Ende Aufgabe
-
-
-
-\titledquestion{Titel dieser Aufgabe}
-\begin{parts}
-	\part[5] Die folgende Zeile zeigt, wie die Punkte auf den Rand gedruckt werden, wenn die letzte Zeile dieser Teilaufgaben eine Gleichung ist:
-	% siehe: https://tex.stackexchange.com/questions/452064/how-to-place-point-count-information-on-the-line-of-a-displayed-equation-in-exam
-\begin{equation}
-	a^ab^b\ge\left(\frac{a+b}{2}\right)^{\!a+b}\ge a^bb^a\,.
-	\tag*{\parbox{1pt}{\droppoints}}% accident
-\end{equation}
-	\part[1] Mit \textbackslash{}label und \textbackslash{}ref können die Aufgaben wie üblich referenziert werden, wie hier z.B. die Aufgabe~\ref{que:dieeineaufg} oder die Unteraufgabe~\ref{ssp:dieseeineunteraufgabe}.\droppoints
-\end{parts}
-% Ende Aufgabe.
-
-
+\include{aufg/aufg2}% Aufgabe 2
 
 
 \end{questions}

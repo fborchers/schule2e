@@ -1,0 +1,41 @@
+
+
+%% Aufgabe 1
+\titledquestion{Titel der ersten Aufgabe}
+Für die Abituraufgaben können Nummerierung und Punkte auch angepasst werden wie etwa in dieser Aufgabe.
+\begin{parts}
+\part[1] Teilaufgabe tue jenes\ldots\droppoints
+\begin{subparts}
+	\subpart[2]\label{ssp:dieseeineunteraufgabe} Unteraufgabe
+	\begin{equation*}
+		\frac{2\pi}{T}
+	\end{equation*}
+	Löse\ldots\droppoints
+	\subpart[3] Gib an in den folgenden Fällen\droppoints
+\begin{subsubparts}
+	\subsubpart eins
+	\subsubpart zwei
+	\subsubpart drei
+\end{subsubparts}
+\end{subparts}
+\begin{EnvUplevel}
+	Man kann mit dem Befehl \verb+\uplevel+ bzw.\ der Umgebung \verb+EnvUplevel+ erreichen, dass der Text gedruckt wird mit der Formatierung, wie sie eine Ebene oberhalb der aktuellen gilt. Dieser Text hier ist formatiert wie der Text der Aufgabe, % (in der exam-Terminologie \verb+question+), 
+	es folgt aber die nächste Teilaufgabe.
+\end{EnvUplevel}
+	\part[10] Weitere Teilaufgabe. Die Punkte werden mit dem Befehl \textbackslash droppoints am Ende des Absatzes rechts auf den Rand gedruckt. 
+	\droppoints
+\end{parts}
+% Ende Aufgabe
+
+
+
+\begin{solution}
+Die Aufgabe ist eigentlich ganz einfach:
+%	asdf \marginpar{asdf}
+%	asdf \marginnote{1BE}
+\begin{parts}
+	\part Teil eins\ldots \afbi{1}\\
+	Außerdem\afbi{1}\afbii{2}\afbiii{3}\\
+	Außerdem\afbiii{2}
+\end{parts}
+\end{solution}

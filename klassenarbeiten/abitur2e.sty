@@ -1,0 +1,132 @@
+\NeedsTeXFormat{LaTeX2e}
+
+\ProvidesClass{../abitur2e}[v0.1.3 Abiturformat erstellt]
+
+% Einstellungen für die schriftliche Abiturprüfung
+
+% Aufgabennummer in der Überschrift,
+% Teilaufgaben als 1.1, Unteraufgaben als 1.1.1,
+% Unterunteraufgaben als Nummerierung i., ii. usw.
+
+% Punkte werden als BE bezeichnet, sie erscheinen in
+% der Aufgabenstellung rechts am Rand.
+
+% Beim Erwartungshorizont kann die Vergabe der BE vor-
+% gegeben werden, sie kann sortiert nach AfBs erfolgen. 
+
+% Für die Ankreuzaufgabe wahr/falsch lade die Definitionen
+% aus dem Paket truefalses von schule2e:
+%\input{../../truefalses.tex}% kommt im Abitur nicht vor.
+
+
+
+
+
+
+%% Einstellungen, Einrückungen usw. --------
+
+\setlength{\parindent}{0pt}% Paragraphen links
+\raggedright% Flattersatz rechts
+
+% Verwende 'htbp' als Standardeinstellung 
+% für Abbildungen und Tabellen:
+\renewcommand{\fps@figure}{htbp}
+\renewcommand{\fps@table}{htbp}
+
+
+
+
+
+
+%% Seitenlayout (mit 'exam') --------
+
+\extrawidth{1.4cm}% Textbreite, größer für mehr Text
+\extraheadheight{-.5cm}% Kopf, ggfs. optionales Arg. für 1. Seite
+\extrafootheight{-.4cm}% Fuß, kleiner für kleineren Abstand
+
+
+\firstpagefootrule% Linie in Fußzeile auf Seite eins
+\runningfootrule% Linie in Fußzeile ab Seite zwei
+
+
+
+
+
+% Formatierung der Aufgaben --------
+
+% Unteraufgaben ganz links einrücken:
+\renewcommand{\subpartshook}{% 
+  \setlength{\leftmargin}{0pt}%
+  \setlength{\labelwidth}{-\labelsep}%
+}
+
+% Nenne Punkte hier "Bewertungseinheiten" BEs:
+\pointpoints{BE}{BE}
+\marginpointname{ BE}
+\pointformat{\footnotesize\themarginpoints}
+
+% Drucke die Punkte von Teilaufgaben rechts auf den Rand:
+\pointsdroppedatright
+% Verwende dazu je \droppoints.
+
+% Die Unteraufgaben sollen nummeriert sein:
+\renewcommand{\thesubpart}{\thepartno.\arabic{subpart}}% 1.1.1
+
+% Aufgabenlayout ---
+% vgl. https://tex.stackexchange.com/questions/111460/how-do-i-use-titledquestion-in-the-exam-class-with-or-without-points
+\qformat{%
+    {\bfseries Aufgabe \thequestion: \thequestiontitle}% 
+    \enspace\if\totalpoints0\else~(\totalpoints~\points)\fi%
+    \hfill%
+    }
+
+
+
+
+
+
+%% Formatierung der Lösungen --------
+
+\renewcommand\solutiontitle{\noindent\textbf{Erwartungshorizont}\par}%
+
+\usepackage{marginnote}% für BE am Rand
+
+% linksbündig \afbi (eins):
+\newcommand{\afbi}[1]{%
+    \marginnote{\footnotesize#1}
+}
+% mittig \afbii (zwei):
+\newcommand{\afbii}[1]{%
+    \marginnote{\centering\footnotesize#1}
+}
+% rechtsbündig \afbiii (drei):
+\newcommand{\afbiii}[1]{%
+    \marginnote{\hfill\footnotesize#1}
+}
+
+
+
+
+
+
+
+
+% Schriftart --------                          
+
+\RequirePackage{siunitx}% Diese Zeile löst ein Problem mit der Schriftart der Einheiten mit cmbright, siehe unten. Es kommt dabei auf die Reihenfolge an, damit das ifpackageloaded auch ausgeführt wird.
+
+% Wir wählen eine serifenlose Schriftart (optional):
+\RequirePackage{cmbright}
+% Die folgenden beiden Zeilen beheben einen Fehler bei der Verwendung von cmbright mit siunitx, vgl. hier:
+% https://tex.stackexchange.com/questions/629019/siunitx-in-apperent-conflict-with-cmbright/629022#629022
+\@ifpackageloaded{siunitx}{%
+	\DeclareMathAlphabet{\mathsf}{OT1}{\familydefault}{m}{n}%
+	\AtBeginDocument{\sisetup{unit-font-command = \mathrm}}%
+}
+
+
+
+
+
+
+
