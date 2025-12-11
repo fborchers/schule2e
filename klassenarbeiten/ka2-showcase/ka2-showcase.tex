@@ -13,7 +13,7 @@
 %% Seitenlayout (mit 'exam') --------
 \extrawidth{1.6cm}
 \extraheadheight[-1.5cm]{-1.2cm}% optionales Argument trifft auf erste Seite zu.
-\extrafootheight{-1.2cm}
+\extrafootheight{-.8cm}
 
 % oder alternativ stattdessen Seitenlayout mit 'geometry'
 % \usepackage{geometry}
@@ -23,8 +23,11 @@
 
 \setlength{\parindent}{0pt}
 
+\firstpagefootrule% Linie in Fußzeile auf Seite eins
+\runningfootrule% Linie in Fußzeile ab Seite zwei
+
+
 \begin{document}
-\pagestyle{empty}
 
 % Schalter zum Drucken von Lösungen --------
 % kommentieren, um Lösungen zu unterdrücken:

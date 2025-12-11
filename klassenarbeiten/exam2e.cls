@@ -63,7 +63,7 @@
 %\firstpagefooter{}{}{\pagename\ \thepage\ von \numpages}
 %\runningfooter{}{}{\pagename\ \thepage\ von \numpages}
 % Mithilfe der \raisebox wird der Abstand zwischen Text und Fußzeile verringert. Dieselbe Einstellung sollte dann für den englischen Text verwendet werden, siehe unten.
-\footer{}{}{\raisebox{.5cm}[0mm]{Seite\ \thepage{}\ von \numpages}}
+\footer{}{}{Seite\ \thepage{}\ von \numpages}
 
 
 
@@ -83,7 +83,7 @@
     % Wörter für Lösungen:
     \renewcommand\solutiontitle{\noindent\textbf{Solution:}\par}%
     % Fußzeile:
-    \footer{}{}{\raisebox{.5cm}[0mm]{\pagename{}\ \thepage{}\ of \numpages}}%
+    \footer{}{}{\pagename{}\ \thepage{}\ of \numpages}%
 }}
 
 
