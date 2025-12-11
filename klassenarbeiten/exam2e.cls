@@ -55,14 +55,13 @@
 \hsword{erzielt}\vsword{erzielt}%
 
 % Wörter für Lösungen:
-\renewcommand\solutiontitle{\noindent\textbf{Lösung:}\par}%
+\renewcommand\solutiontitle{\noindent\textbf{Lösung}\par}%
 
 
 % Fußzeile ---
 %\ifdefined \runningfootrule \runningfootrule \fi% für eine Linie.
 %\firstpagefooter{}{}{\pagename\ \thepage\ von \numpages}
 %\runningfooter{}{}{\pagename\ \thepage\ von \numpages}
-% Mithilfe der \raisebox wird der Abstand zwischen Text und Fußzeile verringert. Dieselbe Einstellung sollte dann für den englischen Text verwendet werden, siehe unten.
 \footer{}{}{Seite\ \thepage{}\ von \numpages}
 
 
@@ -81,7 +80,7 @@
     \htword{Total}\vtword{Total}%
     \hsword{Score}\vsword{Score}%
     % Wörter für Lösungen:
-    \renewcommand\solutiontitle{\noindent\textbf{Solution:}\par}%
+    \renewcommand\solutiontitle{\noindent\textbf{Solution}\par}%
     % Fußzeile:
     \footer{}{}{\pagename{}\ \thepage{}\ of \numpages}%
 }}
@@ -203,8 +202,8 @@
 
 %% examdoc: Platz für Lösungen --------
 % Einstellungen für Kästchen und Linien zum Schreiben der Antworten. Die Größe und Linienstärke der Kästchen kann angepasst werden:
-\setlength{\gridsize}{5mm}% Größe
-\setlength{\gridlinewidth}{.05pt}% Linienstärke
+%\setlength{\gridsize}{5mm}% Größe der Kästchen, 5mm ist default.
+\setlength{\gridlinewidth}{.05pt}% Linienstärke, 0.1pt ist default.
 
 % Zeilenhöhe von Linien:
 \setlength\linefillheight{0.9cm}% Abstand

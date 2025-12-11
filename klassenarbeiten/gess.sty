@@ -40,10 +40,14 @@
 \setlength{\parindent}{0pt}
 
 
+%% Fußzeile anpassen ---
+% Mithilfe der \raisebox wird der Abstand zwischen Text und Fußzeile verringert. Dieselbe Einstellung sollte dann für den englischen Text verwendet werden, siehe unten.
+	\footer{}{}{\raisebox{.5cm}[0mm]{Seite\ \thepage{}\ von \numpages}}% Fußzeile
 
-
-
-
+\AtBeginDocument{%
+\@ifpackagewith{babel}{english}{%
+	\footer{}{}{\raisebox{.5cm}[0mm]{\pagename{}\ \thepage{}\ of \numpages}}% Fußzeile
+}}
 
 
 
