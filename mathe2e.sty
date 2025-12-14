@@ -1,12 +1,10 @@
+\NeedsTeXFormat{LaTeX2e}[1994/06/01]
+\ProvidesPackage{../../mathe2e}[2023/10/10 v0.2.6 Sprachunterstuetzung verbessert]
+
 % Dies ist das Paket mathe2e und
 % Teil der Sammlung schule2e.
 
-\NeedsTeXFormat{LaTeX2e}[1994/06/01]
-\ProvidesPackage{../../mathe2e}[2023/10/10 v0.2.5 mathe2e ein Teil von schule2e]
-
-
-
-%% LOAD PACKAGES ---------------------------
+%% LOAD PACKAGES --------
 \RequirePackage{amsmath,amsfonts}
 
 
@@ -26,37 +24,29 @@
  %%%%%%  %%%%  %%%%%%%  %%    %% %%%%    %%    %%     %% 
 
 
-% Paket siunitx für das Setzen von Größen und Einheiten --------
+% Paket siunitx für das Setzen von Größen und Einheiten 
+
 \RequirePackage{textcomp}% für \texteuro, Definition \curren s.u.
 \RequirePackage{siunitx}[2022/02/15]% für die Einheiten und Größen
 
+% Standardeinstellung
+\sisetup{per-mode=fraction}% Einheiten als Bruch
 
-% Spracheinstellungen ---
-\sisetup{% siunitx-Spracheinstellung deutsch:
-  per-mode        = fraction,
+
+% Spracheinstellungen deutsch ---
+\@ifpackagewith{babel}{ngerman}{%
+\sisetup{%
   locale          = DE,
   list-final-separator  = { und },
   list-pair-separator   = { und },
   list-separator    = {; },
   range-phrase      = { bis }
-}% Ende
+}% Ende Einstellungen siunix bei ngerman
+}{}
 
-% Auskommentiert, siehe Standardeinstellung
-% \@ifpackagewith{babel}{ngerman}{%
-% \sisetup{% falls babel mit ngerman geladen wird
-%   per-mode        = fraction,
-%   locale          = DE,
-%   list-final-separator  = { und },
-%   list-pair-separator   = { und },
-%   list-separator    = {; },
-%   range-phrase      = { bis }
-% }% Ende Einstellungen siunix bei ngerman
-% }{}
-
-% Falls Sprache mit babel auf Englisch gesetzt:
+% Spracheinstellungen englisch ---
 \@ifpackagewith{babel}{english}{%
 \sisetup{% 
-  per-mode        = fraction,
   locale          = UK,
 }% Ende Einstellungen siunitx bei english
 }{}
@@ -91,7 +81,7 @@
 % Einheiten-Vorzeichen, z.B. m für milli mit \unit{\milli\noop}:
 \DeclareSIUnit\noop{\relax}
 
-% Ende Einstellungen siunitx.
+% Ende der Einstellungen von siunitx.
 
 
 
