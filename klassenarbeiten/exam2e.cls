@@ -58,11 +58,7 @@
 \renewcommand\solutiontitle{\noindent\textbf{Lösung}\par}%
 
 
-% Fußzeile ---
-%\ifdefined \runningfootrule \runningfootrule \fi% für eine Linie.
-%\firstpagefooter{}{}{\pagename\ \thepage\ von \numpages}
-%\runningfooter{}{}{\pagename\ \thepage\ von \numpages}
-\footer{}{}{Seite\ \thepage{}\ von \numpages}
+
 
 
 
@@ -81,8 +77,6 @@
     \hsword{Score}\vsword{Score}%
     % Wörter für Lösungen:
     \renewcommand\solutiontitle{\noindent\textbf{Solution}\par}%
-    % Fußzeile:
-    \footer{}{}{\pagename{}\ \thepage{}\ of \numpages}%
 }}
 
 
