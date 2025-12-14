@@ -1,6 +1,6 @@
 \NeedsTeXFormat{LaTeX2e}
 
-\ProvidesClass{../gess}[v0.0.3 Zeile und Kopf fertig]
+\ProvidesClass{../gess}[v0.1.3 mit GESS Klassenarbeitskopf]
 
 % Dieses Paket enthält Feineinstellungen, wie wir sie an unserer
 % Schule verwenden wie z.B. die große Tabelle als Klassenarbeits-
@@ -10,6 +10,7 @@
 
 
 % Pakete einladen:
+\RequirePackage{babel}
 \RequirePackage{graphicx}
 
 % Verwende 'htbp' als Standardeinstellung für Abbildungen und Tabellen:
@@ -41,13 +42,10 @@
 
 
 %% Fußzeile anpassen ---
-% Mithilfe der \raisebox wird der Abstand zwischen Text und Fußzeile verringert. Dieselbe Einstellung sollte dann für den englischen Text verwendet werden, siehe unten.
-	\footer{}{}{\raisebox{.5cm}[0mm]{Seite\ \thepage{}\ von \numpages}}% Fußzeile
+\setlocalecaption{ngerman}{of}{von}% erfordert Babel mit Option [ngerman]
 
-\AtBeginDocument{%
-\@ifpackagewith{babel}{english}{%
-	\footer{}{}{\raisebox{.5cm}[0mm]{\pagename{}\ \thepage{}\ of \numpages}}% Fußzeile
-}}
+% Mithilfe der \raisebox wird der Abstand zwischen Text und Fußzeile verringert.
+\footer{}{}{\raisebox{.5cm}[0mm]{\pagename\ \thepage{}\ \ofname\ \numpages}}% Fußzeile
 
 
 
