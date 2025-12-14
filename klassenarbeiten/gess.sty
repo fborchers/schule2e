@@ -10,7 +10,6 @@
 
 
 % Pakete einladen:
-\RequirePackage{babel}
 \RequirePackage{graphicx}
 
 % Verwende 'htbp' als Standardeinstellung für Abbildungen und Tabellen:
@@ -22,6 +21,42 @@
 % Für die Ankreuzaufgabe wahr/falsch lade die Definitionen aus:
 \input{../../truefalses.tex}
 
+
+
+
+
+ %%%%%%  %%%%%%%%  %%%%%%%%     %%%     %%%%%%  %%     %% %%%%%%%% 
+%%    %% %%     %% %%     %%   %% %%   %%    %% %%     %% %%       
+%%       %%     %% %%     %%  %%   %%  %%       %%     %% %%       
+ %%%%%%  %%%%%%%%  %%%%%%%%  %%     %% %%       %%%%%%%%% %%%%%%   
+      %% %%        %%   %%   %%%%%%%%% %%       %%     %% %%       
+%%    %% %%        %%    %%  %%     %% %%    %% %%     %% %%       
+ %%%%%%  %%        %%     %% %%     %%  %%%%%%  %%     %% %%%%%%%% 
+
+
+
+%% Deutsch ---
+\@ifpackagewith{babel}{ngerman}{%
+    \setlocalecaption{ngerman}{of}{von}% \ofname
+}
+
+%% Englisch ---
+% Wenn das Paket babel mit der Option Englisch geladen wird, wird hier einmalig die Sprache umgestellt. Mehrsprachige Dokumente werden nicht unterstützt.
+
+\@ifpackagewith{babel}{english}{%
+    % Punkte alias Bewertungseinheiten:
+    \pointpoints{mark}{marks}%            <- marks
+    \marginpointname{m}% Abkürzung für Punkte in diesem Fall.
+    % Wörter für die Angabe der Punkte in der Tabelle:
+    \hqword{Question}\vqword{Question}%
+    \hpword{Marks}\vpword{Marks}%         <- marks
+    \htword{Total}\vtword{Total}%
+    \hsword{Score}\vsword{Score}%
+    % Wörter für Lösungen:
+    \renewcommand\solutiontitle{\noindent\textbf{Solution}\par}%
+    %
+    \setlocalecaption{english}{of}{of}% \ofname
+}
 
 
 
@@ -42,10 +77,13 @@
 
 
 %% Fußzeile anpassen ---
-\setlocalecaption{ngerman}{of}{von}% erfordert Babel mit Option [ngerman]
-
 % Mithilfe der \raisebox wird der Abstand zwischen Text und Fußzeile verringert.
-\footer{}{}{\raisebox{.5cm}[0mm]{\pagename\ \thepage{}\ \ofname\ \numpages}}% Fußzeile
+% \pagename und \ofname hängen vom Paket babel ab, siehe oben. Prüfe, ob geladen:
+\ifdefined\ofname%
+	\footer{}{}{\raisebox{.5cm}[0mm]{\pagename\ \thepage{}\ \ofname\ \numpages}}% Fußzeile
+\else%
+	\footer{}{}{\raisebox{.5cm}[0mm]{\thepage{}\ (\numpages)}}% Fußzeile
+\fi
 
 
 
@@ -104,9 +142,9 @@
 & 	\multicolumn{2}{l}{{\scriptsize Punkte}}
 & 	{\scriptsize Note}
 & 	{\scriptsize Klassendurchschnitt}
-& 	{\scriptsize Sonstiger}\\[-.667ex]
+& 	{\scriptsize Sonstige}\\[-.667ex]
 % Zeile 2 ---
-&&&&&& {\scriptsize Leistungsstand}\\[-1.7ex]
+&&&&&& {\scriptsize Leistungen}\\[-1.7ex]
 % Zeile 3 ---
 % Logo einfügen:
 	\raisebox{-1.8\normalbaselineskip}[0pt][0pt]{%

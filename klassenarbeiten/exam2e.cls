@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{../exam2e}[v0.1 exam2e mit subpart hook aaa@i]
+\ProvidesClass{../exam2e}[v0.1.3 exam Klasse auf deutsch]
 
 
 %%
@@ -38,9 +38,7 @@
 
 
 %% EXAMDOC-Spracheinstellungen ------------
-% Durch die folgenden Zeilen die keywords von `exam` auf deutsch übersetzt. Wenn allerdings das Paket babel mit der Spracheinstellung 'english' geladen wird, dann werden die keywords zurückgesetzt, siehe unten.
-
-%% DEUTSCH ---
+% Durch die folgenden Zeilen die keywords von ''exam'' auf deutsch übersetzt. 
 
 % Punkte alias Bewertungseinheiten:
 \pointpoints{Punkt}{Punkte}%
@@ -60,24 +58,6 @@
 
 
 
-
-
-
-%% ENGLISH ---
-% Wenn das Paket babel mit der Option Englisch geladen wird, stellt exam2e einmalig die Sprache um. Mehrsprachige Dokumente werden also nicht unterstützt.
-\AtBeginDocument{%
-\@ifpackagewith{babel}{english}{%
-    % Punkte alias Bewertungseinheiten:
-    \pointpoints{mark}{marks}%            <- marks
-    \marginpointname{m}% Abkürzung für Punkte in diesem Fall.
-    % Wörter für die Angabe der Punkte in der Tabelle:
-    \hqword{Question}\vqword{Question}%
-    \hpword{Marks}\vpword{Marks}%         <- marks
-    \htword{Total}\vtword{Total}%
-    \hsword{Score}\vsword{Score}%
-    % Wörter für Lösungen:
-    \renewcommand\solutiontitle{\noindent\textbf{Solution}\par}%
-}}
 
 
 
@@ -200,7 +180,7 @@
 \setlength{\gridlinewidth}{.05pt}% Linienstärke, 0.1pt ist default.
 
 % Zeilenhöhe von Linien:
-\setlength\linefillheight{0.9cm}% Abstand
+\setlength\linefillheight{0.9cm}% Abstand der Linien falls gedruckt
 
 
 
